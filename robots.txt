@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://btwinus.com/sitemap.xml

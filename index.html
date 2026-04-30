@@ -9,12 +9,27 @@
   <meta property="og:description" content="Private P2P chat via a link. No account. No servers. Disappears on close.">
   <meta property="og:url" content="https://btwinus.com">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="css/style.css?v=10">
-  <script src="js/theme.js?v=10"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0XHHXR5YY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G0XHHXR5YY');
+  </script>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <meta name="theme-color" content="#5865f2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Btwinus">
+  <link rel="stylesheet" href="css/style.css?v=12">
+  <script src="js/theme.js?v=12"></script>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
 </head>
 <body class="home-page">
   <canvas id="matrix-canvas"></canvas>
-  <button class="btn-ghost home-theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark</button>
+  <button class="btn-ghost home-theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">Dark</button>
 
   <div class="home">
     <div class="home-card">
@@ -26,11 +41,12 @@
       <div class="home-divider"><span>or join an existing one</span></div>
 
       <div class="home-join">
-        <input type="text" id="link-input" placeholder="Paste a chat link…" autocomplete="off" spellcheck="false">
-        <button class="btn-accent" id="join-btn">Join</button>
+        <label for="link-input" class="sr-only">Chat invite link</label>
+        <input type="text" id="link-input" placeholder="Paste a chat link…" autocomplete="off" spellcheck="false" aria-label="Paste a chat invite link">
+        <button class="btn-accent" id="join-btn" aria-label="Join chat from link">Join</button>
       </div>
       <p class="home-error hidden" id="join-error">Paste the full invite link someone shared with you.</p>
-      <a href="#how-it-works" class="how-anchor">How does this work? ↓</a>
+      <a href="#" class="how-anchor" onclick="event.preventDefault();document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">How does this work? ↓</a>
     </div>
   </div>
 
@@ -38,7 +54,7 @@
   <section class="demo-section">
     <p class="demo-eyebrow">Live demo</p>
     <h2 class="demo-heading">Watch it happen in real time</h2>
-    <p class="demo-sub">Alice and Bob starting a private chat — no accounts, no setup</p>
+    <p class="demo-sub">Alice and Gradi K. starting a private chat — no accounts, no setup</p>
 
     <div class="demo-stage">
 
@@ -68,7 +84,7 @@
           <span class="demo-bar-name">Btwinus</span>
         </div>
         <div class="demo-screen" id="demo-right"></div>
-        <div class="demo-label">Bob</div>
+        <div class="demo-label">Gradi K.</div>
       </div>
 
     </div>
@@ -110,8 +126,8 @@
     </div>
   </section>
 
-  <script src="js/matrix.js?v=10"></script>
-  <script src="js/home.js?v=10"></script>
-  <script src="js/demo.js?v=10"></script>
+  <script src="js/matrix.js?v=12"></script>
+  <script src="js/home.js?v=12"></script>
+  <script src="js/demo.js?v=12"></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+{
+  "name": "Btwinus",
+  "short_name": "Btwinus",
+  "description": "Anonymous encrypted P2P chat via links. No account. No servers. Disappears on close.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f0f0f",
+  "theme_color": "#5865f2",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

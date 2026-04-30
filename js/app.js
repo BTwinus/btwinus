@@ -7,8 +7,10 @@ let dc        = null;
 let myId      = '';
 let messages  = [];
 let pendingOfferEncrypted = null;
-let localNonce  = null;
-let remoteNonce = null;
+let localNonce      = null;
+let remoteNonce     = null;
+let peerTypingTimer = null;
+let lastTypingSent  = 0;
 
 // ── Identity ──────────────────────────────────────────────────────────────
 const HANDLES = [
@@ -241,11 +243,51 @@ async function computeSessionCode(a, b) {
 
 function showSessionCode(code) {
   const el  = document.getElementById('session-code');
+  const val = document.getElementById('session-code-val');
   const sep = document.getElementById('session-sep');
   if (!el) return;
-  el.textContent = '🔐 ' + code;
+  if (val) val.textContent = '🔐 ' + code;
   el.classList.remove('hidden');
   if (sep) sep.classList.remove('hidden');
+}
+
+// ── QR Code for offer URL ─────────────────────────────────────────────────
+
+function renderOfferQR(url) {
+  try {
+    var qr = qrcode(0, 'M');
+    qr.addData(url, 'Byte');
+    qr.make();
+    var svg = qr.createSvgTag({ scalable: true, margin: 2 });
+    document.getElementById('offer-qr').innerHTML = svg;
+  } catch (_) {
+    var btn = document.getElementById('qr-toggle');
+    if (btn) btn.style.display = 'none';
+  }
+}
+
+// ── Typing indicator ─────────────────────────────────────────────────────
+
+function showTyping() {
+  const el = document.getElementById('typing-indicator');
+  const nm = document.getElementById('typing-name');
+  if (!el) return;
+  if (nm) nm.textContent = peerName;
+  el.classList.remove('hidden');
+}
+
+function hideTyping() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.classList.add('hidden');
+  clearTimeout(peerTypingTimer);
+}
+
+function sendTyping() {
+  if (!dc || dc.readyState !== 'open') return;
+  const now = Date.now();
+  if (now - lastTypingSent < 2000) return;  // throttle to once per 2s
+  lastTypingSent = now;
+  dc.send(JSON.stringify({ type: 'typing', u: myId }));
 }
 
 // ── DataChannel ───────────────────────────────────────────────────────────
@@ -273,11 +315,17 @@ function setupChannel(channel) {
       if (localNonce) {
         computeSessionCode(localNonce, remoteNonce).then(showSessionCode);
       }
+    } else if (data.type === 'typing') {
+      if (data.u) peerName = data.u;
+      showTyping();
+      clearTimeout(peerTypingTimer);
+      peerTypingTimer = setTimeout(hideTyping, 3000);
     } else if (data.type === 'status') {
       if (data.u) peerName = data.u;
       setPeerStatus(data.s);
     } else {
       if (data.u) peerName = data.u;
+      hideTyping();
       messages.push(data);
       render();
     }
@@ -312,6 +360,7 @@ async function initOffer() {
   const url = location.origin + location.pathname + '#offer=' + encrypted;
   document.getElementById('offer-url').value = url;
   document.getElementById('passphrase-display').textContent = passphrase;
+  renderOfferQR(url);
 
   setStatus('Waiting for reply');
   showState('offering');
@@ -503,6 +552,12 @@ async function init() {
   // Wire buttons
   document.getElementById('new-chat-btn').addEventListener('click', () => location.href = 'chat.html');
   document.getElementById('copy-offer').addEventListener('click', () => copyText(document.getElementById('offer-url').value));
+  document.getElementById('qr-toggle').addEventListener('click', function () {
+    const wrap = document.getElementById('offer-qr-wrap');
+    const nowHidden = wrap.classList.toggle('hidden');
+    this.setAttribute('aria-expanded', nowHidden ? 'false' : 'true');
+    this.textContent = nowHidden ? 'QR' : 'Hide QR';
+  });
   document.getElementById('copy-passphrase').addEventListener('click', () => copyText(document.getElementById('passphrase-display').textContent));
   document.getElementById('copy-answer').addEventListener('click', () => copyText(document.getElementById('answer-url').value));
   document.getElementById('connect-btn').addEventListener('click', completeConnection);
@@ -511,7 +566,8 @@ async function init() {
   document.getElementById('passphrase-input').addEventListener('keydown', e => { if (e.key === 'Enter') unlockOffer(); });
   document.getElementById('send-btn').addEventListener('click', sendMessage);
   document.getElementById('msg-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); return; }
+    sendTyping();
   });
 
   if (offerEncoded) {

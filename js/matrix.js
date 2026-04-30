@@ -33,67 +33,68 @@
   function rc()          { return CHARS[randInt(0, CHARS.length - 1)]; }
 
   // ── Multi-language word definitions ───────────────────────────────────────
+  // sizes are vw fractions — capped at 560px in draw() so they never exceed ~2× the site logo on wide screens
   const WORD_DEFS = [
-    { t: ['Btwinus'],  color: BLUE,   size: 28, bold: true,  special: true  },
+    { t: ['Btwinus'],  color: BLUE,   size: 0.11,  bold: true, special: true },
     {
       t: ['ENCRYPTED','CHIFFRÉ','CIFRADO','加密','VERSCHLÜSSELT','ЗАШИФРОВАНО','暗号化','مشفر','CRIPTOGRAFADO'],
-      color: BLUE, size: 14
+      color: BLUE, size: 0.065
     },
     {
       t: ['NO SERVERS','SANS SERVEURS','SIN SERVIDORES','无服务器','KEIN SERVER','БЕЗ СЕРВЕРА','サーバーなし','بدون خادم'],
-      color: GREEN, size: 13
+      color: GREEN, size: 0.062
     },
     {
       t: ['ANONYMOUS','ANONYME','ANÓNIMO','匿名','ANONYM','АНОНИМНО','無名','مجهول','익명'],
-      color: BLUE, size: 14
+      color: BLUE, size: 0.068
     },
     {
       t: ['NO TRACE','AUCUNE TRACE','SIN RASTRO','无痕迹','KEINE SPUR','БЕЗ СЛЕДА','痕跡なし','لا أثر'],
-      color: PURPLE, size: 13
+      color: PURPLE, size: 0.065
     },
     {
       t: ['PRIVATE','PRIVÉ','PRIVADO','私人','PRIVAT','ЧАСТНЫЙ','プライベート','خاص','개인적인'],
-      color: GREEN, size: 14
+      color: GREEN, size: 0.072
     },
     {
       t: ['END-TO-END','DE BOUT EN BOUT','端到端','VON ENDE ZU ENDE','КОНЕЦ В КОНЕЦ','エンドツーエンド','من طرف لطرف'],
-      color: PURPLE, size: 13
+      color: PURPLE, size: 0.054
     },
     {
       t: ['SECURE','SÉCURISÉ','SEGURO','安全','SICHER','БЕЗОПАСНО','セキュア','آمن','보안'],
-      color: BLUE, size: 14
+      color: BLUE, size: 0.072
     },
     {
       t: ['FREE','GRATUIT','GRATIS','免费','KOSTENLOS','БЕСПЛАТНО','無料','مجاني','무료'],
-      color: GREEN, size: 14
+      color: GREEN, size: 0.072
     },
     {
       t: ['NO LOGS','SANS JOURNAUX','SIN REGISTROS','无日志','KEINE LOGS','БЕЗ ЛОГОВ','ログなし','بدون سجلات'],
-      color: BLUE, size: 13
+      color: BLUE, size: 0.062
     },
     {
       t: ['GHOST MODE','MODE FANTÔME','MODO FANTASMA','幽灵模式','GEISTERMODUS','РЕЖИМ ПРИЗРАКА','ゴーストモード'],
-      color: PURPLE, size: 13
+      color: PURPLE, size: 0.062
     },
     {
       t: ['#PRIVACY','#CONFIDENTIALITÉ','#PRIVACIDAD','#隐私','#DATENSCHUTZ','#КОНФИДЕНЦИАЛЬНОСТЬ','#プライバシー','#خصوصية'],
-      color: BLUE, size: 13
+      color: BLUE, size: 0.062
     },
     {
       t: ['ZERO KNOWLEDGE','CONNAISSANCE ZÉRO','CERO CONOCIMIENTO','零知识','KEIN WISSEN','НУЛЕВОЕ ЗНАНИЕ','ゼロ知識'],
-      color: PURPLE, size: 13
+      color: PURPLE, size: 0.052
     },
     {
       t: ['256-BIT','256 BITS','256位','256-BIT','256ビット','256 بت'],
-      color: GREEN, size: 13
+      color: GREEN, size: 0.068
     },
     {
       t: ['P2P','PAIR À PAIR','PUNTO A PUNTO','点对点','PEER-TO-PEER','ОДНОРАНГОВЫЙ','ピアツーピア'],
-      color: BLUE, size: 14
+      color: BLUE, size: 0.068
     },
     {
       t: ['DISAPPEARS ON CLOSE','DISPARAÎT À LA FERMETURE','DESAPARECE AL CERRAR','关闭即消失','VERSCHWINDET BEIM SCHLIESSEN','ИСЧЕЗАЕТ ПРИ ЗАКРЫТИИ','閉じると消える'],
-      color: GREEN, size: 12
+      color: GREEN, size: 0.047
     },
   ];
 
@@ -181,7 +182,7 @@
     get _text() { return this.def.t[this.langIdx % this.def.t.length]; }
     _scramble()  { return this._text.split('').map(c => c === ' ' ? ' ' : rc()).join(''); }
     _place() {
-      const pad   = 140;
+      const pad   = Math.round(this.W * 0.04);
       this.x      = rand(pad, this.W - pad);
       this.y      = rand(pad, this.H - pad);
       this.dx     = rand(-0.32, 0.32);
@@ -242,12 +243,13 @@
       const { def }  = this;
       const color    = light ? mapColor(def.color) : def.color;
       const alpha    = readable
-        ? (def.special ? 0.9  : 0.55)
-        : (def.special ? 0.28 : 0.13);
+        ? (def.special ? 1.0  : 0.92)
+        : (def.special ? 0.55 : 0.38);
 
+      const fontSize  = Math.round(def.size * Math.min(this.W, 560));
       ctx.globalAlpha = alpha;
       ctx.fillStyle   = color;
-      ctx.font        = `${def.bold && readable ? 'bold ' : ''}${def.size}px monospace`;
+      ctx.font        = `${def.bold && readable ? 'bold ' : ''}${fontSize}px monospace`;
 
       if (this.glow > 0) {
         ctx.shadowColor = color;

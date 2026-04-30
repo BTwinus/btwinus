@@ -80,9 +80,9 @@
 
   const MSGS = [
     { from: 'alice', text: 'Hey, you there?' },
-    { from: 'bob',   text: 'Yes! Got your message' },
+    { from: 'gradi',   text: 'Yes! Got your message' },
     { from: 'alice', text: 'No one can read this' },
-    { from: 'bob',   text: 'Not even the site itself' },
+    { from: 'gradi',   text: 'Not even the site itself' },
   ];
 
   function screenChat(count, side) {
@@ -92,7 +92,7 @@
     return `<div class="ms-chat">
       <div class="ms-chat-top">
         <span class="ms-conn-dot"></span>
-        <span>${side === 'alice' ? 'Bob' : 'Alice'} is active</span>
+        <span>${side === 'alice' ? 'Gradi K.' : 'Alice'} is active</span>
       </div>
       <div class="ms-msgs">${bubbles}</div>
       <div class="ms-composer">
@@ -109,15 +109,15 @@
     { d: 1400, l: screenHome(true),       r: screenWaiting(),         cap: 'She clicks "Start a new chat"',                pkt: null },
     { d: 2000, l: screenOffering(2),      r: screenWaiting(),         cap: 'She gets an encrypted link and a passphrase',  pkt: null },
     { d: 2000, l: screenOffering(2),      r: screenWaiting(),         cap: 'She sends the link via WhatsApp',              pkt: { ch: 'link', dir: 'ltr' } },
-    { d: 2200, l: screenOffering(2),      r: screenWaiting(),         cap: 'She calls Bob with the passphrase',            pkt: { ch: 'pass', dir: 'ltr' } },
-    { d: 1600, l: screenOffering(3),      r: screenPassphrase(false), cap: 'Bob opens the link — needs the passphrase',    pkt: null },
-    { d: 2200, l: screenOffering(3),      r: screenPassphrase(true),  cap: 'Bob types the passphrase and unlocks',         pkt: null },
-    { d: 2200, l: screenOffering(3),      r: screenAnswering(),       cap: 'Bob gets a reply link — sends it back',        pkt: { ch: 'link', dir: 'rtl' } },
+    { d: 2200, l: screenOffering(2),      r: screenWaiting(),         cap: 'She calls Gradi K. with the passphrase',       pkt: { ch: 'pass', dir: 'ltr' } },
+    { d: 1600, l: screenOffering(3),      r: screenPassphrase(false), cap: 'Gradi K. opens the link — needs the passphrase', pkt: null },
+    { d: 2200, l: screenOffering(3),      r: screenPassphrase(true),  cap: 'Gradi K. types the passphrase and unlocks',    pkt: null },
+    { d: 2200, l: screenOffering(3),      r: screenAnswering(),       cap: 'Gradi K. gets a reply link — sends it back',   pkt: { ch: 'link', dir: 'rtl' } },
     { d: 1800, l: screenConnected(),      r: screenConnected(),       cap: 'Alice pastes it — they\'re connected!',        pkt: null },
-    { d: 1400, l: screenChat(1, 'alice'), r: screenChat(1, 'bob'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
-    { d: 1400, l: screenChat(2, 'alice'), r: screenChat(2, 'bob'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
-    { d: 1400, l: screenChat(3, 'alice'), r: screenChat(3, 'bob'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
-    { d: 2800, l: screenChat(4, 'alice'), r: screenChat(4, 'bob'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
+    { d: 1400, l: screenChat(1, 'alice'), r: screenChat(1, 'gradi'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
+    { d: 1400, l: screenChat(2, 'alice'), r: screenChat(2, 'gradi'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
+    { d: 1400, l: screenChat(3, 'alice'), r: screenChat(3, 'gradi'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
+    { d: 2800, l: screenChat(4, 'alice'), r: screenChat(4, 'gradi'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
   ];
 
   // ── Animation engine ──────────────────────────────────────────────────────
