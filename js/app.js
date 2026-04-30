@@ -11,6 +11,37 @@ let localNonce      = null;
 let remoteNonce     = null;
 let peerTypingTimer = null;
 let lastTypingSent  = 0;
+let historyMode     = false;
+let peerLeft        = false;
+
+// ── Session persistence ───────────────────────────────────────────────────
+
+const MSGS_KEY = 'btw_msgs';
+const MSGS_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
+function saveMessages() {
+  if (!messages.length) return;
+  try {
+    localStorage.setItem(MSGS_KEY, JSON.stringify({
+      msgs: messages, peer: peerName, id: myId, ts: Date.now()
+    }));
+  } catch (_) {}
+}
+
+function clearHistory() {
+  localStorage.removeItem(MSGS_KEY);
+  historyMode = false;
+}
+
+function loadSavedMessages() {
+  try {
+    const raw = localStorage.getItem(MSGS_KEY);
+    if (!raw) return null;
+    const d = JSON.parse(raw);
+    if (Date.now() - d.ts > MSGS_TTL) { localStorage.removeItem(MSGS_KEY); return null; }
+    return d;
+  } catch (_) { return null; }
+}
 
 // ── Identity ──────────────────────────────────────────────────────────────
 const HANDLES = [
@@ -147,6 +178,9 @@ function showState(state) {
     document.getElementById('messages').classList.remove('hidden');
     document.getElementById('composer').classList.remove('hidden');
     document.getElementById('msg-input').focus();
+  } else if (state === 'history') {
+    document.getElementById('messages').classList.remove('hidden');
+    // composer stays hidden — read-only view of previous session
   } else {
     document.getElementById('handshake').classList.remove('hidden');
     const map = { loading:'hs-loading', offering:'hs-offering',
@@ -273,6 +307,14 @@ function _doRenderQR() {
   }
 }
 
+// ── System messages ──────────────────────────────────────────────────────
+
+function systemMsg(text) {
+  messages.push({ type: 'system', m: text, t: Date.now() });
+  render();
+  saveMessages();
+}
+
 // ── Typing indicator ─────────────────────────────────────────────────────
 
 function showTyping() {
@@ -302,9 +344,10 @@ function sendTyping() {
 function setupChannel(channel) {
   dc = channel;
   dc.addEventListener('open', () => {
+    clearHistory(); // discard previous session — live session takes over
     setStatus('🔒 Connected');
     showState('chat');
-    render();
+    systemMsg('🔒 Chat started — end-to-end encrypted');
     toast('Connected — fully encrypted');
     setPeerStatus('connecting');
     startActivityTracking();
@@ -314,6 +357,10 @@ function setupChannel(channel) {
     dc.send(JSON.stringify({ type: 'verify', nonce: localNonce }));
     // Passphrase no longer needed once the DataChannel is open
     sessionStorage.removeItem('btw_pass');
+    // Tell the peer we left if the tab is closed
+    window.addEventListener('beforeunload', () => {
+      try { dc.send(JSON.stringify({ type: 'bye', u: myId })); } catch (_) {}
+    });
   });
   dc.addEventListener('message', e => {
     const data = JSON.parse(e.data);
@@ -322,6 +369,13 @@ function setupChannel(channel) {
       if (localNonce) {
         computeSessionCode(localNonce, remoteNonce).then(showSessionCode);
       }
+    } else if (data.type === 'bye') {
+      const who = data.u ? escHtml(data.u) : 'Other person';
+      hideTyping();
+      peerLeft = true;
+      systemMsg(who + ' left the chat');
+      setStatus('Disconnected');
+      setPeerStatus('disconnected');
     } else if (data.type === 'typing') {
       if (data.u) peerName = data.u;
       showTyping();
@@ -335,12 +389,14 @@ function setupChannel(channel) {
       hideTyping();
       messages.push(data);
       render();
+      saveMessages();
     }
   });
   dc.addEventListener('close', () => {
+    if (!peerLeft) systemMsg('Other person left the chat');
+    peerLeft = false;
     setStatus('Disconnected');
     setPeerStatus('disconnected');
-    toast('Other person disconnected');
   });
 }
 
@@ -469,7 +525,7 @@ async function completeConnection() {
 function onConnState() {
   if (pc.connectionState === 'failed') {
     setStatus('Failed');
-    toast('Connection failed — try starting a new chat');
+    systemMsg('Connection failed — start a new chat to try again');
   }
 }
 
@@ -485,17 +541,24 @@ function sendMessage() {
   dc.send(JSON.stringify(msg));
   input.value = '';
   render();
+  saveMessages();
 }
 
 // ── Render ────────────────────────────────────────────────────────────────
 
 function render() {
-  const el = document.getElementById('messages');
+  const el     = document.getElementById('messages');
+  const banner = historyMode
+    ? '<div class="history-banner">Previous session — read only. Start a new chat to reconnect.</div>'
+    : '';
   if (!messages.length) {
-    el.innerHTML = '<div class="empty-state"><div class="icon">🔒</div><p>Connected &amp; encrypted.<br>Say hello.</p></div>';
+    el.innerHTML = banner + '<div class="empty-state"><div class="icon">🔒</div><p>Connected &amp; encrypted.<br>Say hello.</p></div>';
     return;
   }
-  el.innerHTML = messages.map(msg => {
+  el.innerHTML = banner + messages.map(msg => {
+    if (msg.type === 'system') {
+      return `<div class="msg-system">${escHtml(msg.m)} · ${fmtTime(msg.t)}</div>`;
+    }
     const own = msg.u === myId;
     return `<div class="msg ${own ? 'own' : 'them'}">
       <span class="msg-meta">${own ? 'You' : escHtml(msg.u)} · ${fmtTime(msg.t)}</span>
@@ -557,7 +620,7 @@ async function init() {
   history.replaceState(null, '', location.pathname);
 
   // Wire buttons
-  document.getElementById('new-chat-btn').addEventListener('click', () => location.href = 'chat.html');
+  document.getElementById('new-chat-btn').addEventListener('click', () => { clearHistory(); location.href = 'chat.html'; });
   document.getElementById('copy-offer').addEventListener('click', () => copyText(document.getElementById('offer-url').value));
   document.getElementById('qr-toggle').addEventListener('click', function () {
     const wrap = document.getElementById('offer-qr-wrap');
@@ -595,9 +658,23 @@ async function init() {
   });
 
   if (offerEncoded) {
+    clearHistory();                  // incoming link → fresh session
     promptPassphrase(offerEncoded);  // User B
   } else {
-    await initOffer();               // User A
+    const saved = loadSavedMessages();
+    if (saved) {
+      messages    = saved.msgs;
+      peerName    = saved.peer || 'Other person';
+      myId        = saved.id   || myId;
+      historyMode = true;
+      document.getElementById('my-id-label').textContent = myId;
+      setStatus('Previous session');
+      showState('history');
+      render();
+      toast('Previous session restored — tap "New chat" to reconnect');
+    } else {
+      await initOffer();             // User A — fresh start
+    }
   }
 }
 

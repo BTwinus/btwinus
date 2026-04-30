@@ -85,7 +85,8 @@ body.home-page {
 .layout {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh;   /* fallback for old browsers */
+  height: 100dvh;  /* shrinks when mobile keyboard opens — keeps composer visible */
   max-width: 760px;
   margin: 0 auto;
 }
@@ -220,6 +221,14 @@ button:disabled { opacity: 0.4; cursor: default; }
   flex-direction: column;
   gap: 10px;
   scroll-behavior: smooth;
+  /* Subtle dot-grid background (light mode) */
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, rgba(88,101,242,0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+[data-theme="dark"] .messages {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
 }
 
 .empty-state {
@@ -243,6 +252,19 @@ button:disabled { opacity: 0.4; cursor: default; }
   padding: 2px 6px;
   border-radius: 4px;
   color: var(--text-mid);
+}
+
+.msg-system {
+  align-self: center;
+  font-size: 11px;
+  color: var(--text-mid);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px 12px;
+  text-align: center;
+  flex-shrink: 0;
+  opacity: 0.8;
 }
 
 .msg {
@@ -278,6 +300,7 @@ button:disabled { opacity: 0.4; cursor: default; }
   border-top: 1px solid var(--border);
   background: var(--surface);
   flex-shrink: 0;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .composer input {
@@ -1174,6 +1197,29 @@ a.logo:hover { color: var(--accent-h); }
     width: 100%;
     text-align: center;
   }
+}
+
+/* Prevent iOS Safari from zooming into focused inputs.
+   Safari auto-zooms any input with font-size < 16px, causing
+   a jarring jump. Targeting touch devices covers iPhones of any width. */
+@media (hover: none) and (pointer: coarse) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* ── History banner ──────────────────────────────────────────────────────── */
+.history-banner {
+  align-self: center;
+  font-size: 12px;
+  color: var(--text-mid);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 5px 14px;
+  margin-bottom: 6px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 /* ── Session code ────────────────────────────────────────────────────────── */
