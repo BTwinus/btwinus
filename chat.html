@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Btwinus</title>
+  <link rel="stylesheet" href="css/style.css?v=9">
+</head>
+<body>
+  <div class="layout">
+
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <a class="logo" href="index.html">Btwinus</a>
+        <span class="room-label" id="status-label">Setting up…</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="my-id" id="my-id-label"></span>
+        <button class="btn-ghost" id="new-chat-btn">New chat</button>
+      </div>
+    </header>
+
+    <!-- Handshake area -->
+    <div id="handshake" class="handshake-screen">
+
+      <!-- Spinner shown while generating offer/answer -->
+      <div id="hs-loading" class="hs-state">
+        <div class="hs-spinner"></div>
+        <p>Setting up connection…</p>
+      </div>
+
+      <!-- User A: share offer + passphrase, paste answer -->
+      <div id="hs-offering" class="hs-state hidden">
+        <div class="hs-step">
+          <span class="hs-num">1</span>
+          <div>
+            <p class="hs-label">Send this encrypted link to the other person</p>
+            <div class="hs-row">
+              <input id="offer-url" type="text" readonly>
+              <button class="btn-accent" id="copy-offer">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="hs-step">
+          <span class="hs-num">2</span>
+          <div>
+            <p class="hs-label">Send this passphrase via a <strong>different channel</strong> — SMS, voice, in person</p>
+            <div class="hs-passphrase-box">
+              <code id="passphrase-display"></code>
+              <button class="btn-ghost" id="copy-passphrase">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="hs-step">
+          <span class="hs-num">3</span>
+          <div>
+            <p class="hs-label">Paste the link they send back</p>
+            <div class="hs-row">
+              <input id="answer-paste" type="text" placeholder="Paste their reply link…">
+              <button class="btn-accent" id="connect-btn">Connect</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User B: enter passphrase to unlock -->
+      <div id="hs-passphrase" class="hs-state hidden">
+        <div class="hs-lock-icon">🔒</div>
+        <h2>Enter the passphrase</h2>
+        <p class="hs-label">The person who invited you should have sent it via a separate channel</p>
+        <div class="hs-row">
+          <input id="passphrase-input" type="text" placeholder="e.g. storm-fox-river-4821" autocomplete="off" spellcheck="false">
+          <button class="btn-accent" id="unlock-btn">Unlock</button>
+        </div>
+        <p class="hs-error hidden" id="passphrase-error">Wrong passphrase — try again</p>
+      </div>
+
+      <!-- User B: share answer, wait -->
+      <div id="hs-answering" class="hs-state hidden">
+        <div class="hs-step">
+          <span class="hs-num">1</span>
+          <div>
+            <p class="hs-label">Send this encrypted link back to the person who invited you</p>
+            <div class="hs-row">
+              <input id="answer-url" type="text" readonly>
+              <button class="btn-accent" id="copy-answer">Copy</button>
+            </div>
+          </div>
+        </div>
+        <p class="hs-waiting">Waiting for them to connect…</p>
+      </div>
+
+    </div>
+
+    <!-- Peer status bar — visible only when connected -->
+    <div id="peer-status" class="peer-status hidden">
+      <span class="peer-dot" id="peer-dot"></span>
+      <span id="peer-status-text"></span>
+    </div>
+
+    <!-- Chat area — hidden until connected -->
+    <main id="messages" class="messages hidden"></main>
+    <footer class="composer hidden" id="composer">
+      <input type="text" id="msg-input" maxlength="500" placeholder="Message…" autocomplete="off">
+      <button id="send-btn">Send</button>
+    </footer>
+
+    <div class="chat-footer">
+      <span>🔒 Encrypted</span>
+      <span>·</span>
+      <span>No servers</span>
+      <span>·</span>
+      <span>Disappears on close</span>
+      <span>·</span>
+      <span>Anonymous</span>
+    </div>
+
+  </div>
+
+  <div id="toast"></div>
+  <script src="js/app.js?v=9"></script>
+</body>
+</html>

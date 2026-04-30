@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Btwinus</title>
+  <link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body class="home-page">
+  <canvas id="matrix-canvas"></canvas>
+
+  <div class="home">
+    <div class="home-card">
+      <h1 class="logo">Btwinus</h1>
+      <p class="home-tagline">Anonymous chat via links.<br>No account. No server. No history.</p>
+
+      <button class="btn-accent btn-full" id="new-chat-btn">Start a new chat</button>
+
+      <div class="home-divider"><span>or join an existing one</span></div>
+
+      <div class="home-join">
+        <input type="text" id="link-input" placeholder="Paste a chat link…" autocomplete="off" spellcheck="false">
+        <button class="btn-accent" id="join-btn">Join</button>
+      </div>
+      <p class="home-error hidden" id="join-error">Paste the full invite link someone shared with you.</p>
+    </div>
+  </div>
+
+  <script src="js/matrix.js?v=9"></script>
+  <script src="js/home.js?v=9"></script>
+</body>
+</html>
