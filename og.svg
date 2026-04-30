@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d0d18"/>
+
+  <!-- Top accent bar -->
+  <rect width="1200" height="5" fill="#5865f2"/>
+
+  <!-- Large decorative lock — background watermark -->
+  <g transform="translate(820, 60)" opacity="0.07">
+    <rect x="0" y="150" width="280" height="210" rx="28" fill="#5865f2"/>
+    <path d="M52,150 L52,90 C52,18 228,18 228,90 L228,150" stroke="#5865f2" stroke-width="38" fill="none" stroke-linecap="round"/>
+    <circle cx="140" cy="245" r="30" fill="#0d0d18"/>
+    <rect x="127" y="245" width="26" height="44" rx="13" fill="#0d0d18"/>
+  </g>
+
+  <!-- Brand name -->
+  <text x="80" y="215"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="104" font-weight="800" fill="#5865f2" letter-spacing="-2">Btwinus</text>
+
+  <!-- Tagline -->
+  <text x="80" y="292"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="34" fill="#e0e0e0">Anonymous encrypted chat via a link.</text>
+  <text x="80" y="340"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="28" fill="#666666">No account. No servers. No history.</text>
+
+  <!-- Feature badges -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif" font-size="17">
+
+    <rect x="80"  y="398" width="224" height="44" rx="22" fill="none" stroke="#5865f2" stroke-width="1.5"/>
+    <text x="192" y="425" text-anchor="middle" fill="#5865f2">End-to-end encrypted</text>
+
+    <rect x="318" y="398" width="158" height="44" rx="22" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="397" y="425" text-anchor="middle" fill="#22c55e">No servers</text>
+
+    <rect x="490" y="398" width="106" height="44" rx="22" fill="none" stroke="#9333ea" stroke-width="1.5"/>
+    <text x="543" y="425" text-anchor="middle" fill="#9333ea">Free</text>
+
+    <rect x="610" y="398" width="102" height="44" rx="22" fill="none" stroke="#5865f2" stroke-width="1.5"/>
+    <text x="661" y="425" text-anchor="middle" fill="#5865f2">P2P</text>
+
+    <rect x="726" y="398" width="162" height="44" rx="22" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="807" y="425" text-anchor="middle" fill="#22c55e">Anonymous</text>
+
+  </g>
+
+  <!-- Divider -->
+  <line x1="80" y1="560" x2="1120" y2="560" stroke="#222230" stroke-width="1"/>
+
+  <!-- Footer -->
+  <text x="80" y="600"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="22" fill="#5865f2" font-weight="600">btwinus.com</text>
+  <text x="1120" y="600"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="20" fill="#444444" text-anchor="end">Private chat, the right way.</text>
+
+</svg>

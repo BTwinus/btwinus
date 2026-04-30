@@ -251,12 +251,19 @@ function showSessionCode(code) {
   if (sep) sep.classList.remove('hidden');
 }
 
-// ── QR Code for offer URL ─────────────────────────────────────────────────
+// ── QR Code for offer URL (lazy-loaded on first button click) ────────────
+
+let _qrUrl = null;
 
 function renderOfferQR(url) {
+  _qrUrl = url; // stored; library loads only when the button is tapped
+}
+
+function _doRenderQR() {
+  if (!_qrUrl) return;
   try {
     var qr = qrcode(0, 'M');
-    qr.addData(url, 'Byte');
+    qr.addData(_qrUrl, 'Byte');
     qr.make();
     var svg = qr.createSvgTag({ scalable: true, margin: 2 });
     document.getElementById('offer-qr').innerHTML = svg;
@@ -554,9 +561,26 @@ async function init() {
   document.getElementById('copy-offer').addEventListener('click', () => copyText(document.getElementById('offer-url').value));
   document.getElementById('qr-toggle').addEventListener('click', function () {
     const wrap = document.getElementById('offer-qr-wrap');
+    const btn  = this;
+
+    if (!window.qrcode) {
+      // First tap: pull in the 55 KB library, render, then reveal
+      const s = document.createElement('script');
+      s.src = 'js/qr.js';
+      s.onload = () => {
+        _doRenderQR();
+        wrap.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.textContent = 'Hide QR';
+      };
+      s.onerror = () => { btn.style.display = 'none'; };
+      document.head.appendChild(s);
+      return;
+    }
+
     const nowHidden = wrap.classList.toggle('hidden');
-    this.setAttribute('aria-expanded', nowHidden ? 'false' : 'true');
-    this.textContent = nowHidden ? 'QR' : 'Hide QR';
+    btn.setAttribute('aria-expanded', nowHidden ? 'false' : 'true');
+    btn.textContent = nowHidden ? 'QR' : 'Hide QR';
   });
   document.getElementById('copy-passphrase').addEventListener('click', () => copyText(document.getElementById('passphrase-display').textContent));
   document.getElementById('copy-answer').addEventListener('click', () => copyText(document.getElementById('answer-url').value));

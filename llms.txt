@@ -1,0 +1,43 @@
+# Btwinus
+
+> Anonymous encrypted P2P chat via a shareable link. No account. No servers. No history.
+
+## What is Btwinus?
+
+Btwinus is a free, browser-based tool for having private encrypted conversations between exactly two people. No sign-up, no app download, no server involvement. Everything runs in the browser using WebRTC and AES-256-GCM encryption. Messages disappear permanently when either party closes their browser tab.
+
+## How it works
+
+1. **Start a chat** — Click "Start a new chat". You instantly get two things: an encrypted invite link and a passphrase.
+2. **Share them separately** — Send the link via WhatsApp, email, or any messenger. Share the passphrase via a different channel — a phone call, SMS, or in person. Keeping them on separate channels means no one can intercept both.
+3. **Recipient opens the link and replies** — The other person opens your link, enters the passphrase, and receives a reply link that is automatically copied to their clipboard.
+4. **Connect** — You paste their reply link. Both browsers establish a direct P2P connection. You are now chatting end-to-end encrypted.
+
+## Key features
+
+- **End-to-end encrypted** — AES-GCM 256-bit with PBKDF2 key derivation (100,000 iterations)
+- **No account required** — No email, phone number, or registration of any kind
+- **No servers** — Messages travel directly between browsers via WebRTC DataChannels; no relay server ever sees message content
+- **Truly anonymous** — No names or identifiers are stored anywhere
+- **Disappears on close** — No message history is saved, ever
+- **Session verification** — A short authentication string (SAS) lets both parties confirm the connection was not intercepted
+- **QR code handshake** — The invite link can be shared as a QR code, reducing friction on mobile
+- **Free** — No cost, no subscription, no ads
+- **Works in any modern browser** — Chrome, Firefox, Safari, Edge on desktop and mobile
+
+## Technical architecture
+
+- Transport: WebRTC RTCPeerConnection + DataChannel (direct browser-to-browser)
+- Encryption: AES-GCM 256-bit via the Web Crypto API (built into all modern browsers)
+- Key derivation: PBKDF2 with SHA-256, 100,000 iterations
+- Signalling: Encrypted SDP exchange via URL fragment hash — the SDP payload never touches a server
+- Session integrity: SHA-256 nonce exchange produces a Short Authentication String both parties can compare
+- Compression: deflate-raw on SDP before encryption to keep URLs short
+
+## Privacy model
+
+Btwinus has zero-knowledge architecture. There are no servers that handle, store, relay, or log messages. The only infrastructure is a static file host (GitHub Pages) serving HTML, CSS, and JavaScript. The passphrase and the encrypted SDP data are transmitted only via URL fragments, which are never sent to a server by the browser.
+
+## URL
+
+https://btwinus.com

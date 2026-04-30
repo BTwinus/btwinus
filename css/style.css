@@ -838,6 +838,32 @@ a.logo:hover { color: var(--accent-h); }
   display: inline-block;
 }
 
+.demo-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.demo-play-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+  padding: 0;
+}
+
+.demo-play-btn:hover { background: var(--accent-h); transform: scale(1.1); }
+
 .demo-dot-pip.active {
   background: var(--accent);
   transform: scale(1.4);
@@ -1138,6 +1164,15 @@ a.logo:hover { color: var(--accent-h); }
   .hs-tip:hover .hs-tip-text,
   .hs-tip-icon:focus + .hs-tip-text {
     transform: translateY(0);
+  }
+
+  /* On narrow phones, push the QR button to its own row */
+  #hs-offering .hs-row {
+    flex-wrap: wrap;
+  }
+  .hs-qr-btn {
+    width: 100%;
+    text-align: center;
   }
 }
 

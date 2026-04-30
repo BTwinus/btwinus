@@ -120,9 +120,34 @@
     { d: 2800, l: screenChat(4, 'alice'), r: screenChat(4, 'gradi'),    cap: 'End-to-end encrypted. No servers. No trace.',  pkt: null },
   ];
 
-  // ── Animation engine ──────────────────────────────────────────────────────
+  // ── Playback state ────────────────────────────────────────────────────────
 
-  let idx = 0;
+  let idx         = 0;
+  let playing     = false;
+  let playTimeout = null;
+
+  function updatePlayBtn() {
+    const btn = document.getElementById('demo-play-btn');
+    if (!btn) return;
+    btn.textContent = playing ? '⏸' : '▶';
+    btn.setAttribute('aria-label', playing ? 'Pause demo' : 'Play demo');
+  }
+
+  function play() {
+    if (playing) return;
+    playing = true;
+    updatePlayBtn();
+    runPhase();
+  }
+
+  function pause() {
+    if (!playing) return;
+    playing = false;
+    clearTimeout(playTimeout);
+    updatePlayBtn();
+  }
+
+  // ── Animation helpers ─────────────────────────────────────────────────────
 
   function fade(id, html) {
     const el = document.getElementById(id);
@@ -150,7 +175,7 @@
     const el = document.getElementById('demo-pkt-' + ch);
     if (!el) return;
     el.className = 'demo-pkt demo-pkt-' + ch;
-    void el.offsetWidth; // reflow to restart animation
+    void el.offsetWidth;
     el.classList.add(dir === 'ltr' ? 'pkt-ltr' : 'pkt-rtl');
   }
 
@@ -162,19 +187,51 @@
     ).join('');
   }
 
+  function showFrame(i) {
+    const p = PHASES[i];
+    document.getElementById('demo-left').innerHTML  = p.l;
+    document.getElementById('demo-right').innerHTML = p.r;
+    document.getElementById('demo-caption').textContent = p.cap;
+    updateDots();
+  }
+
   function runPhase() {
+    if (!playing) return;
     const p = PHASES[idx];
     fade('demo-left',  p.l);
     fade('demo-right', p.r);
     setCaption(p.cap);
     updateDots();
     if (p.pkt) setTimeout(() => firePacket(p.pkt.ch, p.pkt.dir), 500);
-    setTimeout(() => { idx = (idx + 1) % PHASES.length; runPhase(); }, p.d);
+    playTimeout = setTimeout(() => {
+      idx = (idx + 1) % PHASES.length;
+      runPhase();
+    }, p.d);
   }
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
 
   function boot() {
     if (!document.getElementById('demo-left')) return;
-    runPhase();
+
+    // Render the first frame immediately so it doesn't look empty
+    showFrame(0);
+    updatePlayBtn();
+
+    // Wire play/pause button
+    const btn = document.getElementById('demo-play-btn');
+    if (btn) btn.addEventListener('click', () => playing ? pause() : play());
+
+    // Auto-play when section enters viewport, pause when it leaves
+    if ('IntersectionObserver' in window) {
+      const section = document.querySelector('.demo-section');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => e.isIntersecting ? play() : pause());
+      }, { threshold: 0.25 });
+      if (section) obs.observe(section);
+    } else {
+      play(); // fallback for old browsers
+    }
   }
 
   document.readyState === 'loading'

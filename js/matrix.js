@@ -270,6 +270,10 @@
       this.drops = []; this.fumes = []; this.words = [];
       this._resize();
       window.addEventListener('resize', () => this._resize());
+      // Resume the RAF chain when the user returns to the tab
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && this.alive) requestAnimationFrame(() => this._loop());
+      });
       this._loop();
     }
     _resize() {
@@ -292,7 +296,7 @@
       }
     }
     _loop() {
-      if (!this.alive) return;
+      if (!this.alive || document.hidden) return;
       const { ctx, W, H } = this;
       // Fade overlay matches the page background for each theme
       ctx.fillStyle = getTheme() === 'light'

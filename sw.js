@@ -1,4 +1,4 @@
-const CACHE = 'btwinus-v1';
+const CACHE = 'btwinus-v2';
 
 const ASSETS = [
   '/',
@@ -11,6 +11,7 @@ const ASSETS = [
   '/js/home.js',
   '/js/matrix.js',
   '/js/demo.js',
+  '/js/qr.js',
   '/js/app.js',
 ];
 
