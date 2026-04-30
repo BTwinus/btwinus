@@ -13,6 +13,7 @@ let peerTypingTimer = null;
 let lastTypingSent  = 0;
 let historyMode     = false;
 let peerLeft        = false;
+let chatStarted     = false;
 
 // ── Session persistence ───────────────────────────────────────────────────
 
@@ -344,10 +345,11 @@ function sendTyping() {
 function setupChannel(channel) {
   dc = channel;
   dc.addEventListener('open', () => {
-    clearHistory(); // discard previous session — live session takes over
+    chatStarted = true;
+    clearHistory();
     setStatus('🔒 Connected');
     showState('chat');
-    systemMsg('🔒 Chat started — end-to-end encrypted');
+    systemMsg('🔒 Chat started — end-to-end encrypted. Refreshing or closing this tab ends the session permanently.');
     toast('Connected — fully encrypted');
     setPeerStatus('connecting');
     startActivityTracking();
@@ -357,7 +359,7 @@ function setupChannel(channel) {
     dc.send(JSON.stringify({ type: 'verify', nonce: localNonce }));
     // Passphrase no longer needed once the DataChannel is open
     sessionStorage.removeItem('btw_pass');
-    // Tell the peer we left if the tab is closed
+    // Notify peer when the tab is actually closed or navigated away
     window.addEventListener('beforeunload', () => {
       try { dc.send(JSON.stringify({ type: 'bye', u: myId })); } catch (_) {}
     });
@@ -524,8 +526,17 @@ async function completeConnection() {
 
 function onConnState() {
   if (pc.connectionState === 'failed') {
-    setStatus('Failed');
-    systemMsg('Connection failed — start a new chat to try again');
+    if (chatStarted) {
+      if (!peerLeft) {
+        setStatus('Disconnected');
+        setPeerStatus('disconnected');
+        systemMsg('Connection lost — start a new chat to reconnect');
+      }
+    } else {
+      setStatus('Connection failed');
+      systemMsg('Could not connect — check your network and try a new chat');
+    }
+    chatStarted = false;
   }
 }
 
@@ -561,8 +572,7 @@ function render() {
     }
     const own = msg.u === myId;
     return `<div class="msg ${own ? 'own' : 'them'}">
-      <span class="msg-meta">${own ? 'You' : escHtml(msg.u)} · ${fmtTime(msg.t)}</span>
-      <div class="msg-bubble">${escHtml(msg.m)}</div>
+      <div class="msg-bubble">${escHtml(msg.m)}<span class="msg-time">${own ? '' : escHtml(msg.u) + ' · '}${fmtTime(msg.t)}</span></div>
     </div>`;
   }).join('');
   el.scrollTop = el.scrollHeight;
