@@ -572,7 +572,8 @@ function render() {
     }
     const own = msg.u === myId;
     return `<div class="msg ${own ? 'own' : 'them'}">
-      <div class="msg-bubble">${escHtml(msg.m)}<span class="msg-time">${own ? '' : escHtml(msg.u) + ' · '}${fmtTime(msg.t)}</span></div>
+      ${!own ? `<span class="msg-name">${escHtml(msg.u)}</span>` : ''}
+      <div class="msg-bubble">${escHtml(msg.m)}<span class="msg-time">${fmtTime(msg.t)}</span></div>
     </div>`;
   }).join('');
   el.scrollTop = el.scrollHeight;
