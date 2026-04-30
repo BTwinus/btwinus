@@ -34,6 +34,51 @@
     </div>
   </div>
 
+  <!-- ── Live demo ───────────────────────────────────────────────────────── -->
+  <section class="demo-section">
+    <p class="demo-eyebrow">Live demo</p>
+    <h2 class="demo-heading">Watch it happen in real time</h2>
+    <p class="demo-sub">Alice and Bob starting a private chat — no accounts, no setup</p>
+
+    <div class="demo-stage">
+
+      <div class="demo-device">
+        <div class="demo-bar">
+          <span class="demo-bar-dot"></span>
+          <span class="demo-bar-name">Btwinus</span>
+        </div>
+        <div class="demo-screen" id="demo-left"></div>
+        <div class="demo-label">Alice</div>
+      </div>
+
+      <div class="demo-channels">
+        <div class="demo-ch" id="demo-ch-link">
+          <span class="demo-ch-tag">WhatsApp</span>
+          <div class="demo-pkt" id="demo-pkt-link"></div>
+        </div>
+        <div class="demo-ch demo-ch-dashed" id="demo-ch-pass">
+          <span class="demo-ch-tag">Phone call</span>
+          <div class="demo-pkt" id="demo-pkt-pass"></div>
+        </div>
+      </div>
+
+      <div class="demo-device">
+        <div class="demo-bar">
+          <span class="demo-bar-dot"></span>
+          <span class="demo-bar-name">Btwinus</span>
+        </div>
+        <div class="demo-screen" id="demo-right"></div>
+        <div class="demo-label">Bob</div>
+      </div>
+
+    </div>
+
+    <div class="demo-footer">
+      <p class="demo-caption" id="demo-caption"></p>
+      <div class="demo-dots" id="demo-dots"></div>
+    </div>
+  </section>
+
   <section id="how-it-works" class="how-section">
     <h2 class="how-title">How it works</h2>
     <div class="how-grid">
@@ -67,5 +112,6 @@
 
   <script src="js/matrix.js?v=10"></script>
   <script src="js/home.js?v=10"></script>
+  <script src="js/demo.js?v=10"></script>
 </body>
 </html>
