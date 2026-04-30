@@ -2,22 +2,39 @@
   'use strict';
 
   const CHARS  = '0123456789ABCDEFabcdef@#$%^&*!?/\\|アイウエオカキクケコサシスセソタチツ≠∑∞§≈±×÷';
+
+  // Dark mode palette
   const BLUE   = '#5865f2';
   const GREEN  = '#22c55e';
   const PURPLE = '#9333ea';
   const WHITE  = '#e0e0e0';
+
+  // Light mode palette
+  const L_BLACK  = '#1a1a1a';
+  const L_RED    = '#dc2626';
+  const L_ORANGE = '#ea580c';
+  const L_HEAD   = '#ffffff';
+
+  function getTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'light';
+  }
+
+  // Remap dark-palette colors to light-palette equivalents
+  function mapColor(c) {
+    if (c === GREEN)  return L_RED;
+    if (c === PURPLE) return L_ORANGE;
+    if (c === BLUE)   return L_BLACK;
+    if (c === WHITE)  return L_HEAD;
+    return c;
+  }
 
   function rand(a, b)    { return a + Math.random() * (b - a); }
   function randInt(a, b) { return Math.floor(rand(a, b + 1)); }
   function rc()          { return CHARS[randInt(0, CHARS.length - 1)]; }
 
   // ── Multi-language word definitions ───────────────────────────────────────
-  // Each entry cycles through its translations on each encrypt→decrypt cycle
   const WORD_DEFS = [
-    // App name — stays, no translation
     { t: ['Btwinus'],  color: BLUE,   size: 28, bold: true,  special: true  },
-
-    // Facts cycling through 8+ languages
     {
       t: ['ENCRYPTED','CHIFFRÉ','CIFRADO','加密','VERSCHLÜSSELT','ЗАШИФРОВАНО','暗号化','مشفر','CRIPTOGRAFADO'],
       color: BLUE, size: 14
@@ -83,8 +100,9 @@
   // ── Falling rain column ───────────────────────────────────────────────────
   class RainDrop {
     constructor(x, h) {
-      this.x     = x;
-      this.color = Math.random() < 0.28 ? GREEN : BLUE;
+      this.x         = x;
+      this.darkColor = Math.random() < 0.28 ? GREEN : BLUE;
+      this.lightColor = Math.random() < 0.28 ? L_RED : L_BLACK;
       this.reset(h, true);
     }
     reset(h, init = false) {
@@ -104,12 +122,16 @@
       if (this.y - this.maxLen * 16 > h) this.reset(h);
     }
     draw(ctx) {
+      const light = getTheme() === 'light';
+      const color = light ? this.lightColor : this.darkColor;
+      const head  = light ? L_ORANGE : WHITE;
+
       this.trail.forEach((ch, i) => {
         const cy = this.y - i * 16;
         if (cy < 0) return;
         const a = i === 0 ? 0.9 : Math.pow(1 - i / this.trail.length, 1.6) * 0.6;
         ctx.globalAlpha = a;
-        ctx.fillStyle   = i === 0 ? WHITE : this.color;
+        ctx.fillStyle   = i === 0 ? head : color;
         ctx.font        = `${i === 0 ? 'bold ' : ''}13px monospace`;
         ctx.fillText(ch, this.x, cy);
       });
@@ -141,7 +163,7 @@
     draw(ctx) {
       const alpha = this.maxOp * Math.sin((this.life / this.maxLife) * Math.PI);
       ctx.globalAlpha = alpha;
-      ctx.fillStyle   = PURPLE;
+      ctx.fillStyle   = getTheme() === 'light' ? L_ORANGE : PURPLE;
       ctx.font        = `${this.size}px monospace`;
       ctx.fillText(this.ch, this.x, this.y);
     }
@@ -207,7 +229,6 @@
         ).join('');
         this.glow = Math.max(this.glow - 0.05, 0);
         if (this.timer <= 0) {
-          // Advance to next language on next cycle
           this.langIdx = (this.langIdx + 1) % this.def.t.length;
           this.state   = 'encrypted';
           this.disp    = this._scramble();
@@ -216,18 +237,20 @@
       }
     }
     draw(ctx) {
+      const light    = getTheme() === 'light';
       const readable = this.state === 'readable';
       const { def }  = this;
+      const color    = light ? mapColor(def.color) : def.color;
       const alpha    = readable
         ? (def.special ? 0.9  : 0.55)
         : (def.special ? 0.28 : 0.13);
 
       ctx.globalAlpha = alpha;
-      ctx.fillStyle   = def.color;
+      ctx.fillStyle   = color;
       ctx.font        = `${def.bold && readable ? 'bold ' : ''}${def.size}px monospace`;
 
       if (this.glow > 0) {
-        ctx.shadowColor = def.color;
+        ctx.shadowColor = color;
         ctx.shadowBlur  = def.special ? 28 * this.glow : 10 * this.glow;
       }
       ctx.fillText(this.disp, this.x, this.y);
@@ -269,7 +292,10 @@
     _loop() {
       if (!this.alive) return;
       const { ctx, W, H } = this;
-      ctx.fillStyle = 'rgba(7,7,15,0.16)';
+      // Fade overlay matches the page background for each theme
+      ctx.fillStyle = getTheme() === 'light'
+        ? 'rgba(236,236,244,0.16)'
+        : 'rgba(7,7,15,0.16)';
       ctx.fillRect(0, 0, W, H);
       this.fumes.forEach(f => { f.update(); f.draw(ctx); });
       this.drops.forEach(d => { d.update(H); d.draw(ctx); });

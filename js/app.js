@@ -6,7 +6,9 @@ let pc        = null;
 let dc        = null;
 let myId      = '';
 let messages  = [];
-let pendingOfferEncrypted = null; // held while User B enters passphrase
+let pendingOfferEncrypted = null;
+let localNonce  = null;
+let remoteNonce = null;
 
 // ── Identity ──────────────────────────────────────────────────────────────
 const HANDLES = [
@@ -222,6 +224,30 @@ function startActivityTracking() {
   activityTimer = setTimeout(() => sendStatus('idle'), 60000);
 }
 
+// ── Session verification (SAS — short authentication string) ─────────────
+
+function genNonce() {
+  return Array.from(crypto.getRandomValues(new Uint8Array(8)))
+    .map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function computeSessionCode(a, b) {
+  const [n1, n2] = [a, b].sort();
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(n1 + n2));
+  return Array.from(new Uint8Array(buf)).slice(0, 6)
+    .map(b => b.toString(16).padStart(2, '0').toUpperCase())
+    .join('·'); // middle-dot separator
+}
+
+function showSessionCode(code) {
+  const el  = document.getElementById('session-code');
+  const sep = document.getElementById('session-sep');
+  if (!el) return;
+  el.textContent = '🔐 ' + code;
+  el.classList.remove('hidden');
+  if (sep) sep.classList.remove('hidden');
+}
+
 // ── DataChannel ───────────────────────────────────────────────────────────
 
 function setupChannel(channel) {
@@ -233,12 +259,21 @@ function setupChannel(channel) {
     toast('Connected — fully encrypted');
     setPeerStatus('connecting');
     startActivityTracking();
-    // Announce ourselves immediately
     sendStatus('active');
+    // Exchange nonces to compute a session verification code
+    localNonce = genNonce();
+    dc.send(JSON.stringify({ type: 'verify', nonce: localNonce }));
+    // Passphrase no longer needed once the DataChannel is open
+    sessionStorage.removeItem('btw_pass');
   });
   dc.addEventListener('message', e => {
     const data = JSON.parse(e.data);
-    if (data.type === 'status') {
+    if (data.type === 'verify') {
+      remoteNonce = data.nonce;
+      if (localNonce) {
+        computeSessionCode(localNonce, remoteNonce).then(showSessionCode);
+      }
+    } else if (data.type === 'status') {
       if (data.u) peerName = data.u;
       setPeerStatus(data.s);
     } else {

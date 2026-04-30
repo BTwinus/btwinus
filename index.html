@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Btwinus</title>
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <title>Btwinus — Anonymous Encrypted Chat</title>
+  <meta name="description" content="Private P2P chat via a link. No account. No servers. Disappears on close.">
+  <meta property="og:title" content="Btwinus — Anonymous Encrypted Chat">
+  <meta property="og:description" content="Private P2P chat via a link. No account. No servers. Disappears on close.">
+  <meta property="og:url" content="https://btwinus.com">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css?v=10">
+  <script src="js/theme.js?v=10"></script>
 </head>
 <body class="home-page">
   <canvas id="matrix-canvas"></canvas>
+  <button class="btn-ghost home-theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark</button>
 
   <div class="home">
     <div class="home-card">
@@ -23,10 +30,42 @@
         <button class="btn-accent" id="join-btn">Join</button>
       </div>
       <p class="home-error hidden" id="join-error">Paste the full invite link someone shared with you.</p>
+      <a href="#how-it-works" class="how-anchor">How does this work? ↓</a>
     </div>
   </div>
 
-  <script src="js/matrix.js?v=9"></script>
-  <script src="js/home.js?v=9"></script>
+  <section id="how-it-works" class="how-section">
+    <h2 class="how-title">How it works</h2>
+    <div class="how-grid">
+
+      <div class="how-card">
+        <span class="how-num-badge">1</span>
+        <h3>Start a chat</h3>
+        <p>Click "Start a new chat". You instantly get two things: an <strong>encrypted invite link</strong> and a <strong>passphrase</strong>.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">2</span>
+        <h3>Share them separately</h3>
+        <p>Send the <strong>link</strong> via WhatsApp, email, or any app. Send the <strong>passphrase</strong> a different way — a phone call, SMS, or say it in person. Keeping them apart means nobody can intercept both.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">3</span>
+        <h3>They open the link &amp; reply</h3>
+        <p>The other person opens your link, types the passphrase, and gets a <strong>reply link</strong> that is automatically copied. They send it back to you.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">4</span>
+        <h3>Paste &amp; you're connected</h3>
+        <p>Paste their reply link — you're instantly connected. Everything is <strong>end-to-end encrypted</strong>. No accounts, no servers, no history. Gone when you close the tab.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="js/matrix.js?v=10"></script>
+  <script src="js/home.js?v=10"></script>
 </body>
 </html>
