@@ -7,6 +7,7 @@ let dc        = null;
 let myId      = '';
 let messages  = [];
 let pendingOfferEncrypted = null;
+let offerEncrypted        = null;
 let localNonce      = null;
 let remoteNonce     = null;
 let peerTypingTimer = null;
@@ -170,7 +171,7 @@ function fromB64(str) {
 // ── UI state machine ──────────────────────────────────────────────────────
 
 function showState(state) {
-  ['hs-loading','hs-offering','hs-passphrase','hs-answering',
+  ['hs-loading','hs-offering','hs-passphrase','hs-answering','hs-expired',
    'handshake','messages','composer'].forEach(id => {
     document.getElementById(id).classList.add('hidden');
   });
@@ -185,7 +186,7 @@ function showState(state) {
   } else {
     document.getElementById('handshake').classList.remove('hidden');
     const map = { loading:'hs-loading', offering:'hs-offering',
-                  passphrase:'hs-passphrase', answering:'hs-answering' };
+                  passphrase:'hs-passphrase', answering:'hs-answering', expired:'hs-expired' };
     if (map[state]) document.getElementById(map[state]).classList.remove('hidden');
   }
 }
@@ -420,9 +421,12 @@ async function initOffer() {
 
   // Compress then encrypt the SDP
   const compressed = await compress(JSON.stringify(pc.localDescription));
-  const encrypted  = await encryptText(compressed, passphrase);
+  offerEncrypted   = await encryptText(compressed, passphrase);
 
-  const url = location.origin + location.pathname + '#offer=' + encrypted;
+  const ms  = parseInt(document.getElementById('expiry-select').value);
+  const exp = ms > 0 ? Date.now() + ms : 0;
+  let url   = location.origin + location.pathname + '#offer=' + offerEncrypted;
+  if (exp) url += '&exp=' + exp;
   document.getElementById('offer-url').value = url;
   document.getElementById('passphrase-display').textContent = passphrase;
   renderOfferQR(url);
@@ -627,6 +631,7 @@ async function init() {
 
   const params        = new URLSearchParams(location.hash.slice(1));
   const offerEncoded  = params.get('offer');
+  const expParam      = params.get('exp');
 
   history.replaceState(null, '', location.pathname);
 
@@ -667,9 +672,25 @@ async function init() {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); return; }
     sendTyping();
   });
+  document.getElementById('expiry-select').addEventListener('change', () => {
+    if (!offerEncrypted) return;
+    const ms  = parseInt(document.getElementById('expiry-select').value);
+    const exp = ms > 0 ? Date.now() + ms : 0;
+    let url   = location.origin + location.pathname + '#offer=' + offerEncrypted;
+    if (exp) url += '&exp=' + exp;
+    document.getElementById('offer-url').value = url;
+    renderOfferQR(url);
+    copyText(url, false);
+    toast('Link updated — share the new one');
+  });
 
   if (offerEncoded) {
-    clearHistory();                  // incoming link → fresh session
+    clearHistory();
+    if (expParam && Date.now() > parseInt(expParam)) {
+      setStatus('Link expired');
+      showState('expired');
+      return;
+    }
     promptPassphrase(offerEncoded);  // User B
   } else {
     const saved = loadSavedMessages();

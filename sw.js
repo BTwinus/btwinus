@@ -1,4 +1,4 @@
-const CACHE = 'btwinus-v3';
+const CACHE = 'btwinus-v4';
 
 const ASSETS = [
   '/',

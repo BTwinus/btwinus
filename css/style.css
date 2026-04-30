@@ -518,6 +518,26 @@ button:disabled { opacity: 0.4; cursor: default; }
   text-align: center;
 }
 
+.hs-expiry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-mid);
+}
+
+.hs-expiry select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+}
+
 .hs-waiting {
   font-size: 13px;
   color: var(--text-mid);
@@ -1101,6 +1121,45 @@ a.logo:hover { color: var(--accent-h); }
   transition: color 0.15s;
 }
 .how-anchor:hover { color: var(--accent); }
+
+.install-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-mid);
+}
+
+.install-banner span { flex: 1; }
+
+.install-banner .btn-accent {
+  padding: 6px 14px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.install-dismiss {
+  padding: 4px 8px;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--text-mid);
+}
+
+.install-ios {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-mid);
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
 
 .how-section {
   position: relative;
