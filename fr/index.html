@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Btwinus — Chat anonyme et chiffré gratuit, sans compte</title>
+  <meta name="description" content="Chiffrement AES-256 de qualité militaire dans un lien de navigateur. Sans appli, sans compte, sans serveur. Jusqu'ici, ce niveau de confidentialité demandait Signal ou PGP. Btwinus le donne à toute personne avec un lien.">
+  <meta name="keywords" content="chat anonyme, chat chiffré, chat privé, chat sécurisé, chat temporaire, chat sans compte, WebRTC, chat P2P, chiffrement de bout en bout, chat jetable, chiffrement militaire, messagerie qualité militaire, chiffrement AES-256, top secret, messagerie discrète, ligne anonyme, chat lanceur d'alerte, chat avocat client sécurisé, envoyer mot de passe en sécurité, partager clé API en sécurité, retour anonyme, message unique sécurisé, soutien entre pairs, chat journaliste source, ligne de crise, partage document sécurisé, retour employé anonyme, transfert phrase de seed crypto">
+  <link rel="canonical" href="https://btwinus.com/fr/">
+  <link rel="alternate" hreflang="en" href="https://btwinus.com/">
+  <link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/">
+  <link rel="alternate" hreflang="ln" href="https://btwinus.com/ln/">
+  <link rel="alternate" hreflang="x-default" href="https://btwinus.com/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Btwinus — Chat anonyme et chiffré gratuit, sans compte">
+  <meta property="og:description" content="Chat sécurisé et temporaire via un lien partageable. Sans compte, sans serveur, sans historique. Chiffrement de bout en bout AES-256.">
+  <meta property="og:url" content="https://btwinus.com/fr/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://btwinus.com/og.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Btwinus — Chat anonyme et chiffré. Sans compte. Sans serveur. Gratuit.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="ln_CD">
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Btwinus — Chat anonyme et chiffré gratuit, sans compte">
+  <meta name="twitter:description" content="Chat sécurisé et temporaire via un lien partageable. Sans compte, sans serveur, sans historique. Chiffrement de bout en bout AES-256.">
+  <meta name="twitter:image" content="https://btwinus.com/og.svg">
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Btwinus",
+    "url": "https://btwinus.com/fr/",
+    "inLanguage": "fr",
+    "description": "Btwinus démocratise le chiffrement de qualité militaire. Jusqu'ici, le chiffrement AES-256 de bout en bout demandait des applis, des comptes et la confiance envers une entreprise. Btwinus le met directement dans un lien de navigateur — sans appli, sans compte, sans serveur, sans historique.",
+    "applicationCategory": "CommunicationApplication",
+    "operatingSystem": "Chrome, Firefox, Safari, Edge",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "screenshot": "https://btwinus.com/og.svg",
+    "keywords": "chat anonyme, chat chiffré, chat privé, chat sécurisé, chiffrement militaire, messagerie discrète, chiffrement AES-256, top secret, chat temporaire, WebRTC, sans compte, chat jetable, P2P, bout en bout, lanceur d'alerte, ligne anonyme, chat avocat client, envoyer mot de passe en sécurité, retour anonyme, transfert de fichier sécurisé, message unique, protection journaliste source, chat de crise, soutien entre pairs",
+    "featureList": [
+      "Chiffrement de bout en bout (AES-GCM 256 bits)",
+      "Aucun compte ni inscription requis",
+      "Aucun serveur ne stocke vos messages",
+      "Pair-à-pair direct via WebRTC DataChannels",
+      "Anonyme — ni nom ni email demandés",
+      "Les messages disparaissent à la fermeture de l'onglet",
+      "Sessions de chat temporaires et jetables",
+      "Chat sécurisé via lien partageable",
+      "Vérification de session par chaîne d'authentification courte",
+      "Fonctionne dans tout navigateur moderne — Chrome, Firefox, Safari, Edge",
+      "Chiffrement de qualité militaire — AES-256-GCM approuvé par la NSA pour les informations TOP SECRET",
+      "Messagerie discrète — zero-knowledge, sans serveur, sans trace",
+      "Sécurité de niveau renseignement — chiffrement de transport DTLS 1.3",
+      "Sûr pour partager mots de passe, clés API et identifiants sensibles",
+      "Utilisé pour lignes de signalement anonymes et communication avec lanceurs d'alerte",
+      "Adapté aux conversations confidentielles avocat-client",
+      "Outil de retour anonyme pour employés et étudiants",
+      "Soutien individuel privé et communication de crise",
+      "Gratuit, sans abonnement"
+    ]
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0XHHXR5YY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G0XHHXR5YY');
+  </script>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <meta name="theme-color" content="#5865f2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Btwinus">
+  <link rel="stylesheet" href="/css/style.css?v=19">
+  <script src="/js/theme.js?v=17"></script>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+</head>
+<body class="home-page">
+  <canvas id="matrix-canvas"></canvas>
+  <button class="btn-ghost home-theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Basculer le mode sombre">Dark</button>
+  <div class="home-lang-picker lang-picker" role="group" aria-label="Changer de langue">
+    <button type="button" data-lang="en" onclick="setLang('en')" aria-label="English" title="English"><span class="flag">🇬🇧</span></button>
+    <button type="button" data-lang="fr" onclick="setLang('fr')" aria-label="Français" title="Français"><span class="flag">🇫🇷</span></button>
+    <button type="button" data-lang="ln" onclick="setLang('ln')" aria-label="Lingála" title="Lingála"><span class="flag">🇨🇩</span></button>
+  </div>
+
+  <div class="home">
+    <div class="home-card">
+      <h1 class="logo">Btwinus</h1>
+      <p class="home-tagline" data-i18n="home_tagline">Chat anonyme et chiffré via un lien.<br>Sans compte. Sans serveur. Sans historique.</p>
+
+      <button class="btn-accent btn-full" id="new-chat-btn" data-i18n="home_new_chat">Démarrer une conversation</button>
+
+      <div class="home-divider"><span data-i18n="home_divider">ou rejoindre une conversation existante</span></div>
+
+      <div class="home-join">
+        <label for="link-input" class="sr-only">Lien d'invitation</label>
+        <input type="text" id="link-input" data-i18n-ph="home_join_ph" placeholder="Collez un lien d'invitation…" autocomplete="off" spellcheck="false" aria-label="Coller un lien d'invitation">
+        <button class="btn-accent" id="join-btn" data-i18n="home_join_btn" aria-label="Rejoindre la conversation">Rejoindre</button>
+      </div>
+      <p class="home-error hidden" id="join-error" data-i18n="home_join_error">Collez le lien complet partagé par votre contact.</p>
+      <a href="#" class="how-anchor" data-i18n="home_how_anchor" onclick="event.preventDefault();document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">Comment ça marche ? ↓</a>
+
+      <div class="install-banner hidden" id="install-banner">
+        <span data-i18n="home_install_text">Ajouter Btwinus à l'écran d'accueil</span>
+        <button class="btn-accent" id="install-btn" data-i18n="home_install_btn">Installer</button>
+        <button class="btn-ghost install-dismiss" id="install-dismiss" aria-label="Fermer">✕</button>
+      </div>
+      <div class="install-ios hidden" id="install-ios" data-i18n="home_install_ios">
+        Appuyez sur <strong>Partager ↑</strong> puis <strong>Sur l'écran d'accueil</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Bandeau crédibilité chiffrement ──────────────────────────────────── -->
+  <section class="sec-strip">
+
+    <div class="sec-ticker" aria-hidden="true">
+      <div class="sec-ticker-row">
+        <span class="sec-ticker-track">MILITAIRE · ESPION · CLASSIFIÉ · CHIFFRÉ · RENSEIGNEMENT · DISCRET · TOP SECRET · AES-256 · ANONYME · ZERO KNOWLEDGE · GHOST · CIPHER · SANS TRACE · BURN AFTER READING · &nbsp;</span>
+        <span class="sec-ticker-track">MILITAIRE · ESPION · CLASSIFIÉ · CHIFFRÉ · RENSEIGNEMENT · DISCRET · TOP SECRET · AES-256 · ANONYME · ZERO KNOWLEDGE · GHOST · CIPHER · SANS TRACE · BURN AFTER READING · &nbsp;</span>
+      </div>
+      <div class="sec-ticker-row sec-ticker-row--rev">
+        <span class="sec-ticker-track">CANAL OBSCUR · EYES ONLY · SIGNAL INTEL · BLACK OPS · LIGNE SÉCURISÉE · CRYPTOGRAPHIE · OPÉRATIONS COUVERTES · DTLS · BOUT-EN-BOUT · SHADOW · SANS SERVEUR · DISPARAÎT · INTRAÇABLE · &nbsp;</span>
+        <span class="sec-ticker-track">CANAL OBSCUR · EYES ONLY · SIGNAL INTEL · BLACK OPS · LIGNE SÉCURISÉE · CRYPTOGRAPHIE · OPÉRATIONS COUVERTES · DTLS · BOUT-EN-BOUT · SHADOW · SANS SERVEUR · DISPARAÎT · INTRAÇABLE · &nbsp;</span>
+      </div>
+      <div class="sec-ticker-row">
+        <span class="sec-ticker-track">QUALITÉ ESPION · QUALITÉ MILITAIRE · CHIFFRÉ · GHOST PROTOCOL · ANONYME · TOP SECRET · ZÉRO LOGS · P2P · DISPARAÎT · QUALITÉ RENSEIGNEMENT · CIPHER · SÉCURISÉ · &nbsp;</span>
+        <span class="sec-ticker-track">QUALITÉ ESPION · QUALITÉ MILITAIRE · CHIFFRÉ · GHOST PROTOCOL · ANONYME · TOP SECRET · ZÉRO LOGS · P2P · DISPARAÎT · QUALITÉ RENSEIGNEMENT · CIPHER · SÉCURISÉ · &nbsp;</span>
+      </div>
+    </div>
+
+    <div class="sec-strip-inner">
+      <p class="sec-eyebrow" data-i18n="sec_eyebrow">🛡 Standard de chiffrement</p>
+      <h2 class="sec-title" data-i18n="sec_title">Nous avons mis le chiffrement militaire<br>dans un lien. Sans appli. Sans compte. Sans serveur.</h2>
+      <p class="sec-sub" data-i18n="sec_sub">Jusqu'ici, ce niveau de chiffrement nécessitait des applications, des comptes et de la confiance envers une entreprise. Signal demande votre numéro. PGP demande un logiciel. Btwinus met le chiffrement AES-256 directement dans un lien partageable — accessible à tous, rien n'est stocké, personne n'est au milieu.</p>
+      <div class="sec-specs">
+        <div class="sec-spec">
+          <span class="sec-spec-val">AES-256-GCM</span>
+          <span class="sec-spec-label" data-i18n="spec_cipher">Chiffrement</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">PBKDF2 · 100k</span>
+          <span class="sec-spec-label" data-i18n="spec_key_deriv">Dérivation de clé</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">DTLS 1.3</span>
+          <span class="sec-spec-label" data-i18n="spec_transport">Transport</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">Zero-knowledge</span>
+          <span class="sec-spec-label" data-i18n="spec_arch">Architecture</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">WebRTC P2P</span>
+          <span class="sec-spec-label" data-i18n="spec_relay">Sans serveur relais</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Démo en direct ──────────────────────────────────────────────────── -->
+  <section class="demo-section">
+    <p class="demo-eyebrow" data-i18n="demo_eyebrow">Démo en direct</p>
+    <h2 class="demo-heading" data-i18n="demo_heading">Regardez en temps réel</h2>
+    <p class="demo-sub" data-i18n="demo_sub">Alice et Gradi K. démarrent une conversation privée — sans compte, sans installation</p>
+
+    <div class="demo-stage">
+
+      <div class="demo-device">
+        <div class="demo-bar">
+          <span class="demo-bar-dot"></span>
+          <span class="demo-bar-name">Btwinus</span>
+        </div>
+        <div class="demo-screen" id="demo-left"></div>
+        <div class="demo-label">Alice</div>
+      </div>
+
+      <div class="demo-channels">
+        <div class="demo-ch" id="demo-ch-link">
+          <span class="demo-ch-tag">WhatsApp</span>
+          <div class="demo-pkt" id="demo-pkt-link"></div>
+        </div>
+        <div class="demo-ch demo-ch-dashed" id="demo-ch-pass">
+          <span class="demo-ch-tag">Appel</span>
+          <div class="demo-pkt" id="demo-pkt-pass"></div>
+        </div>
+      </div>
+
+      <div class="demo-device">
+        <div class="demo-bar">
+          <span class="demo-bar-dot"></span>
+          <span class="demo-bar-name">Btwinus</span>
+        </div>
+        <div class="demo-screen" id="demo-right"></div>
+        <div class="demo-label">Gradi K.</div>
+      </div>
+
+    </div>
+
+    <div class="demo-footer">
+      <p class="demo-caption" id="demo-caption"></p>
+      <div class="demo-controls">
+        <button class="demo-play-btn" id="demo-play-btn" aria-label="Lancer la démo">▶</button>
+        <div class="demo-dots" id="demo-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="how-section">
+    <h2 class="how-title" data-i18n="how_title">Comment ça marche</h2>
+    <div class="how-grid">
+
+      <div class="how-card">
+        <span class="how-num-badge">1</span>
+        <h3 data-i18n="how_1_title">Démarrer une conversation</h3>
+        <p data-i18n="how_1_body">Cliquez sur "Démarrer une conversation". Vous obtenez instantanément deux choses : un <strong>lien d'invitation chiffré</strong> et une <strong>phrase de passe</strong>.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">2</span>
+        <h3 data-i18n="how_2_title">Partagez-les séparément</h3>
+        <p data-i18n="how_2_body">Envoyez le <strong>lien</strong> via WhatsApp, email ou toute autre appli. Envoyez la <strong>phrase de passe</strong> autrement — appel, SMS ou en personne. Les séparer empêche toute interception.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">3</span>
+        <h3 data-i18n="how_3_title">Ils ouvrent le lien &amp; répondent</h3>
+        <p data-i18n="how_3_body">L'autre personne ouvre votre lien, saisit la phrase de passe et reçoit un <strong>lien de réponse</strong> copié automatiquement. Elle vous le renvoie.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">4</span>
+        <h3 data-i18n="how_4_title">Collez &amp; vous êtes connectés</h3>
+        <p data-i18n="how_4_body">Collez leur lien de réponse — vous êtes instantanément connectés. Tout est <strong>chiffré de bout en bout</strong>. Sans compte, sans serveur, sans historique.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="usecases-section">
+    <h2 class="how-title" data-i18n="usecases_title">Qui utilise Btwinus</h2>
+    <div class="usecases-grid">
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_journalists_title">Journalistes &amp; sources</h3>
+        <p data-i18n="uc_journalists_body">Recevez des informations anonymes et communiquez avec des lanceurs d'alerte sans laisser de trace. Rien n'est stocké — pas même les métadonnées.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_lawyers_title">Avocats &amp; clients</h3>
+        <p data-i18n="uc_lawyers_body">Conversations confidentielles qui disparaissent à la fermeture. Pas de serveur du cabinet, pas de cloud — une connexion directe chiffrée.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_negotiations_title">Négociations sécurisées</h3>
+        <p data-i18n="uc_negotiations_body">Discutez de termes sensibles anonymement — salaire, accords, litiges — sans transcript et sans identité requise.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_feedback_title">Feedback anonyme</h3>
+        <p data-i18n="uc_feedback_body">Employés, étudiants ou clients donnent un avis honnête sans crainte d'être identifiés. Sans compte, sans trace.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_passwords_title">Envoi de mots de passe &amp; secrets</h3>
+        <p data-i18n="uc_passwords_body">Partagez un mot de passe, une clé API ou une phrase mnémotechnique une seule fois — de navigateur à navigateur. Bien plus sûr que l'email, Slack ou WhatsApp.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_support_title">Soutien individuel privé</h3>
+        <p data-i18n="uc_support_body">Lignes de crise, soutien entre pairs, pré-séances thérapeutiques — chat temporaire et sécurisé sans aucun historique.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="/js/matrix.js?v=16"></script>
+  <script src="/js/home.js?v=16"></script>
+  <script src="/js/demo.js?v=16"></script>
+  <script src="/js/i18n.js?v=20"></script>
+</body>
+</html>

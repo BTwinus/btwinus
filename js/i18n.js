@@ -300,6 +300,10 @@ const I18N = {
 const LANG_LIST = ['en', 'fr', 'ln'];
 
 function getLang() {
+  // Server-rendered language pages (/, /fr/, /ln/) are the source of truth.
+  // Fall back to localStorage only for pages that don't declare a known lang.
+  const pageLang = document.documentElement.lang;
+  if (LANG_LIST.includes(pageLang)) return pageLang;
   const saved = localStorage.getItem('btw_lang');
   return LANG_LIST.includes(saved) ? saved : 'en';
 }
@@ -307,6 +311,12 @@ function getLang() {
 function setLang(lang) {
   if (!LANG_LIST.includes(lang)) lang = 'en';
   localStorage.setItem('btw_lang', lang);
+  const target = lang === 'en' ? '/' : '/' + lang + '/';
+  const currentLang = document.documentElement.lang;
+  if (LANG_LIST.includes(currentLang) && currentLang !== lang) {
+    location.href = target;
+    return;
+  }
   applyLang(lang);
   updatePickerActive(lang);
   document.documentElement.lang = lang;

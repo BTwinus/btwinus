@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ln">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Btwinus — Lisolo ya bonkundi mpe ekangami, ofele, konti te</title>
+  <meta name="description" content="Bokangami AES-256 ya mampinga na lien ya navigateur. Aplikasyo te, konti te, sɛrvɛr te. Tii lelo, bokangami ya boye esengaki Signal to PGP. Btwinus epesi yango na moto nyonso oyo azali na lien.">
+  <meta name="keywords" content="lisolo ya bonkundi, lisolo ekangami, lisolo ya sekele, lisolo ya kobombama, lisolo ya ntango moke, lisolo konti te, WebRTC, lisolo P2P, ekangami ndɛlɛ-na-ndɛlɛ, bokangami ya mampinga, AES-256, top secret, kotinda mots de passe ya kobombama, kotinda fungola API ya kobombama, retour ya bonkundi, message ya mbala moko ya kobombama, lisalisi ya baninga, lisolo ya zwa-sango na moto, ligne ya crise, lisolo ya avocat na kliyan, retour ya basali bayebani te, kotinda phrase ya seed crypto">
+  <link rel="canonical" href="https://btwinus.com/ln/">
+  <link rel="alternate" hreflang="en" href="https://btwinus.com/">
+  <link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/">
+  <link rel="alternate" hreflang="ln" href="https://btwinus.com/ln/">
+  <link rel="alternate" hreflang="x-default" href="https://btwinus.com/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Btwinus — Lisolo ya bonkundi mpe ekangami, ofele, konti te">
+  <meta property="og:description" content="Lisolo ya sekele mpe ya ntango moke na nzela ya lien moko ya kopesa. Konti te, sɛrvɛr te, istware te. Ekangami ndɛlɛ-na-ndɛlɛ na AES-256.">
+  <meta property="og:url" content="https://btwinus.com/ln/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://btwinus.com/og.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Btwinus — Lisolo ya bonkundi mpe ekangami. Konti te. Sɛrvɛr te. Ofele.">
+  <meta property="og:locale" content="ln_CD">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Btwinus — Lisolo ya bonkundi mpe ekangami, ofele, konti te">
+  <meta name="twitter:description" content="Lisolo ya sekele mpe ya ntango moke na nzela ya lien moko ya kopesa. Konti te, sɛrvɛr te, istware te. Ekangami ndɛlɛ-na-ndɛlɛ na AES-256.">
+  <meta name="twitter:image" content="https://btwinus.com/og.svg">
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Btwinus",
+    "url": "https://btwinus.com/ln/",
+    "inLanguage": "ln",
+    "description": "Btwinus ezali kopesa bokangami ya mampinga na bato nyonso. Tii lelo, bokangami AES-256 ya ndɛlɛ-na-ndɛlɛ esengaki ba-aplikasyo, ba-konti, mpe kotyela kompani motema. Btwinus etii yango semba na lien ya navigateur — aplikasyo te, konti te, sɛrvɛr te, istware te.",
+    "applicationCategory": "CommunicationApplication",
+    "operatingSystem": "Chrome, Firefox, Safari, Edge",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "screenshot": "https://btwinus.com/og.svg",
+    "keywords": "lisolo ya bonkundi, lisolo ekangami, lisolo ya sekele, bokangami ya mampinga, AES-256, top secret, lisolo ya ntango moke, WebRTC, konti te, lisolo ya kobwakama, P2P, ndɛlɛ-na-ndɛlɛ, lisolo ya zwa-sango, ligne ya bonkundi, lisolo ya avocat na kliyan, kotinda mots de passe na sekele, retour ya bonkundi, kotinda fichier ekangami, message moko ya sekele, libateli ya journaliste, lisolo ya crise, lisalisi ya baninga",
+    "featureList": [
+      "Ekangami ndɛlɛ-na-ndɛlɛ (AES-GCM 256 bit)",
+      "Konti te to inscription te",
+      "Sɛrvɛr ebombaka ba-message na yo te",
+      "P2P ya semba na nzela ya WebRTC DataChannels",
+      "Bonkundi — kombo te to email te esɛngami",
+      "Ba-message ekosila ntango okokanga onglet",
+      "Ba-session ya lisolo ya ntango moke mpe ya kobwakama",
+      "Lisolo ya sekele na nzela ya lien ya kokabola",
+      "Bobongisi ya session na nzela ya Short Authentication String",
+      "Esalaka na navigateur nyonso ya sika — Chrome, Firefox, Safari, Edge",
+      "Bokangami ya mampinga — AES-256-GCM endimami na NSA mpo na ba-information ya TOP SECRET",
+      "Lisolo ya zwa-sango — zero-knowledge, sɛrvɛr te, nzela te",
+      "Libateli ya niveau ya bayebi — bokangami ya transport DTLS 1.3",
+      "Mpo na kokabola mots de passe, ba-fungola API, mpe ba-identifiants ya sekele",
+      "Esalelaka mpo na ba-ligne ya bonkundi mpe lisolo na bato bayebani te",
+      "Ebongi mpo na masolo ya sekele kati ya avocat na kliyan",
+      "Esaleli ya retour ya bonkundi mpo na basali mpe bayekoli",
+      "Lisalisi ya yo moko ya sekele mpe lisolo ya crise",
+      "Ofele, sans abonnement"
+    ]
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0XHHXR5YY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G0XHHXR5YY');
+  </script>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <meta name="theme-color" content="#5865f2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Btwinus">
+  <link rel="stylesheet" href="/css/style.css?v=19">
+  <script src="/js/theme.js?v=17"></script>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+</head>
+<body class="home-page">
+  <canvas id="matrix-canvas"></canvas>
+  <button class="btn-ghost home-theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Bongola mode molili">Dark</button>
+  <div class="home-lang-picker lang-picker" role="group" aria-label="Bongola monoko">
+    <button type="button" data-lang="en" onclick="setLang('en')" aria-label="English" title="English"><span class="flag">🇬🇧</span></button>
+    <button type="button" data-lang="fr" onclick="setLang('fr')" aria-label="Français" title="Français"><span class="flag">🇫🇷</span></button>
+    <button type="button" data-lang="ln" onclick="setLang('ln')" aria-label="Lingála" title="Lingála"><span class="flag">🇨🇩</span></button>
+  </div>
+
+  <div class="home">
+    <div class="home-card">
+      <h1 class="logo">Btwinus</h1>
+      <p class="home-tagline" data-i18n="home_tagline">Lisolo ya bonkundi mpe ekangami na nzela ya lien.<br>Konti te. Sɛrvɛr te. Istware te.</p>
+
+      <button class="btn-accent btn-full" id="new-chat-btn" data-i18n="home_new_chat">Banda lisolo ya sika</button>
+
+      <div class="home-divider"><span data-i18n="home_divider">to kɔta na lisolo oyo ezali</span></div>
+
+      <div class="home-join">
+        <label for="link-input" class="sr-only">Lien ya libyangi</label>
+        <input type="text" id="link-input" data-i18n-ph="home_join_ph" placeholder="Tia lien ya lisolo awa…" autocomplete="off" spellcheck="false" aria-label="Tia lien ya libyangi">
+        <button class="btn-accent" id="join-btn" data-i18n="home_join_btn" aria-label="Kɔta na lisolo">Kɔta</button>
+      </div>
+      <p class="home-error hidden" id="join-error" data-i18n="home_join_error">Tia lien mobimba oyo moto apesi yo.</p>
+      <a href="#" class="how-anchor" data-i18n="home_how_anchor" onclick="event.preventDefault();document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">Esalemaka ndenge nini? ↓</a>
+
+      <div class="install-banner hidden" id="install-banner">
+        <span data-i18n="home_install_text">Bakisa Btwinus na ekran ya yo</span>
+        <button class="btn-accent" id="install-btn" data-i18n="home_install_btn">Tia</button>
+        <button class="btn-ghost install-dismiss" id="install-dismiss" aria-label="Kanga">✕</button>
+      </div>
+      <div class="install-ios hidden" id="install-ios" data-i18n="home_install_ios">
+        Fina <strong>Partage ↑</strong> sima <strong>Bakisa na ekran</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Bandeau ya bokangami ────────────────────────────────────────────── -->
+  <section class="sec-strip">
+
+    <div class="sec-ticker" aria-hidden="true">
+      <div class="sec-ticker-row">
+        <span class="sec-ticker-track">MAMPINGA · MOYIBI YA SANGO · CLASSIFIÉ · EKANGAMI · BAYEBI · KOBOMBAMA · TOP SECRET · AES-256 · BONKUNDI · ZERO KNOWLEDGE · GHOST · CIPHER · NZELA TE · BURN AFTER READING · &nbsp;</span>
+        <span class="sec-ticker-track">MAMPINGA · MOYIBI YA SANGO · CLASSIFIÉ · EKANGAMI · BAYEBI · KOBOMBAMA · TOP SECRET · AES-256 · BONKUNDI · ZERO KNOWLEDGE · GHOST · CIPHER · NZELA TE · BURN AFTER READING · &nbsp;</span>
+      </div>
+      <div class="sec-ticker-row sec-ticker-row--rev">
+        <span class="sec-ticker-track">CANAL YA MOLILI · EYES ONLY · SIGNAL INTEL · BLACK OPS · LIGNE YA SEKELE · CRYPTOGRAPHIE · OPERASYO YA KOBOMBAMA · DTLS · NDƐLƐ-NA-NDƐLƐ · SHADOW · SƐRVƐR TE · ESILAKA · EMONANAKA TE · &nbsp;</span>
+        <span class="sec-ticker-track">CANAL YA MOLILI · EYES ONLY · SIGNAL INTEL · BLACK OPS · LIGNE YA SEKELE · CRYPTOGRAPHIE · OPERASYO YA KOBOMBAMA · DTLS · NDƐLƐ-NA-NDƐLƐ · SHADOW · SƐRVƐR TE · ESILAKA · EMONANAKA TE · &nbsp;</span>
+      </div>
+      <div class="sec-ticker-row">
+        <span class="sec-ticker-track">YA MOYIBI YA SANGO · YA MAMPINGA · EKANGAMI · GHOST PROTOCOL · BONKUNDI · TOP SECRET · ZERO LOGS · P2P · ESILAKA · YA BAYEBI · CIPHER · YA SEKELE · &nbsp;</span>
+        <span class="sec-ticker-track">YA MOYIBI YA SANGO · YA MAMPINGA · EKANGAMI · GHOST PROTOCOL · BONKUNDI · TOP SECRET · ZERO LOGS · P2P · ESILAKA · YA BAYEBI · CIPHER · YA SEKELE · &nbsp;</span>
+      </div>
+    </div>
+
+    <div class="sec-strip-inner">
+      <p class="sec-eyebrow" data-i18n="sec_eyebrow">🛡 Mibeko ya bokangami</p>
+      <h2 class="sec-title" data-i18n="sec_title">Tozali kotia bokangami ya mampinga<br>na kati ya lien. Aplikasyo te. Konti te. Sɛrvɛr te.</h2>
+      <p class="sec-sub" data-i18n="sec_sub">Tii lelo, bokangami ya boye esengaki aplikasyo, konti, mpe kotyela kompani motema. Signal esɛngaka nimero ya yo. PGP esɛngaka logiciel. Btwinus etii bokangami AES-256 ya ndɛlɛ-na-ndɛlɛ na lien moko ya kopesa — moto nyonso akoki kosalela yango, eloko ebombami te, mpe moto azali na katikati te.</p>
+      <div class="sec-specs">
+        <div class="sec-spec">
+          <span class="sec-spec-val">AES-256-GCM</span>
+          <span class="sec-spec-label" data-i18n="spec_cipher">Bokangami</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">PBKDF2 · 100k</span>
+          <span class="sec-spec-label" data-i18n="spec_key_deriv">Bobimisi ya fungola</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">DTLS 1.3</span>
+          <span class="sec-spec-label" data-i18n="spec_transport">Botambwisi</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">Zero-knowledge</span>
+          <span class="sec-spec-label" data-i18n="spec_arch">Boyemi</span>
+        </div>
+        <div class="sec-spec">
+          <span class="sec-spec-val">WebRTC P2P</span>
+          <span class="sec-spec-label" data-i18n="spec_relay">Sɛrvɛr ya bokitisi te</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Démo ya sikoyo ──────────────────────────────────────────────────── -->
+  <section class="demo-section">
+    <p class="demo-eyebrow" data-i18n="demo_eyebrow">Emonisami sikoyo</p>
+    <h2 class="demo-heading" data-i18n="demo_heading">Talá yango ezali kosalema na ntango wana wana</h2>
+    <p class="demo-sub" data-i18n="demo_sub">Alice na Gradi K. bazali kobanda lisolo ya bonkundi — konti te, bobongisi te</p>
+
+    <div class="demo-stage">
+
+      <div class="demo-device">
+        <div class="demo-bar">
+          <span class="demo-bar-dot"></span>
+          <span class="demo-bar-name">Btwinus</span>
+        </div>
+        <div class="demo-screen" id="demo-left"></div>
+        <div class="demo-label">Alice</div>
+      </div>
+
+      <div class="demo-channels">
+        <div class="demo-ch" id="demo-ch-link">
+          <span class="demo-ch-tag">WhatsApp</span>
+          <div class="demo-pkt" id="demo-pkt-link"></div>
+        </div>
+        <div class="demo-ch demo-ch-dashed" id="demo-ch-pass">
+          <span class="demo-ch-tag">Mbila</span>
+          <div class="demo-pkt" id="demo-pkt-pass"></div>
+        </div>
+      </div>
+
+      <div class="demo-device">
+        <div class="demo-bar">
+          <span class="demo-bar-dot"></span>
+          <span class="demo-bar-name">Btwinus</span>
+        </div>
+        <div class="demo-screen" id="demo-right"></div>
+        <div class="demo-label">Gradi K.</div>
+      </div>
+
+    </div>
+
+    <div class="demo-footer">
+      <p class="demo-caption" id="demo-caption"></p>
+      <div class="demo-controls">
+        <button class="demo-play-btn" id="demo-play-btn" aria-label="Banda démo">▶</button>
+        <div class="demo-dots" id="demo-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="how-section">
+    <h2 class="how-title" data-i18n="how_title">Esalemaka ndenge nini</h2>
+    <div class="how-grid">
+
+      <div class="how-card">
+        <span class="how-num-badge">1</span>
+        <h3 data-i18n="how_1_title">Banda lisolo</h3>
+        <p data-i18n="how_1_body">Fina "Banda lisolo ya sika". Okozwa mbala moko biloko mibale: <strong>lien ya libyangi ekangami</strong> mpe <strong>liloba ya bokɔti</strong>.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">2</span>
+        <h3 data-i18n="how_2_title">Tinda yango ekeseni</h3>
+        <p data-i18n="how_2_body">Tinda <strong>lien</strong> na nzela ya WhatsApp, email, to aplikasyo nyonso. Tinda <strong>liloba ya bokɔti</strong> na nzela mosusu — mbila ya telefoni, SMS, to lobá yango miso na miso. Kokabola yango esalisaka ete moto moko te akoki kozwa nyonso mibale.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">3</span>
+        <h3 data-i18n="how_3_title">Bafungoli lien &amp; bayanoli</h3>
+        <p data-i18n="how_3_body">Moto mosusu afungoli lien na yo, akomi liloba ya bokɔti, mpe azwi <strong>lien ya eyano</strong> oyo ekopiami yango moko. Atindeli yo yango.</p>
+      </div>
+
+      <div class="how-card">
+        <span class="how-num-badge">4</span>
+        <h3 data-i18n="how_4_title">Tia &amp; bokangami</h3>
+        <p data-i18n="how_4_body">Tia lien ya eyano na bango — bokangami mbala moko. Nyonso ezali <strong>ekangami ndɛlɛ-na-ndɛlɛ</strong>. Konti te, sɛrvɛr te, istware te. Ekosila ntango okokanga onglet.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="usecases-section">
+    <h2 class="how-title" data-i18n="usecases_title">Banani basalelaka Btwinus</h2>
+    <div class="usecases-grid">
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_journalists_title">Bazwa-sango &amp; basangisi</h3>
+        <p data-i18n="uc_journalists_body">Yamba bansango ya bonkundi mpe sololela bato bayebani te oyo balingi koyebisa makambo, kozanga kotika nzela na sɛrvɛr. Eloko ebombami te — ata métadonnée te.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_lawyers_title">Avocats &amp; ba-kliyan</h3>
+        <p data-i18n="uc_lawyers_body">Masolo ya sekele oyo ekobungisama ntango okokanga. Sɛrvɛr ya cabinet te, cloud te — kokangana kaka ya semba mpe ekangami.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_negotiations_title">Bondimi ya sekele</h3>
+        <p data-i18n="uc_negotiations_body">Solola makambo ya kitoko na bonkundi — lifuti, boyokani, matata — kozanga botiki maloba mpe kozanga kolakisa nani ozali.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_feedback_title">Maloba ya bonkundi</h3>
+        <p data-i18n="uc_feedback_body">Basali, bayekoli, to ba-kliyan bapesi makanisi ya solo kozanga kobanga ete bakoyebana. Konti te, nzela te.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_passwords_title">Botindi ya bansinga ya bokɔti &amp; sekele</h3>
+        <p data-i18n="uc_passwords_body">Kabola sinza ya bokɔti, fungola API, to liloba ya crypto mbala moko — kaka navigateur na navigateur. Ezali na libateli koleka email, Slack, to WhatsApp.</p>
+      </div>
+
+      <div class="usecase-card">
+        <h3 data-i18n="uc_support_title">Lisalisi ya yo moko ya sekele</h3>
+        <p data-i18n="uc_support_body">Mibembo ya lisalisi, lisalisi ya baninga, makita ya thérapie — lisolo ya ntango moke oyo etiki istware te.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="/js/matrix.js?v=16"></script>
+  <script src="/js/home.js?v=16"></script>
+  <script src="/js/demo.js?v=16"></script>
+  <script src="/js/i18n.js?v=20"></script>
+</body>
+</html>

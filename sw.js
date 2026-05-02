@@ -1,8 +1,12 @@
-const CACHE = 'btwinus-v5';
+const CACHE = 'btwinus-v6';
 
 const ASSETS = [
   '/',
   '/index.html',
+  '/fr/',
+  '/fr/index.html',
+  '/ln/',
+  '/ln/index.html',
   '/chat.html',
   '/manifest.json',
   '/icon.svg',
@@ -13,6 +17,7 @@ const ASSETS = [
   '/js/demo.js',
   '/js/qr.js',
   '/js/app.js',
+  '/js/i18n.js',
 ];
 
 self.addEventListener('install', e => {
@@ -36,7 +41,12 @@ self.addEventListener('fetch', e => {
   // HTML pages: network-first so users always get fresh content
   if (e.request.mode === 'navigate') {
     e.respondWith(
-      fetch(e.request).catch(() => caches.match('/index.html'))
+      fetch(e.request).catch(() => {
+        const path = url.pathname;
+        if (path.startsWith('/fr/')) return caches.match('/fr/index.html');
+        if (path.startsWith('/ln/')) return caches.match('/ln/index.html');
+        return caches.match('/index.html');
+      })
     );
     return;
   }
