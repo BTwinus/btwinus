@@ -1,4 +1,4 @@
-const CACHE = 'btwinus-v4';
+const CACHE = 'btwinus-v5';
 
 const ASSETS = [
   '/',
@@ -41,7 +41,22 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Everything else: cache-first, populate cache on miss
+  // CSS and JS: network-first so version bumps always reach users immediately
+  // Falls back to cache only when offline
+  if (url.pathname.endsWith('.css') || url.pathname.endsWith('.js')) {
+    e.respondWith(
+      fetch(e.request).then(res => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => caches.match(e.request))
+    );
+    return;
+  }
+
+  // Everything else (images, icons, manifest): cache-first
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;

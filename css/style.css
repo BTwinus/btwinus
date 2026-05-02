@@ -1231,6 +1231,183 @@ a.logo:hover { color: var(--accent-h); }
 
 .how-card p strong { color: var(--text); }
 
+/* ── Security credibility strip ─────────────────────────────────────────── */
+.sec-strip {
+  position: relative;
+  z-index: 1;
+  background: #080810;
+  border-top: 1px solid rgba(88,101,242,0.25);
+  border-bottom: 1px solid rgba(88,101,242,0.25);
+  padding: 52px 24px;
+  overflow: hidden;
+}
+
+.sec-ticker {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sec-ticker-row {
+  display: flex;
+  white-space: nowrap;
+  animation: sec-scroll-left 35s linear infinite;
+}
+
+.sec-ticker-row--rev {
+  animation: sec-scroll-right 45s linear infinite;
+}
+
+.sec-ticker-track {
+  font-family: 'Courier New', monospace;
+  font-size: 33px;
+  font-weight: 700;
+  color: #00ff41;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.18;
+  flex-shrink: 0;
+}
+
+@keyframes sec-scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes sec-scroll-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.sec-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(88,101,242,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.sec-strip-inner {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.sec-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #818cf8;
+}
+
+.sec-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.sec-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.sec-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.sec-spec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(88,101,242,0.1);
+  border: 1px solid rgba(88,101,242,0.22);
+  border-radius: 10px;
+  padding: 12px 18px;
+  min-width: 100px;
+}
+
+.sec-spec-val {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #a5b4fc;
+  white-space: nowrap;
+}
+
+.sec-spec-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Use cases section ───────────────────────────────────────────────────── */
+.usecases-section {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+
+.usecases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.usecase-card {
+  background: var(--surface);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+[data-theme="light"] .usecase-card {
+  background: rgba(255,255,255,0.85);
+}
+
+.usecase-card h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.usecase-card p {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 400px) {
+  .usecases-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Handshake tooltips ──────────────────────────────────────────────────── */
 .hs-tip {
   position: relative;
