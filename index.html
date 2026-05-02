@@ -76,37 +76,42 @@
   <meta name="theme-color" content="#5865f2">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Btwinus">
-  <link rel="stylesheet" href="css/style.css?v=16">
-  <script src="js/theme.js?v=16"></script>
+  <link rel="stylesheet" href="css/style.css?v=19">
+  <script src="js/theme.js?v=17"></script>
   <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
 </head>
 <body class="home-page">
   <canvas id="matrix-canvas"></canvas>
   <button class="btn-ghost home-theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">Dark</button>
+  <div class="home-lang-picker lang-picker" role="group" aria-label="Switch language">
+    <button type="button" data-lang="en" onclick="setLang('en')" aria-label="English" title="English"><span class="flag">🇬🇧</span></button>
+    <button type="button" data-lang="fr" onclick="setLang('fr')" aria-label="Français" title="Français"><span class="flag">🇫🇷</span></button>
+    <button type="button" data-lang="ln" onclick="setLang('ln')" aria-label="Lingála" title="Lingála"><span class="flag">🇨🇩</span></button>
+  </div>
 
   <div class="home">
     <div class="home-card">
       <h1 class="logo">Btwinus</h1>
-      <p class="home-tagline">Anonymous encrypted chat via a link.<br>No account. No server. No history.</p>
+      <p class="home-tagline" data-i18n="home_tagline">Anonymous encrypted chat via a link.<br>No account. No server. No history.</p>
 
-      <button class="btn-accent btn-full" id="new-chat-btn">Start a new chat</button>
+      <button class="btn-accent btn-full" id="new-chat-btn" data-i18n="home_new_chat">Start a new chat</button>
 
-      <div class="home-divider"><span>or join an existing one</span></div>
+      <div class="home-divider"><span data-i18n="home_divider">or join an existing one</span></div>
 
       <div class="home-join">
         <label for="link-input" class="sr-only">Chat invite link</label>
-        <input type="text" id="link-input" placeholder="Paste a chat link…" autocomplete="off" spellcheck="false" aria-label="Paste a chat invite link">
-        <button class="btn-accent" id="join-btn" aria-label="Join chat from link">Join</button>
+        <input type="text" id="link-input" data-i18n-ph="home_join_ph" placeholder="Paste a chat link…" autocomplete="off" spellcheck="false" aria-label="Paste a chat invite link">
+        <button class="btn-accent" id="join-btn" data-i18n="home_join_btn" aria-label="Join chat from link">Join</button>
       </div>
-      <p class="home-error hidden" id="join-error">Paste the full invite link someone shared with you.</p>
-      <a href="#" class="how-anchor" onclick="event.preventDefault();document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">How does this work? ↓</a>
+      <p class="home-error hidden" id="join-error" data-i18n="home_join_error">Paste the full invite link someone shared with you.</p>
+      <a href="#" class="how-anchor" data-i18n="home_how_anchor" onclick="event.preventDefault();document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">How does this work? ↓</a>
 
       <div class="install-banner hidden" id="install-banner">
-        <span>Add Btwinus to your home screen</span>
-        <button class="btn-accent" id="install-btn">Install</button>
+        <span data-i18n="home_install_text">Add Btwinus to your home screen</span>
+        <button class="btn-accent" id="install-btn" data-i18n="home_install_btn">Install</button>
         <button class="btn-ghost install-dismiss" id="install-dismiss" aria-label="Dismiss">✕</button>
       </div>
-      <div class="install-ios hidden" id="install-ios">
+      <div class="install-ios hidden" id="install-ios" data-i18n="home_install_ios">
         Tap <strong>Share ↑</strong> then <strong>Add to Home Screen</strong>
       </div>
     </div>
@@ -131,29 +136,29 @@
     </div>
 
     <div class="sec-strip-inner">
-      <p class="sec-eyebrow">🛡 Encryption standard</p>
-      <h2 class="sec-title">We put military-grade encryption<br>in a browser link. No app. No account. No server.</h2>
-      <p class="sec-sub">Until now, this level of encryption required apps, accounts, and trust in a company. Signal needs your phone number. PGP needs software. Enterprise tools need registration. Btwinus puts AES-256 end-to-end encryption directly in a shareable link — anyone can use it, nothing is stored, and no one is in between.</p>
+      <p class="sec-eyebrow" data-i18n="sec_eyebrow">🛡 Encryption standard</p>
+      <h2 class="sec-title" data-i18n="sec_title">We put military-grade encryption<br>in a browser link. No app. No account. No server.</h2>
+      <p class="sec-sub" data-i18n="sec_sub">Until now, this level of encryption required apps, accounts, and trust in a company. Signal needs your phone number. PGP needs software. Enterprise tools need registration. Btwinus puts AES-256 end-to-end encryption directly in a shareable link — anyone can use it, nothing is stored, and no one is in between.</p>
       <div class="sec-specs">
         <div class="sec-spec">
           <span class="sec-spec-val">AES-256-GCM</span>
-          <span class="sec-spec-label">Cipher</span>
+          <span class="sec-spec-label" data-i18n="spec_cipher">Cipher</span>
         </div>
         <div class="sec-spec">
           <span class="sec-spec-val">PBKDF2 · 100k</span>
-          <span class="sec-spec-label">Key derivation</span>
+          <span class="sec-spec-label" data-i18n="spec_key_deriv">Key derivation</span>
         </div>
         <div class="sec-spec">
           <span class="sec-spec-val">DTLS 1.3</span>
-          <span class="sec-spec-label">Transport</span>
+          <span class="sec-spec-label" data-i18n="spec_transport">Transport</span>
         </div>
         <div class="sec-spec">
           <span class="sec-spec-val">Zero-knowledge</span>
-          <span class="sec-spec-label">Architecture</span>
+          <span class="sec-spec-label" data-i18n="spec_arch">Architecture</span>
         </div>
         <div class="sec-spec">
           <span class="sec-spec-val">WebRTC P2P</span>
-          <span class="sec-spec-label">No relay server</span>
+          <span class="sec-spec-label" data-i18n="spec_relay">No relay server</span>
         </div>
       </div>
     </div>
@@ -161,9 +166,9 @@
 
   <!-- ── Live demo ───────────────────────────────────────────────────────── -->
   <section class="demo-section">
-    <p class="demo-eyebrow">Live demo</p>
-    <h2 class="demo-heading">Watch it happen in real time</h2>
-    <p class="demo-sub">Alice and Gradi K. starting a private chat — no accounts, no setup</p>
+    <p class="demo-eyebrow" data-i18n="demo_eyebrow">Live demo</p>
+    <h2 class="demo-heading" data-i18n="demo_heading">Watch it happen in real time</h2>
+    <p class="demo-sub" data-i18n="demo_sub">Alice and Gradi K. starting a private chat — no accounts, no setup</p>
 
     <div class="demo-stage">
 
@@ -208,68 +213,68 @@
   </section>
 
   <section id="how-it-works" class="how-section">
-    <h2 class="how-title">How it works</h2>
+    <h2 class="how-title" data-i18n="how_title">How it works</h2>
     <div class="how-grid">
 
       <div class="how-card">
         <span class="how-num-badge">1</span>
-        <h3>Start a chat</h3>
-        <p>Click "Start a new chat". You instantly get two things: an <strong>encrypted invite link</strong> and a <strong>passphrase</strong>.</p>
+        <h3 data-i18n="how_1_title">Start a chat</h3>
+        <p data-i18n="how_1_body">Click "Start a new chat". You instantly get two things: an <strong>encrypted invite link</strong> and a <strong>passphrase</strong>.</p>
       </div>
 
       <div class="how-card">
         <span class="how-num-badge">2</span>
-        <h3>Share them separately</h3>
-        <p>Send the <strong>link</strong> via WhatsApp, email, or any app. Send the <strong>passphrase</strong> a different way — a phone call, SMS, or say it in person. Keeping them apart means nobody can intercept both.</p>
+        <h3 data-i18n="how_2_title">Share them separately</h3>
+        <p data-i18n="how_2_body">Send the <strong>link</strong> via WhatsApp, email, or any app. Send the <strong>passphrase</strong> a different way — a phone call, SMS, or say it in person. Keeping them apart means nobody can intercept both.</p>
       </div>
 
       <div class="how-card">
         <span class="how-num-badge">3</span>
-        <h3>They open the link &amp; reply</h3>
-        <p>The other person opens your link, types the passphrase, and gets a <strong>reply link</strong> that is automatically copied. They send it back to you.</p>
+        <h3 data-i18n="how_3_title">They open the link &amp; reply</h3>
+        <p data-i18n="how_3_body">The other person opens your link, types the passphrase, and gets a <strong>reply link</strong> that is automatically copied. They send it back to you.</p>
       </div>
 
       <div class="how-card">
         <span class="how-num-badge">4</span>
-        <h3>Paste &amp; you're connected</h3>
-        <p>Paste their reply link — you're instantly connected. Everything is <strong>end-to-end encrypted</strong>. No accounts, no servers, no history. Gone when you close the tab.</p>
+        <h3 data-i18n="how_4_title">Paste &amp; you're connected</h3>
+        <p data-i18n="how_4_body">Paste their reply link — you're instantly connected. Everything is <strong>end-to-end encrypted</strong>. No accounts, no servers, no history. Gone when you close the tab.</p>
       </div>
 
     </div>
   </section>
 
   <section class="usecases-section">
-    <h2 class="how-title">Who uses Btwinus</h2>
+    <h2 class="how-title" data-i18n="usecases_title">Who uses Btwinus</h2>
     <div class="usecases-grid">
 
       <div class="usecase-card">
-        <h3>Journalists &amp; sources</h3>
-        <p>Receive anonymous tips and communicate with whistleblowers without leaving a server trail. Nothing is stored — not even metadata.</p>
+        <h3 data-i18n="uc_journalists_title">Journalists &amp; sources</h3>
+        <p data-i18n="uc_journalists_body">Receive anonymous tips and communicate with whistleblowers without leaving a server trail. Nothing is stored — not even metadata.</p>
       </div>
 
       <div class="usecase-card">
-        <h3>Lawyers &amp; clients</h3>
-        <p>Privileged conversations that disappear on close. No law firm server, no cloud provider — just a direct encrypted connection.</p>
+        <h3 data-i18n="uc_lawyers_title">Lawyers &amp; clients</h3>
+        <p data-i18n="uc_lawyers_body">Privileged conversations that disappear on close. No law firm server, no cloud provider — just a direct encrypted connection.</p>
       </div>
 
       <div class="usecase-card">
-        <h3>Sending passwords &amp; keys</h3>
-        <p>Share a password, API key, or crypto seed phrase once — directly browser-to-browser. Far safer than email or Slack.</p>
+        <h3 data-i18n="uc_negotiations_title">Secure negotiations</h3>
+        <p data-i18n="uc_negotiations_body">Discuss sensitive terms anonymously — salary, deals, disputes — with no transcript and no identity required.</p>
       </div>
 
       <div class="usecase-card">
-        <h3>Anonymous feedback</h3>
-        <p>Employees, students, or customers send honest feedback without worrying about identity. No account means no trace.</p>
+        <h3 data-i18n="uc_feedback_title">Anonymous feedback</h3>
+        <p data-i18n="uc_feedback_body">Employees, students, or customers send honest feedback without worrying about identity. No account means no trace.</p>
       </div>
 
       <div class="usecase-card">
-        <h3>Sending passwords &amp; secrets</h3>
-        <p>Share a password, API key, or crypto seed phrase once — directly browser-to-browser. Far safer than email, Slack, or WhatsApp.</p>
+        <h3 data-i18n="uc_passwords_title">Sending passwords &amp; secrets</h3>
+        <p data-i18n="uc_passwords_body">Share a password, API key, or crypto seed phrase once — directly browser-to-browser. Far safer than email, Slack, or WhatsApp.</p>
       </div>
 
       <div class="usecase-card">
-        <h3>Private one-on-one support</h3>
-        <p>Crisis lines, peer support, therapy pre-sessions — temporary secure chat that leaves no history behind.</p>
+        <h3 data-i18n="uc_support_title">Private one-on-one support</h3>
+        <p data-i18n="uc_support_body">Crisis lines, peer support, therapy pre-sessions — temporary secure chat that leaves no history behind.</p>
       </div>
 
     </div>
@@ -278,5 +283,6 @@
   <script src="js/matrix.js?v=16"></script>
   <script src="js/home.js?v=16"></script>
   <script src="js/demo.js?v=16"></script>
+  <script src="js/i18n.js?v=19"></script>
 </body>
 </html>

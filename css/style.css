@@ -1631,6 +1631,58 @@ a.logo:hover { color: var(--accent-h); }
   z-index: 10;
 }
 
+/* language picker — pill of 3 flags, fixed top-left on home */
+.lang-picker {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.lang-picker button {
+  background: transparent;
+  border: 0;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 120ms ease, background 120ms ease, transform 120ms ease;
+}
+
+.lang-picker button:hover { opacity: 0.9; }
+
+.lang-picker button.active {
+  background: var(--accent, #5865f2);
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(88, 101, 242, 0.35);
+}
+
+.lang-picker .flag {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  /* keep emoji rendering crisp on win/linux */
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.home-lang-picker {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+}
+
+[data-theme="light"] .lang-picker {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(88, 101, 242, 0.18);
+}
+
 /* ── Light mode overrides ────────────────────────────────────────────────── */
 [data-theme="light"] .home-card {
   background: rgba(255, 255, 255, 0.92);
