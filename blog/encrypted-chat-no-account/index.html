@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encrypted chat with no account: how Btwinus puts AES-256 in a link | Btwinus</title>
+  <meta name="description" content="Most 'encrypted' messengers still require a phone number, an account, and a server. Here's how Btwinus puts real end-to-end encryption directly into a shareable link — no app, no signup.">
+  <meta name="keywords" content="encrypted chat no account, anonymous chat no signup, private chat without phone number, browser encrypted chat, AES-256 chat link, signal alternative no phone, end to end encryption browser, ephemeral encrypted chat, WebRTC encrypted chat, P2P encrypted messaging">
+  <link rel="canonical" href="https://btwinus.com/blog/encrypted-chat-no-account/">
+  <meta property="og:title" content="Encrypted chat with no account: how Btwinus puts AES-256 in a link">
+  <meta property="og:description" content="How a chat app can be properly end-to-end encrypted while requiring zero accounts, zero phone numbers, and zero servers.">
+  <meta property="og:url" content="https://btwinus.com/blog/encrypted-chat-no-account/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://btwinus.com/og.svg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Encrypted chat with no account: how Btwinus puts AES-256 in a link">
+  <meta name="twitter:description" content="The technical anatomy of an account-free, server-free, end-to-end encrypted chat.">
+  <meta name="twitter:image" content="https://btwinus.com/og.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Encrypted chat with no account: how Btwinus puts AES-256 in a link",
+    "description": "Most 'encrypted' messengers still require a phone number, an account, and a server. Here's how Btwinus puts real end-to-end encryption directly into a shareable link.",
+    "author": { "@type": "Organization", "name": "Btwinus" },
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" },
+    "datePublished": "2026-05-10",
+    "dateModified": "2026-05-10",
+    "mainEntityOfPage": "https://btwinus.com/blog/encrypted-chat-no-account/",
+    "image": "https://btwinus.com/og.svg",
+    "inLanguage": "en"
+  }
+  </script>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css?v=19">
+  <link rel="stylesheet" href="/css/blog.css?v=1">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/blog/">← All posts</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <p class="blog-meta">May 10, 2026 · 8 min read</p>
+    <h1 class="blog-title">Encrypted chat with no account: how Btwinus puts AES-256 in a link</h1>
+    <p class="blog-lede">Almost every messenger that markets itself as "encrypted" still asks for a phone number, holds your messages on a server, or both. Here's the technical reason that's a contradiction — and how to do it without either.</p>
+
+    <div class="blog-body">
+      <p>Open Signal, the gold standard of encrypted messaging, and the first thing it asks for is your phone number. Open Telegram and you'll do the same — and unless you specifically open a "secret chat," your messages sit on Telegram's servers in a form they can read. WhatsApp encrypts messages end-to-end but ties your identity to a phone, syncs metadata to Meta, and stores undelivered messages on its servers.</p>
+
+      <p>None of this is fraud — these tools are vastly safer than plain SMS — but the encryption story has limits. It protects content in transit. It doesn't make you anonymous, it doesn't make the conversation ephemeral, and it depends on you trusting a company.</p>
+
+      <p>Btwinus tries to answer a narrower question: <strong>can you have a one-off encrypted conversation with someone, with no account on either side, no server in the middle, and nothing left over after you close the tab?</strong> The answer turns out to be yes, and the mechanism is interesting.</p>
+
+      <h2>What "no account" actually requires</h2>
+
+      <p>For a chat to genuinely require no account, three things have to be true:</p>
+
+      <ol>
+        <li><strong>No identity binding.</strong> No phone number, no email, no username — because every one of those is a database row somewhere.</li>
+        <li><strong>No server retention.</strong> If a server stores messages "until delivered," that's a database too. Even ephemerally.</li>
+        <li><strong>Direct transport.</strong> Messages have to travel from one browser to the other without a relay that can read them.</li>
+      </ol>
+
+      <p>Most "no signup needed" chat tools fail at #2 or #3. They use a server to relay messages, and even if they delete after delivery, the server can read everything in transit.</p>
+
+      <h2>The Btwinus model: encryption in the URL</h2>
+
+      <p>Here's the move: instead of using a server to introduce two browsers, the introduction goes <em>through the link itself</em>. The link contains the encrypted information needed to start a peer-to-peer connection. The recipient's browser decrypts it, replies, and the two browsers connect directly without ever talking to a server.</p>
+
+      <p>Step by step:</p>
+
+      <ol>
+        <li><strong>Alice clicks "Start a new chat".</strong> Her browser generates a fresh AES-256 key, derived from a randomly generated passphrase using PBKDF2 with 100,000 iterations. The browser also creates a WebRTC offer — the cryptographic handshake material needed to establish a peer-to-peer connection.</li>
+        <li><strong>The offer is encrypted with the AES key,</strong> base64-encoded, and embedded in a URL fragment (the part after <code>#</code>). URL fragments never get sent to a server, even by the browser. So the encrypted offer travels purely client-side.</li>
+        <li><strong>Alice sends the link via WhatsApp, email, anything.</strong> She sends the passphrase via a different channel — a phone call, SMS, in person.</li>
+        <li><strong>Bob opens the link.</strong> His browser sees the encrypted blob in the fragment, asks him for the passphrase, derives the same key, and decrypts the offer.</li>
+        <li><strong>Bob's browser generates a WebRTC answer,</strong> encrypts it with the same key, and produces a reply link he sends back to Alice.</li>
+        <li><strong>Alice pastes Bob's reply link.</strong> Her browser decrypts the answer, hands it to WebRTC, and the two browsers complete the handshake.</li>
+        <li><strong>From this point forward, the two browsers talk directly</strong> via a WebRTC DataChannel, encrypted with DTLS 1.3. No server is involved in any message.</li>
+      </ol>
+
+      <p>The whole arrangement requires zero server-side state. The "introduction" is the link, the "authentication" is the passphrase, the "transport" is WebRTC's built-in DTLS. The only network calls are direct browser-to-browser.</p>
+
+      <h2>Why two channels (link + passphrase)</h2>
+
+      <p>The most important security property here isn't AES-256 — that's commodity. It's the <strong>two-channel split</strong>.</p>
+
+      <p>If you sent the encrypted link <em>and</em> the passphrase through the same channel (say, both via WhatsApp), an attacker who compromises that channel gets both halves and can decrypt everything. The whole encryption story collapses.</p>
+
+      <p>Sending them separately means an attacker has to compromise two different channels — your WhatsApp <em>and</em> your phone line, your email <em>and</em> the in-person verbal exchange. That's much harder. It also means you can use a not-very-secure channel for the link (the link is encrypted, so it's safe to share publicly) as long as the passphrase travels somewhere narrower.</p>
+
+      <p>This pattern has a name in cryptography: it's a kind of "out-of-band" or "secondary channel" verification, similar to how Signal's Safety Numbers work, except more lightweight.</p>
+
+      <h2>The pieces, named</h2>
+
+      <table>
+        <tr>
+          <th>Component</th>
+          <th>What it does</th>
+        </tr>
+        <tr>
+          <td><strong>AES-256-GCM</strong></td>
+          <td>Symmetric encryption of the WebRTC offer/answer. Used in classified-information systems by US and other governments. Approved for TOP SECRET data.</td>
+        </tr>
+        <tr>
+          <td><strong>PBKDF2 (100k iterations)</strong></td>
+          <td>Stretches the human-readable passphrase ("storm-fox-river-4821") into a 256-bit key. The 100k iterations make brute force expensive even for short passphrases.</td>
+        </tr>
+        <tr>
+          <td><strong>WebRTC DataChannel</strong></td>
+          <td>The peer-to-peer transport. Browser-native, no library needed. Once established, messages don't touch any server.</td>
+        </tr>
+        <tr>
+          <td><strong>DTLS 1.3</strong></td>
+          <td>The transport encryption WebRTC uses by default. Modern, fast, with perfect forward secrecy — even if a key is compromised later, past traffic stays unreadable.</td>
+        </tr>
+        <tr>
+          <td><strong>Short Authentication String</strong></td>
+          <td>A short hash of the session keys shown to both users, so they can verbally compare and confirm there's no man-in-the-middle.</td>
+        </tr>
+      </table>
+
+      <h2>What this approach is good at, and what it isn't</h2>
+
+      <p><strong>Good at:</strong> one-off conversations with someone you don't share an account-relationship with — a journalist talking to a source, a lawyer with a new client, a privileged moment that shouldn't exist anywhere afterward. Sending a single secret. Avoiding any company knowing the conversation happened.</p>
+
+      <p><strong>Not good at:</strong> daily messaging with friends. Async messages (both browsers must be online to talk). Group chats. File transfer beyond small payloads. Anything that needs to persist after you close the tab.</p>
+
+      <p>This is a deliberate scope. Tools that try to be both private <em>and</em> always-available drift toward needing servers and accounts. Btwinus chose the opposite — accept the limits of "both online, ephemeral, one conversation at a time" in exchange for the strongest possible privacy properties.</p>
+
+      <h2>The mental model, finally</h2>
+
+      <p>An encrypted chat doesn't actually need a chat app. It needs:</p>
+
+      <ul>
+        <li>A way for two browsers to find each other (the link)</li>
+        <li>A shared secret only they know (the passphrase)</li>
+        <li>A direct transport (WebRTC)</li>
+      </ul>
+
+      <p>Once you accept that the "introduction" can travel through any channel a human controls — WhatsApp for the link, phone call for the passphrase — the entire server infrastructure most chat apps depend on becomes unnecessary. The link and the passphrase together <em>are</em> the introduction.</p>
+
+      <p>That's why Btwinus is one HTML page. There's nothing to host, nothing to log into, nothing to leak.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Try it — start a chat in 5 seconds, no account, nothing to install.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
+  </article>
+</body>
+</html>

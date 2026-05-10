@@ -1,4 +1,4 @@
-const CACHE = 'btwinus-v6';
+const CACHE = 'btwinus-v7';
 
 const ASSETS = [
   '/',
@@ -8,9 +8,12 @@ const ASSETS = [
   '/ln/',
   '/ln/index.html',
   '/chat.html',
+  '/blog/',
+  '/blog/index.html',
   '/manifest.json',
   '/icon.svg',
   '/css/style.css',
+  '/css/blog.css',
   '/js/theme.js',
   '/js/home.js',
   '/js/matrix.js',
@@ -45,6 +48,7 @@ self.addEventListener('fetch', e => {
         const path = url.pathname;
         if (path.startsWith('/fr/')) return caches.match('/fr/index.html');
         if (path.startsWith('/ln/')) return caches.match('/ln/index.html');
+        if (path.startsWith('/blog/')) return caches.match('/blog/index.html');
         return caches.match('/index.html');
       })
     );

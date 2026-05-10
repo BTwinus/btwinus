@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For journalists: how to receive anonymous tips without leaving a server trail | Btwinus</title>
+  <meta name="description" content="Most 'secure' tip lines still leak metadata or require sources to install something. Here's a practical guide to receiving anonymous tips with the lowest possible friction and the smallest possible trail.">
+  <meta name="keywords" content="anonymous tip line journalist, secure source communication, whistleblower communication, journalist source protection, secure tip line, anonymous tips browser, source protection chat, journalism digital security, encrypted tip line no account, ephemeral tip line">
+  <link rel="canonical" href="https://btwinus.com/blog/anonymous-tips-for-journalists/">
+  <meta property="og:title" content="For journalists: how to receive anonymous tips without leaving a server trail">
+  <meta property="og:description" content="A practical guide to receiving anonymous tips with the lowest possible friction and the smallest possible trail.">
+  <meta property="og:url" content="https://btwinus.com/blog/anonymous-tips-for-journalists/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://btwinus.com/og.svg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="For journalists: how to receive anonymous tips without leaving a server trail">
+  <meta name="twitter:description" content="A practical guide to receiving anonymous tips with the lowest possible friction and the smallest possible trail.">
+  <meta name="twitter:image" content="https://btwinus.com/og.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "For journalists: how to receive anonymous tips without leaving a server trail",
+    "description": "Most 'secure' tip lines still leak metadata or require sources to install something. Here's a practical guide to receiving anonymous tips with the lowest possible friction and the smallest possible trail.",
+    "author": { "@type": "Organization", "name": "Btwinus" },
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" },
+    "datePublished": "2026-05-10",
+    "dateModified": "2026-05-10",
+    "mainEntityOfPage": "https://btwinus.com/blog/anonymous-tips-for-journalists/",
+    "image": "https://btwinus.com/og.svg",
+    "inLanguage": "en"
+  }
+  </script>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css?v=19">
+  <link rel="stylesheet" href="/css/blog.css?v=1">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/blog/">← All posts</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <p class="blog-meta">May 10, 2026 · 7 min read</p>
+    <h1 class="blog-title">For journalists: how to receive anonymous tips without leaving a server trail</h1>
+    <p class="blog-lede">Most "secure" tip lines either leak metadata or require sources to install something they won't. The result is that genuinely sensitive tips often arrive through the worst possible channels — corporate email, Twitter DMs, LinkedIn — because that's what's actually frictionless. There's a better default.</p>
+
+    <div class="blog-body">
+      <p>If you're a reporter, you've probably had a moment where someone reached out who clearly should not have been using the channel they were using. A government employee on their work email. A corporate insider on Slack. A whistleblower on Twitter DMs. They were trying to do the right thing — they just didn't have a sensible option, so they used the channel that was open.</p>
+
+      <p>This post is about giving them a sensible option, and what to think about when you set one up.</p>
+
+      <h2>The threat model, plainly</h2>
+
+      <p>For a source-to-journalist tip, the source generally needs to fear:</p>
+
+      <ol>
+        <li><strong>Server records linking them to you.</strong> Email servers, message archives, DM histories — all of these create a permanent record that "this person contacted that journalist." That record is subject to subpoena, employer discovery, and breach.</li>
+        <li><strong>Identity exposure through the channel itself.</strong> If reaching you requires a phone number, a verified account, or anything tied to their real identity, the act of contact is identifying.</li>
+        <li><strong>Persistence on either device.</strong> Even if the channel is private, messages sitting on the source's phone or your laptop can be subpoenaed, seized, or stolen.</li>
+        <li><strong>Metadata even without content.</strong> "Source X talked to Journalist Y on date Z for N minutes" is itself often the dangerous information, even if no one knows what was said.</li>
+        <li><strong>The source's own machine.</strong> You can't help them with this, but it's worth being aware: a managed work laptop with monitoring software will leak everything regardless of which app they use.</li>
+      </ol>
+
+      <p>A reasonable tip line should minimize at least the first four. Most don't.</p>
+
+      <h2>What common channels actually leak</h2>
+
+      <h3>Work email</h3>
+      <p>Disastrous. The source's employer can read their outgoing email. Your news organization's email provider has it. Both records sit indefinitely. This happens constantly, and it's why DOJ leak investigations so often start with email subpoenas.</p>
+
+      <h3>Personal email</h3>
+      <p>Better but still bad. The provider has the message. The journalist's organization usually has it. The source's email account is identity-linked. Use of work-vs-personal email is also itself a signal.</p>
+
+      <h3>Twitter / X DMs</h3>
+      <p>Server-stored, not E2E encrypted. The platform can read everything. Account-linked. Twitter's data has been requested by US and foreign governments before, sometimes successfully.</p>
+
+      <h3>LinkedIn messages</h3>
+      <p>Same as Twitter, except corporate-identity-linked, which is even worse for sources reaching out about their own employer.</p>
+
+      <h3>Signal</h3>
+      <p>Genuinely good — but requires the source to download Signal, register a phone number, and add you to contacts. The phone-number step is the friction killer. A government employee using their personal phone to install Signal and message a reporter is creating a record on their phone bill that an investigation can find.</p>
+
+      <h3>SecureDrop</h3>
+      <p>The gold standard for actual whistleblower work. Tor-based, no metadata, no account. The catch: it requires the source to install Tor Browser and follow careful operational steps. Most casual tipsters won't do that. SecureDrop is the right tool for serious, prepared sources, not for someone who has 30 seconds at lunch to reach out.</p>
+
+      <h3>Briar, Session, etc.</h3>
+      <p>Various decentralized options. All require app installation, which means the source has the same identifiable "I downloaded a privacy app on my phone today" record.</p>
+
+      <h2>The gap: low-friction, no-account, ephemeral</h2>
+
+      <p>What's missing in most newsroom tip-line setups is a channel that:</p>
+
+      <ul>
+        <li>Requires zero installation by the source</li>
+        <li>Requires zero account creation by the source</li>
+        <li>Leaves no server record on either side</li>
+        <li>Works in 30 seconds from a browser tab</li>
+      </ul>
+
+      <p>This is the gap browser-based, peer-to-peer tools fill. A reporter publishes a link. The source opens it. Both browsers connect directly. They talk. Both close the tab. Nothing remains on a server, because there isn't one.</p>
+
+      <p><a href="https://btwinus.com/">Btwinus</a> is one such tool. It's not a replacement for SecureDrop for serious whistleblower documents — but it's a much better first-contact channel than email or DMs, and it requires nothing of the source besides clicking a link.</p>
+
+      <h2>A practical setup for reporters</h2>
+
+      <h3>Step 1: Have a real first-contact channel</h3>
+
+      <p>Publish a way to reach you that doesn't compromise sources at the moment of first contact. A Btwinus-style ephemeral link is good for this. Signal is also fine for sources who already use it. Listing both, and explaining briefly what each is for, lets the source pick.</p>
+
+      <h3>Step 2: Use first contact to triage, not to handle the whole tip</h3>
+
+      <p>The first conversation is for figuring out what's happening, what the source's situation is, and where to take it from there. It's not where you receive the actual documents. Once you've established that the tip is real and the source needs to send sensitive material, you upgrade to SecureDrop, in-person dead drops, or another higher-assurance channel.</p>
+
+      <h3>Step 3: Don't ask for identifying information you don't need</h3>
+
+      <p>The source's name is rarely the most important thing in the first contact. What they know matters more. Hold off on identity questions until they're necessary, and never push.</p>
+
+      <h3>Step 4: Be clear about what each channel actually protects</h3>
+
+      <p>If you use Btwinus for first contact, tell the source what it does and doesn't do. It hides the conversation from any server. It does not hide the fact that they opened a webpage from someone monitoring their machine, their network, or their browser history. They should know that.</p>
+
+      <h3>Step 5: Train your colleagues</h3>
+
+      <p>The weakest link in most newsrooms isn't the tip-line technology. It's the editor who replies "send me what you've got" via the same email the source nervously used to reach out, defeating the purpose entirely. Whoever handles tips needs to know how to respond without escalating the source's exposure.</p>
+
+      <h2>What Btwinus is good at, in this context</h2>
+
+      <p>For a journalist's tip line, the relevant Btwinus properties are:</p>
+
+      <ul>
+        <li><strong>Source needs no account, no app.</strong> They click a link and they're talking to you. The friction is lower than email.</li>
+        <li><strong>Conversation never touches a server.</strong> Subpoenaing Btwinus would yield nothing, because nothing is stored.</li>
+        <li><strong>Two-channel model adds an extra lock.</strong> The link can be shared publicly (it's encrypted); the passphrase travels separately. If a source's network is monitored and they only see the link, they still can't be tied to the content of the conversation.</li>
+        <li><strong>The chat ends when either tab closes.</strong> No history on either side after disconnect. Source doesn't have to remember to delete anything.</li>
+      </ul>
+
+      <h2>What Btwinus isn't good at, in this context</h2>
+
+      <ul>
+        <li><strong>Not async.</strong> Source and journalist must both be at the chat at the same time. For long tips this requires scheduling.</li>
+        <li><strong>Limited file transfer.</strong> Small payloads work; multi-gigabyte document drops do not. Use SecureDrop or in-person handoff for those.</li>
+        <li><strong>Doesn't protect against compromised endpoints.</strong> If the source's laptop is monitored, no chat tool helps.</li>
+      </ul>
+
+      <h2>The practical recommendation</h2>
+
+      <p>Add an "Anonymous tip" link on your bio page. Have it open a Btwinus session (or generate a fresh link periodically). Pair it with a Signal username for sources who prefer that. Mention SecureDrop separately for serious whistleblowers. The result is a tiered system where the right tool is available for the right level of risk, and no source has to default to corporate email because they couldn't find a better option.</p>
+
+      <p>The goal isn't perfect security — it's <em>much better than the default</em>, with no friction. Most tip lines fail not because they're insecure, but because no one uses them. A browser link nobody has to install fixes the second problem without sacrificing the first.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Set up a no-account encrypted channel for your sources in under a minute.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
+  </article>
+</body>
+</html>
