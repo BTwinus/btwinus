@@ -1,9 +1,9 @@
 /* ── Blog: list + article layout ─────────────────────────────────────────── */
 
-.blog-page {
+body.blog-page {
+  overflow: auto;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
   line-height: 1.65;
 }
 
