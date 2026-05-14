@@ -1,4 +1,4 @@
-const CACHE = 'btwinus-v7';
+const CACHE = 'btwinus-v8';
 
 const ASSETS = [
   '/',
@@ -11,7 +11,12 @@ const ASSETS = [
   '/blog/',
   '/blog/index.html',
   '/manifest.json',
-  '/icon.svg',
+  '/favicon.ico',
+  '/favicon-16x16.png',
+  '/favicon-32x32.png',
+  '/apple-icon-180x180.png',
+  '/android-icon-192x192.png',
+  '/ms-icon-144x144.png',
   '/css/style.css',
   '/css/blog.css',
   '/js/theme.js',
