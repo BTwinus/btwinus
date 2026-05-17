@@ -119,6 +119,7 @@ This is fragile. Don't be afraid to bump even if you're not 100% sure — over-b
 - **Cache version in every asset URL.** Plain `style.css` (without `?v=`) is a smell.
 - **`data-i18n="key"`** for translatable text. `data-i18n-ph="key"` for placeholders.
 - **Absolute paths (`/css/...`, `/js/...`) in subdirectory pages** (`/fr/`, `/ln/`, `/blog/*/`). Root `index.html` uses relative (`css/...`) — both forms exist for historical reasons. Don't mass-rewrite.
+- **Never render the contact email as visible plain text.** The privacy contact (`artivicolab@gmail.com`) must only appear inside a `mailto:` `href`, shown to users as a localized "Contact us" link (EN "contact us", FR "contactez-nous", LN "benga biso"). Keeps it out of naive scrapers while still satisfying GDPR's working-contact requirement. Applies anywhere the address would otherwise be printed.
 
 ## Gotchas that already bit us
 
