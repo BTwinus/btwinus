@@ -119,6 +119,7 @@ This is fragile. Don't be afraid to bump even if you're not 100% sure — over-b
 - **Cache version in every asset URL.** Plain `style.css` (without `?v=`) is a smell.
 - **`data-i18n="key"`** for translatable text. `data-i18n-ph="key"` for placeholders.
 - **Absolute paths (`/css/...`, `/js/...`) in subdirectory pages** (`/fr/`, `/ln/`, `/blog/*/`). Root `index.html` uses relative (`css/...`) — both forms exist for historical reasons. Don't mass-rewrite.
+- **`<noscript>` fallback is mandatory on JS-critical pages.** The whole product is JS-driven (crypto, WebRTC, UI). `chat.html` has a full-screen `.noscript-screen` ("JavaScript is required"); the three landing pages have a localized `.noscript-banner` (en/fr/ln, hardcoded since i18n.js can't run with JS off). Keep these in sync if you add a language or a new app page. Styles are in `style.css` (`.noscript-banner` / `.noscript-screen`).
 - **Never render the contact email as visible plain text.** The privacy contact (`artivicolab@gmail.com`) must only appear inside a `mailto:` `href`, shown to users as a localized "Contact us" link (EN "contact us", FR "contactez-nous", LN "benga biso"). Keeps it out of naive scrapers while still satisfying GDPR's working-contact requirement. Applies anywhere the address would otherwise be printed.
 
 ## Gotchas that already bit us
