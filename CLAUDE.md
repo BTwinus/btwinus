@@ -8,7 +8,7 @@ Btwinus is **anonymous, end-to-end encrypted, browser-only, peer-to-peer chat vi
 
 The pitch on the homepage — "no app, no account, no server" — is **literally true**, not marketing. There is no backend. The `server/` directory exists but is empty. The encryption happens in the browser, the WebRTC handshake travels through the URL itself, and once two peers are connected, messages go directly browser-to-browser. Preserve that invariant.
 
-Domain: `btwinus.com`. Hosting: GitHub Pages (via `CNAME` file). Analytics: Google `gtag.js` (`G-G0XHHXR5YY`). Bing Webmaster verification meta tag is in all main landing pages.
+Domain: `btwinus.com`. Hosting: GitHub Pages (via `CNAME` file). Analytics: Google `gtag.js` (`G-G0XHHXR5YY`) with **Consent Mode v2** — `analytics_storage` defaults to `denied` (inline in each GA page's head, before `config`), flipped to `granted` only by the cookie banner in `js/consent.js`. There are no ads, so `ad_*` consent signals stay permanently denied. Choice persists in `localStorage['btw_consent']` (`granted`/`denied`). GA is only on `/`, `/fr/`, `/ln/`, `/chat.html` — blog pages have no analytics. Bing Webmaster verification meta tag is in all main landing pages.
 
 ## How to work on it
 

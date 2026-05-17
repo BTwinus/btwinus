@@ -1,4 +1,4 @@
-const CACHE = 'btwinus-v8';
+const CACHE = 'btwinus-v9';
 
 const ASSETS = [
   '/',
@@ -26,6 +26,7 @@ const ASSETS = [
   '/js/qr.js',
   '/js/app.js',
   '/js/i18n.js',
+  '/js/consent.js',
 ];
 
 self.addEventListener('install', e => {

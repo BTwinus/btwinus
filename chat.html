@@ -28,6 +28,20 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // Consent Mode v2 — analytics denied until the visitor opts in (see js/consent.js).
+    // No ads on Btwinus, so ad signals stay permanently denied.
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('btw_consent') === 'granted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (e) {}
     gtag('config', 'G-G0XHHXR5YY');
   </script>
   <link rel="manifest" href="/manifest.json">
@@ -40,9 +54,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
   <meta name="msapplication-TileColor" content="#5865f2">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-  <link rel="stylesheet" href="css/style.css?v=16">
+  <link rel="stylesheet" href="css/style.css?v=20">
   <script src="js/theme.js?v=16"></script>
   <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+  <script src="/js/consent.js?v=1" defer></script>
 </head>
 <body>
   <div class="layout">
