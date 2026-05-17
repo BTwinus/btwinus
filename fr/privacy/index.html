@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité | Btwinus</title>
+  <meta name="description" content="Ce que Btwinus collecte et ne collecte pas. Vos conversations ne sont jamais collectées — elles sont chiffrées de bout en bout et pair-à-pair. L'analyse d'audience ne fonctionne qu'avec votre consentement.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://btwinus.com/fr/privacy/">
+  <link rel="alternate" hreflang="en" href="https://btwinus.com/privacy/">
+  <link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/privacy/">
+  <link rel="alternate" hreflang="ln" href="https://btwinus.com/ln/privacy/">
+  <link rel="alternate" hreflang="x-default" href="https://btwinus.com/privacy/">
+  <meta property="og:title" content="Politique de confidentialité | Btwinus">
+  <meta property="og:description" content="Ce que Btwinus collecte et ne collecte pas. Les conversations ne sont jamais collectées. Analyse uniquement avec consentement.">
+  <meta property="og:url" content="https://btwinus.com/fr/privacy/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://btwinus.com/og.svg">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="stylesheet" href="/css/style.css?v=20">
+  <link rel="stylesheet" href="/css/blog.css?v=3">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/fr/">Btwinus</a>
+    <a href="/fr/">← Accueil</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <p class="blog-meta">Dernière mise à jour : 13 mai 2026</p>
+    <h1 class="blog-title">Politique de confidentialité</h1>
+    <p class="blog-lede">En bref : vos conversations ne sont jamais collectées, stockées ni transmises — elles sont chiffrées de bout en bout et circulent directement entre les navigateurs. La seule donnée collectée est une analyse d'audience anonyme, et uniquement si vous l'acceptez.</p>
+
+    <div class="blog-body">
+      <h2>1. Qui nous sommes</h2>
+      <p>Btwinus est un outil gratuit, basé sur le navigateur, pour le chat chiffré privé, exploité sur <strong>btwinus.com</strong>. Pour toute question ou demande relative à la confidentialité, contactez <strong>artivicolab@gmail.com</strong>.</p>
+
+      <h2>2. Vos conversations : nous ne les voyons jamais</h2>
+      <p>C'est le cœur du produit, donc cela vient en premier. Quand vous utilisez Btwinus :</p>
+      <ul>
+        <li>Les messages sont <strong>chiffrés de bout en bout</strong> avec AES-256-GCM. La clé est dérivée d'une phrase de passe connue de vous seuls.</li>
+        <li>Les messages circulent <strong>directement de navigateur à navigateur</strong> via WebRTC. Il n'y a aucun serveur Btwinus au milieu. Nous n'exploitons aucun backend pouvant recevoir, relayer ou stocker le contenu des messages.</li>
+        <li>Rien n'est écrit dans une base de données, car il n'y a pas de base de données. Quand vous fermez l'onglet, la conversation disparaît — elle n'a jamais été stockée nulle part.</li>
+        <li>Nous ne collectons ni nom, ni email, ni numéro de téléphone, ni compte. Il n'y a pas d'inscription.</li>
+      </ul>
+      <p>Nous ne pourrions remettre votre historique de conversation à personne — pas même à un tribunal — car nous ne l'avons pas et ne l'avons jamais eu.</p>
+
+      <h2>3. Analyse d'audience (Google Analytics)</h2>
+      <p>Pour comprendre combien de personnes visitent le site et quelles pages elles lisent, nous utilisons Google Analytics 4 sur nos pages d'accueil. C'est la seule collecte de données du site, et elle est <strong>désactivée par défaut</strong>.</p>
+      <p>Nous utilisons Google Consent Mode v2. Lors de votre première visite, le stockage analytique est défini sur <em>refusé</em>. Google Analytics ne collecte des données que si vous cliquez sur <strong>Accepter</strong> sur la bannière. Si vous cliquez sur <strong>Refuser</strong> (ou l'ignorez), aucun cookie d'analyse n'est posé et aucune donnée personnelle d'analyse n'est collectée.</p>
+      <p>Si vous consentez, Google Analytics peut traiter : une localisation approximative dérivée de votre adresse IP, votre type d'appareil et de navigateur, les pages consultées, et comment vous êtes arrivé sur le site. Nous ne recevons pas votre nom ni d'identifiant révélant qui vous êtes. Google agit comme sous-traitant ; voir la <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">politique de confidentialité de Google</a>. Nous n'utilisons pas Google Ads, ni la personnalisation publicitaire, ni aucun signal publicitaire — ils sont désactivés en permanence.</p>
+
+      <h2>4. Stockage local sur votre appareil</h2>
+      <p>Btwinus stocke quelques petites valeurs dans le <code>localStorage</code> de votre navigateur. Elles ne quittent jamais votre appareil et ne nous sont pas envoyées :</p>
+      <ul>
+        <li><code>btw_consent</code> — si vous avez accepté ou refusé l'analyse, pour ne pas redemander.</li>
+        <li><code>btw_lang</code> — votre préférence de langue (anglais / français / lingála).</li>
+        <li>préférence de thème — mode sombre ou clair.</li>
+      </ul>
+      <p>Ce sont des réglages fonctionnels, pas du suivi. Vous pouvez les effacer à tout moment via l'option « effacer les données du site » de votre navigateur.</p>
+
+      <h2>5. Hébergement</h2>
+      <p>Le site est hébergé sur GitHub Pages. Pour vous livrer la page, GitHub traite des informations serveur standard telles que votre adresse IP dans des journaux de requête transitoires. C'est nécessaire au chargement du site et régi par la <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener noreferrer" target="_blank">déclaration de confidentialité de GitHub</a>. Nous n'avons pas accès à ces journaux.</p>
+
+      <h2>6. Pas de compte, pas d'email, pas de marketing</h2>
+      <p>Il n'y a rien à créer. Nous n'envoyons pas de newsletter, n'avons pas de comptes utilisateurs et ne construisons pas de profils de visiteurs.</p>
+
+      <h2>7. Vos droits (RGPD / EEE et Royaume-Uni)</h2>
+      <p>Si vous êtes dans l'EEE ou au Royaume-Uni, vous avez le droit d'accéder, de rectifier, d'effacer et de limiter le traitement de vos données personnelles, et de déposer une plainte auprès de votre autorité de protection des données.</p>
+      <p>En pratique : nous ne détenons aucune donnée personnelle issue du chat, il n'y a donc rien à consulter ni à effacer de ce côté. Pour l'analyse, la base légale est votre <strong>consentement</strong>, que vous pouvez retirer à tout moment en cliquant sur Refuser ou en effaçant les données du site — l'analyse s'arrête immédiatement. Pour exercer un droit ou poser une question, écrivez à <strong>artivicolab@gmail.com</strong>.</p>
+
+      <h2>8. Enfants</h2>
+      <p>Btwinus ne s'adresse pas aux enfants de moins de 13 ans (ou l'âge applicable dans votre pays) et nous ne collectons sciemment aucune donnée les concernant.</p>
+
+      <h2>9. Modifications de cette politique</h2>
+      <p>Si cette politique change, la date « Dernière mise à jour » en haut sera modifiée. Les changements importants affectant le consentement analytique seront reflétés dans la bannière.</p>
+    </div>
+
+    <p class="blog-back"><a href="/fr/">← Retour à Btwinus</a></p>
+  </article>
+</body>
+</html>

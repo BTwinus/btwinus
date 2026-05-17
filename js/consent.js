@@ -14,17 +14,23 @@
     en: {
       text: 'We use Google Analytics to measure traffic. Your chats are never tracked — they stay end-to-end encrypted. Analytics cookies are only set if you accept.',
       accept: 'Accept',
-      decline: 'Decline'
+      decline: 'Decline',
+      more: 'Privacy policy',
+      href: '/privacy/'
     },
     fr: {
       text: 'Nous utilisons Google Analytics pour mesurer l’audience. Vos conversations ne sont jamais suivies — elles restent chiffrées de bout en bout. Les cookies d’analyse ne sont posés que si vous acceptez.',
       accept: 'Accepter',
-      decline: 'Refuser'
+      decline: 'Refuser',
+      more: 'Confidentialité',
+      href: '/fr/privacy/'
     },
     ln: {
       text: 'Tosalelaka Google Analytics mpo na kotanga bato baye bayaka. Masolo na yo elandamaka te — ezali ekangami ndɛlɛ-na-ndɛlɛ. Ba-cookies ya analytics etiamaka kaka soki ondimi.',
       accept: 'Ndima',
-      decline: 'Boya'
+      decline: 'Boya',
+      more: 'Mibeko ya bonkundi',
+      href: '/ln/privacy/'
     }
   };
 
@@ -40,7 +46,13 @@
 
     var p = document.createElement('p');
     p.className = 'consent-text';
-    p.textContent = t.text;
+    p.textContent = t.text + ' ';
+
+    var link = document.createElement('a');
+    link.className = 'consent-link';
+    link.href = t.href;
+    link.textContent = t.more;
+    p.appendChild(link);
 
     var actions = document.createElement('div');
     actions.className = 'consent-actions';

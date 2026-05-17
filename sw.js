@@ -1,4 +1,4 @@
-const CACHE = 'btwinus-v9';
+const CACHE = 'btwinus-v10';
 
 const ASSETS = [
   '/',
@@ -10,6 +10,12 @@ const ASSETS = [
   '/chat.html',
   '/blog/',
   '/blog/index.html',
+  '/privacy/',
+  '/privacy/index.html',
+  '/fr/privacy/',
+  '/fr/privacy/index.html',
+  '/ln/privacy/',
+  '/ln/privacy/index.html',
   '/manifest.json',
   '/favicon.ico',
   '/favicon-16x16.png',

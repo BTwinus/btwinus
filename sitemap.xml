@@ -67,4 +67,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://btwinus.com/privacy/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ln" href="https://btwinus.com/ln/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/fr/privacy/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ln" href="https://btwinus.com/ln/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/ln/privacy/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ln" href="https://btwinus.com/ln/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/privacy/"/>
+  </url>
 </urlset>

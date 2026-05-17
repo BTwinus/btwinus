@@ -1661,6 +1661,13 @@ a.logo:hover { color: var(--accent-h); }
   color: var(--text-mid);
 }
 
+.consent-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
 .consent-actions {
   display: flex;
   gap: 10px;

@@ -40,6 +40,7 @@ There is **no build step**. No bundler, no transpiler, no package.json. You edit
 /sitemap.xml         → Lists en/fr/ln/chat/blog URLs with hreflang annotations
 /robots.txt          → Allows everything, points to sitemap
 /llms.txt            → AI-crawler-friendly summary of the product
+/privacy/            → Privacy policy (en). Also /fr/privacy/ and /ln/privacy/. Linked from the consent banner.
 /server/             → Empty placeholder. There is no backend. Don't fill it without discussing first.
 ```
 
