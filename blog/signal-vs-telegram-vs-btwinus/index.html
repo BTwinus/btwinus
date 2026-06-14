@@ -32,6 +32,17 @@
     "inLanguage": "en"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://btwinus.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Signal vs Telegram vs Btwinus", "item": "https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/" }
+    ]
+  }
+  </script>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,7 +50,7 @@
   <meta name="msapplication-TileColor" content="#5865f2">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <link rel="stylesheet" href="/css/style.css?v=21">
-  <link rel="stylesheet" href="/css/blog.css?v=3">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
   <script src="/js/theme.js?v=17"></script>
 </head>
 <body class="blog-page">
@@ -127,7 +138,7 @@
 
       <h2>Btwinus: identity-anonymous, ephemeral, narrow scope</h2>
 
-      <p>Btwinus is the opposite trade. It scores high on identity privacy (no account, no phone number, no email), high on content privacy (AES-256 end-to-end), and high on metadata privacy (no server, so there's no metadata to log). It does this by being narrow: ephemeral one-on-one chat, both parties online at once, no message history, no async, no groups.</p>
+      <p>Btwinus is the opposite trade. It scores high on identity privacy (no account, no phone number, no email), high on content privacy (AES-256 end-to-end), and high on metadata privacy (no server, so there's no metadata to log). It does this by being narrow: ephemeral one-on-one chat, both parties online at once, no message history, no async, no groups. (Here's <a href="/blog/encrypted-chat-no-account/">how the no-account, no-server encryption actually works</a>.)</p>
 
       <p>The whole conversation lives in two browser tabs. When either of you closes the tab, it's gone — not "deleted from a server," but never written anywhere to begin with. There's no Btwinus-the-company database that could be subpoenaed, because there isn't one.</p>
 
@@ -221,9 +232,9 @@
 
       <p><strong>One-off private conversation with someone whose phone you don't have, and don't want to give yours to:</strong> Btwinus. Send them a link, share a passphrase out of band, talk, close the tab.</p>
 
-      <p><strong>Source-to-journalist tips:</strong> Btwinus for the first contact (no phone number trail on either side), then SecureDrop or Signal once you've established a relationship.</p>
+      <p><strong>Source-to-journalist tips:</strong> Btwinus for the first contact (no phone number trail on either side), then SecureDrop or Signal once you've established a relationship. (More on <a href="/blog/anonymous-tips-for-journalists/">setting up an anonymous tip line</a>.)</p>
 
-      <p><strong>Sharing a password or API key with a coworker once:</strong> Btwinus. The two-channel model (link + passphrase) is built for exactly this.</p>
+      <p><strong>Sharing a password or API key with a coworker once:</strong> Btwinus. The two-channel model (link + passphrase) is built for exactly this. (See <a href="/blog/share-password-securely/">how to share a password without leaving a copy behind</a>.)</p>
 
       <p><strong>Anonymous tip lines, employee feedback, whistleblower contact:</strong> Btwinus is a good fit because no-account-required removes the friction that makes most "secure" tools fail in practice.</p>
 
@@ -238,6 +249,15 @@
       <p>Need that one-off private conversation right now? Btwinus is one click away.</p>
       <a href="/">Start a private chat →</a>
     </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/share-password-securely/">How to share a password without leaving a copy behind</a></li>
+        <li><a href="/blog/anonymous-tips-for-journalists/">For journalists: how to receive anonymous tips without leaving a server trail</a></li>
+      </ul>
+    </aside>
 
     <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
   </article>

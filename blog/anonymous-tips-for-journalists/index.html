@@ -32,6 +32,17 @@
     "inLanguage": "en"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://btwinus.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Receiving anonymous tips without a server trail", "item": "https://btwinus.com/blog/anonymous-tips-for-journalists/" }
+    ]
+  }
+  </script>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,7 +50,7 @@
   <meta name="msapplication-TileColor" content="#5865f2">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <link rel="stylesheet" href="/css/style.css?v=21">
-  <link rel="stylesheet" href="/css/blog.css?v=3">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
   <script src="/js/theme.js?v=17"></script>
 </head>
 <body class="blog-page">
@@ -108,7 +119,7 @@
 
       <p>This is the gap browser-based, peer-to-peer tools fill. A reporter publishes a link. The source opens it. Both browsers connect directly. They talk. Both close the tab. Nothing remains on a server, because there isn't one.</p>
 
-      <p><a href="https://btwinus.com/">Btwinus</a> is one such tool. It's not a replacement for SecureDrop for serious whistleblower documents — but it's a much better first-contact channel than email or DMs, and it requires nothing of the source besides clicking a link.</p>
+      <p><a href="https://btwinus.com/">Btwinus</a> is one such tool. It's not a replacement for SecureDrop for serious whistleblower documents — but it's a much better first-contact channel than email or DMs, and it requires nothing of the source besides clicking a link. (Here's <a href="/blog/encrypted-chat-no-account/">the technical breakdown of how it works without an account or a server</a>.)</p>
 
       <h2>A practical setup for reporters</h2>
 
@@ -162,6 +173,15 @@
       <p>Set up a no-account encrypted channel for your sources in under a minute.</p>
       <a href="/">Start a private chat →</a>
     </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+        <li><a href="/blog/share-password-securely/">How to share a password without leaving a copy behind</a></li>
+      </ul>
+    </aside>
 
     <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
   </article>

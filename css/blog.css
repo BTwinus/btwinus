@@ -210,6 +210,43 @@ body.blog-page {
   font-size: 14.5px;
 }
 
+.blog-related {
+  margin: 44px 0 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.blog-related h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.blog-related ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blog-related li { margin: 0; }
+
+.blog-related a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 15.5px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.blog-related a:hover {
+  color: var(--accent-h);
+  text-decoration: underline;
+}
+
 .blog-back {
   margin: 36px 0 0;
   font-size: 14px;

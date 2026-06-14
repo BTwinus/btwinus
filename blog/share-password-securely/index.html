@@ -32,6 +32,17 @@
     "inLanguage": "en"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://btwinus.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "How to share a password without leaving a copy behind", "item": "https://btwinus.com/blog/share-password-securely/" }
+    ]
+  }
+  </script>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,7 +50,7 @@
   <meta name="msapplication-TileColor" content="#5865f2">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <link rel="stylesheet" href="/css/style.css?v=21">
-  <link rel="stylesheet" href="/css/blog.css?v=3">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
   <script src="/js/theme.js?v=17"></script>
 </head>
 <body class="blog-page">
@@ -99,11 +110,11 @@
 
       <p>Tools like <a href="https://btwinus.com/">Btwinus</a>, OneTimeSecret, and PrivateBin let you create a link that contains the encrypted secret and self-destructs after one read. Btwinus goes further by requiring a passphrase the link doesn't contain — meaning even if someone intercepts the link, they can't decrypt without the second piece, which you send through a different channel (a phone call, a different chat app, in person).</p>
 
-      <p>The two-channel split matters more than people realize. If your Slack is compromised and you sent both the password <em>and</em> the link to it through Slack, the attacker has both halves. If the link goes through Slack and the passphrase goes through a phone call, an attacker needs to compromise two different things to get the credential.</p>
+      <p>The two-channel split matters more than people realize. If your Slack is compromised and you sent both the password <em>and</em> the link to it through Slack, the attacker has both halves. If the link goes through Slack and the passphrase goes through a phone call, an attacker needs to compromise two different things to get the credential. (It's the same <a href="/blog/encrypted-chat-no-account/">encryption-in-a-link model Btwinus uses for chat</a>.)</p>
 
       <h3>4. Signal disappearing messages</h3>
 
-      <p>Signal supports messages that auto-delete after a set time. End-to-end encrypted, no server retention. Genuinely solid. The friction is that both parties need Signal accounts and to have already added each other, which is fine for ongoing relationships but awful for a one-off transfer with someone you don't already have on Signal.</p>
+      <p>Signal supports messages that auto-delete after a set time. End-to-end encrypted, no server retention. Genuinely solid. The friction is that both parties need Signal accounts and to have already added each other, which is fine for ongoing relationships but awful for a one-off transfer with someone you don't already have on Signal. (For a fuller breakdown, see <a href="/blog/signal-vs-telegram-vs-btwinus/">how Signal, Telegram, and Btwinus compare on anonymity</a>.)</p>
 
       <h3>5. PGP encrypted email</h3>
 
@@ -130,6 +141,15 @@
       <p>Need to share a password right now without leaving a trail? Btwinus is built exactly for this — encrypted link, separate passphrase channel, nothing stored.</p>
       <a href="/">Start a private chat →</a>
     </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+        <li><a href="/blog/anonymous-tips-for-journalists/">For journalists: how to receive anonymous tips without leaving a server trail</a></li>
+      </ul>
+    </aside>
 
     <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
   </article>

@@ -32,6 +32,17 @@
     "inLanguage": "en"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://btwinus.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Encrypted chat with no account", "item": "https://btwinus.com/blog/encrypted-chat-no-account/" }
+    ]
+  }
+  </script>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,7 +50,7 @@
   <meta name="msapplication-TileColor" content="#5865f2">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <link rel="stylesheet" href="/css/style.css?v=21">
-  <link rel="stylesheet" href="/css/blog.css?v=3">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
   <script src="/js/theme.js?v=17"></script>
 </head>
 <body class="blog-page">
@@ -131,7 +142,7 @@
 
       <h2>What this approach is good at, and what it isn't</h2>
 
-      <p><strong>Good at:</strong> one-off conversations with someone you don't share an account-relationship with — a journalist talking to a source, a lawyer with a new client, a privileged moment that shouldn't exist anywhere afterward. Sending a single secret. Avoiding any company knowing the conversation happened.</p>
+      <p><strong>Good at:</strong> one-off conversations with someone you don't share an account-relationship with — <a href="/blog/anonymous-tips-for-journalists/">a journalist receiving an anonymous tip from a source</a>, a lawyer with a new client, a privileged moment that shouldn't exist anywhere afterward. <a href="/blog/share-password-securely/">Sending a single secret like a password</a>. Avoiding any company knowing the conversation happened.</p>
 
       <p><strong>Not good at:</strong> daily messaging with friends. Async messages (both browsers must be online to talk). Group chats. File transfer beyond small payloads. Anything that needs to persist after you close the tab.</p>
 
@@ -156,6 +167,15 @@
       <p>Try it — start a chat in 5 seconds, no account, nothing to install.</p>
       <a href="/">Start a private chat →</a>
     </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+        <li><a href="/blog/share-password-securely/">How to share a password without leaving a copy behind</a></li>
+        <li><a href="/blog/anonymous-tips-for-journalists/">For journalists: how to receive anonymous tips without leaving a server trail</a></li>
+      </ul>
+    </aside>
 
     <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
   </article>
