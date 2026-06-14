@@ -15,7 +15,7 @@ const I18N = {
     // ── Security strip ────────────────────────────────────────────────────
     sec_eyebrow:    '🛡 Encryption standard',
     sec_title:      'We put military-grade encryption<br>in a browser link. No app. No account. No server.',
-    sec_sub:        'Until now, this level of encryption required apps, accounts, and trust in a company. Signal needs your phone number. PGP needs software. Enterprise tools need registration. Btwinus puts AES-256 end-to-end encryption directly in a shareable link — anyone can use it, nothing is stored, and no one is in between.',
+    sec_sub:        'Until now, this level of encryption required apps, accounts, and trust in a company. Signal needs your phone number. PGP needs software. Enterprise tools need registration. Btwinus puts AES-256 end-to-end encryption directly in a shareable link. Anyone can use it, nothing is stored, and no one is in between.',
     spec_cipher:    'Cipher',
     spec_key_deriv: 'Key derivation',
     spec_transport: 'Transport',
@@ -25,33 +25,33 @@ const I18N = {
     // ── Demo ──────────────────────────────────────────────────────────────
     demo_eyebrow: 'Live demo',
     demo_heading: 'Watch it happen in real time',
-    demo_sub:     'Alice and Gradi K. starting a private chat — no accounts, no setup',
+    demo_sub:     'Alice and Gradi K. starting a private chat, no accounts, no setup',
 
     // ── How it works ──────────────────────────────────────────────────────
     how_title:   'How it works',
     how_1_title: 'Start a chat',
     how_1_body:  'Click "Start a new chat". You instantly get two things: an <strong>encrypted invite link</strong> and a <strong>passphrase</strong>.',
     how_2_title: 'Share them separately',
-    how_2_body:  'Send the <strong>link</strong> via WhatsApp, email, or any app. Send the <strong>passphrase</strong> a different way — a phone call, SMS, or say it in person. Keeping them apart means nobody can intercept both.',
+    how_2_body:  'Send the <strong>link</strong> via WhatsApp, email, or any app. Send the <strong>passphrase</strong> a different way: a phone call, SMS, or say it in person. Keeping them apart means nobody can intercept both.',
     how_3_title: 'They open the link &amp; reply',
     how_3_body:  'The other person opens your link, types the passphrase, and gets a <strong>reply link</strong> that is automatically copied. They send it back to you.',
     how_4_title: 'Paste &amp; you\'re connected',
-    how_4_body:  'Paste their reply link — you\'re instantly connected. Everything is <strong>end-to-end encrypted</strong>. No accounts, no servers, no history. Gone when you close the tab.',
+    how_4_body:  'Paste their reply link and you\'re instantly connected. Everything is <strong>end-to-end encrypted</strong>. No accounts, no servers, no history. Gone when you close the tab.',
 
     // ── Use cases ─────────────────────────────────────────────────────────
     usecases_title:        'Who uses Btwinus',
     uc_journalists_title:  'Journalists &amp; sources',
-    uc_journalists_body:   'Receive anonymous tips and communicate with whistleblowers without leaving a server trail. Nothing is stored — not even metadata.',
+    uc_journalists_body:   'Receive anonymous tips and communicate with whistleblowers without leaving a server trail. Nothing is stored, not even metadata.',
     uc_lawyers_title:      'Lawyers &amp; clients',
-    uc_lawyers_body:       'Privileged conversations that disappear on close. No law firm server, no cloud provider — just a direct encrypted connection.',
+    uc_lawyers_body:       'Privileged conversations that disappear on close. No law firm server, no cloud provider, just a direct encrypted connection.',
     uc_negotiations_title: 'Secure negotiations',
-    uc_negotiations_body:  'Discuss sensitive terms anonymously — salary, deals, disputes — with no transcript and no identity required.',
+    uc_negotiations_body:  'Discuss sensitive terms anonymously (salary, deals, disputes) with no transcript and no identity required.',
     uc_feedback_title:     'Anonymous feedback',
     uc_feedback_body:      'Employees, students, or customers send honest feedback without worrying about identity. No account means no trace.',
     uc_passwords_title:    'Sending passwords &amp; secrets',
-    uc_passwords_body:     'Share a password, API key, or crypto seed phrase once — directly browser-to-browser. Far safer than email, Slack, or WhatsApp.',
+    uc_passwords_body:     'Share a password, API key, or crypto seed phrase once, directly browser-to-browser. Far safer than email, Slack, or WhatsApp.',
     uc_support_title:      'Private one-on-one support',
-    uc_support_body:       'Crisis lines, peer support, therapy pre-sessions — temporary secure chat that leaves no history behind.',
+    uc_support_body:       'Crisis lines, peer support, therapy pre-sessions. Temporary secure chat that leaves no history behind.',
 
     // ── Chat page ─────────────────────────────────────────────────────────
     chat_new_chat:    'New chat',
@@ -96,6 +96,12 @@ const I18N = {
     footer_no_servers: 'No servers',
     footer_disappears: 'Disappears on close',
     footer_anonymous:  'Anonymous',
+
+    // ── Site footer ───────────────────────────────────────────────────────
+    site_footer_tagline: 'Anonymous, end-to-end encrypted chat via a link. No app, no account, no server.',
+    site_footer_guides:  'Guides',
+    site_footer_legal:   'Legal',
+    site_footer_privacy: 'Privacy policy',
   },
 
   fr: {
@@ -114,7 +120,7 @@ const I18N = {
     // ── Security strip ────────────────────────────────────────────────────
     sec_eyebrow:    '🛡 Standard de chiffrement',
     sec_title:      'Nous avons mis le chiffrement militaire<br>dans un lien. Sans appli. Sans compte. Sans serveur.',
-    sec_sub:        'Jusqu\'ici, ce niveau de chiffrement nécessitait des applications, des comptes et de la confiance envers une entreprise. Signal demande votre numéro. PGP demande un logiciel. Btwinus met le chiffrement AES-256 directement dans un lien partageable — accessible à tous, rien n\'est stocké, personne n\'est au milieu.',
+    sec_sub:        'Jusqu\'ici, ce niveau de chiffrement nécessitait des applications, des comptes et de la confiance envers une entreprise. Signal demande votre numéro. PGP demande un logiciel. Btwinus met le chiffrement AES-256 directement dans un lien partageable. Accessible à tous, rien n\'est stocké, personne n\'est au milieu.',
     spec_cipher:    'Chiffrement',
     spec_key_deriv: 'Dérivation de clé',
     spec_transport: 'Transport',
@@ -124,33 +130,33 @@ const I18N = {
     // ── Demo ──────────────────────────────────────────────────────────────
     demo_eyebrow: 'Démo en direct',
     demo_heading: 'Regardez en temps réel',
-    demo_sub:     'Alice et Gradi K. démarrent une conversation privée — sans compte, sans installation',
+    demo_sub:     'Alice et Gradi K. démarrent une conversation privée, sans compte, sans installation',
 
     // ── How it works ──────────────────────────────────────────────────────
     how_title:   'Comment ça marche',
     how_1_title: 'Démarrer une conversation',
     how_1_body:  'Cliquez sur "Démarrer une conversation". Vous obtenez instantanément deux choses : un <strong>lien d\'invitation chiffré</strong> et une <strong>phrase de passe</strong>.',
     how_2_title: 'Partagez-les séparément',
-    how_2_body:  'Envoyez le <strong>lien</strong> via WhatsApp, email ou toute autre appli. Envoyez la <strong>phrase de passe</strong> autrement — appel, SMS ou en personne. Les séparer empêche toute interception.',
+    how_2_body:  'Envoyez le <strong>lien</strong> via WhatsApp, email ou toute autre appli. Envoyez la <strong>phrase de passe</strong> autrement : appel, SMS ou en personne. Les séparer empêche toute interception.',
     how_3_title: 'Ils ouvrent le lien &amp; répondent',
     how_3_body:  'L\'autre personne ouvre votre lien, saisit la phrase de passe et reçoit un <strong>lien de réponse</strong> copié automatiquement. Elle vous le renvoie.',
     how_4_title: 'Collez &amp; vous êtes connectés',
-    how_4_body:  'Collez leur lien de réponse — vous êtes instantanément connectés. Tout est <strong>chiffré de bout en bout</strong>. Sans compte, sans serveur, sans historique.',
+    how_4_body:  'Collez leur lien de réponse et vous êtes instantanément connectés. Tout est <strong>chiffré de bout en bout</strong>. Sans compte, sans serveur, sans historique.',
 
     // ── Use cases ─────────────────────────────────────────────────────────
     usecases_title:        'Qui utilise Btwinus',
     uc_journalists_title:  'Journalistes &amp; sources',
-    uc_journalists_body:   'Recevez des informations anonymes et communiquez avec des lanceurs d\'alerte sans laisser de trace. Rien n\'est stocké — pas même les métadonnées.',
+    uc_journalists_body:   'Recevez des informations anonymes et communiquez avec des lanceurs d\'alerte sans laisser de trace. Rien n\'est stocké, pas même les métadonnées.',
     uc_lawyers_title:      'Avocats &amp; clients',
-    uc_lawyers_body:       'Conversations confidentielles qui disparaissent à la fermeture. Pas de serveur du cabinet, pas de cloud — une connexion directe chiffrée.',
+    uc_lawyers_body:       'Conversations confidentielles qui disparaissent à la fermeture. Pas de serveur du cabinet, pas de cloud, juste une connexion directe chiffrée.',
     uc_negotiations_title: 'Négociations sécurisées',
-    uc_negotiations_body:  'Discutez de termes sensibles anonymement — salaire, accords, litiges — sans transcript et sans identité requise.',
+    uc_negotiations_body:  'Discutez de termes sensibles anonymement (salaire, accords, litiges) sans transcript et sans identité requise.',
     uc_feedback_title:     'Feedback anonyme',
     uc_feedback_body:      'Employés, étudiants ou clients donnent un avis honnête sans crainte d\'être identifiés. Sans compte, sans trace.',
     uc_passwords_title:    'Envoi de mots de passe &amp; secrets',
-    uc_passwords_body:     'Partagez un mot de passe, une clé API ou une phrase mnémotechnique une seule fois — de navigateur à navigateur. Bien plus sûr que l\'email, Slack ou WhatsApp.',
+    uc_passwords_body:     'Partagez un mot de passe, une clé API ou une phrase mnémotechnique une seule fois, de navigateur à navigateur. Bien plus sûr que l\'email, Slack ou WhatsApp.',
     uc_support_title:      'Soutien individuel privé',
-    uc_support_body:       'Lignes de crise, soutien entre pairs, pré-séances thérapeutiques — chat temporaire et sécurisé sans aucun historique.',
+    uc_support_body:       'Lignes de crise, soutien entre pairs, pré-séances thérapeutiques. Chat temporaire et sécurisé sans aucun historique.',
 
     // ── Chat page ─────────────────────────────────────────────────────────
     chat_new_chat:    'Nouvelle conversation',
@@ -195,6 +201,12 @@ const I18N = {
     footer_no_servers: 'Sans serveur',
     footer_disappears: 'Disparaît à la fermeture',
     footer_anonymous:  'Anonyme',
+
+    // ── Site footer ───────────────────────────────────────────────────────
+    site_footer_tagline: 'Chat anonyme et chiffré de bout en bout via un lien. Sans application, sans compte, sans serveur.',
+    site_footer_guides:  'Guides',
+    site_footer_legal:   'Mentions légales',
+    site_footer_privacy: 'Confidentialité',
   },
 
   ln: {
@@ -213,7 +225,7 @@ const I18N = {
     // ── Security strip ────────────────────────────────────────────────────
     sec_eyebrow:    '🛡 Mibeko ya bokangami',
     sec_title:      'Tozali kotia bokangami ya mampinga<br>na kati ya lien. Aplikasyo te. Konti te. Sɛrvɛr te.',
-    sec_sub:        'Tii lelo, bokangami ya boye esengaki aplikasyo, konti, mpe kotyela kompani motema. Signal esɛngaka nimero ya yo. PGP esɛngaka logiciel. Btwinus etii bokangami AES-256 ya ndɛlɛ-na-ndɛlɛ na lien moko ya kopesa — moto nyonso akoki kosalela yango, eloko ebombami te, mpe moto azali na katikati te.',
+    sec_sub:        'Tii lelo, bokangami ya boye esengaki aplikasyo, konti, mpe kotyela kompani motema. Signal esɛngaka nimero ya yo. PGP esɛngaka logiciel. Btwinus etii bokangami AES-256 ya ndɛlɛ-na-ndɛlɛ na lien moko ya kopesa. Moto nyonso akoki kosalela yango, eloko ebombami te, mpe moto azali na katikati te.',
     spec_cipher:    'Bokangami',
     spec_key_deriv: 'Bobimisi ya fungola',
     spec_transport: 'Botambwisi',
@@ -223,33 +235,33 @@ const I18N = {
     // ── Demo ──────────────────────────────────────────────────────────────
     demo_eyebrow: 'Emonisami sikoyo',
     demo_heading: 'Talá yango ezali kosalema na ntango wana wana',
-    demo_sub:     'Alice na Gradi K. bazali kobanda lisolo ya bonkundi — konti te, bobongisi te',
+    demo_sub:     'Alice na Gradi K. bazali kobanda lisolo ya bonkundi, konti te, bobongisi te',
 
     // ── How it works ──────────────────────────────────────────────────────
     how_title:   'Esalemaka ndenge nini',
     how_1_title: 'Banda lisolo',
     how_1_body:  'Fina "Banda lisolo ya sika". Okozwa mbala moko biloko mibale: <strong>lien ya libyangi ekangami</strong> mpe <strong>liloba ya bokɔti</strong>.',
     how_2_title: 'Tinda yango ekeseni',
-    how_2_body:  'Tinda <strong>lien</strong> na nzela ya WhatsApp, email, to aplikasyo nyonso. Tinda <strong>liloba ya bokɔti</strong> na nzela mosusu — mbila ya telefoni, SMS, to lobá yango miso na miso. Kokabola yango esalisaka ete moto moko te akoki kozwa nyonso mibale.',
+    how_2_body:  'Tinda <strong>lien</strong> na nzela ya WhatsApp, email, to aplikasyo nyonso. Tinda <strong>liloba ya bokɔti</strong> na nzela mosusu: mbila ya telefoni, SMS, to lobá yango miso na miso. Kokabola yango esalisaka ete moto moko te akoki kozwa nyonso mibale.',
     how_3_title: 'Bafungoli lien &amp; bayanoli',
     how_3_body:  'Moto mosusu afungoli lien na yo, akomi liloba ya bokɔti, mpe azwi <strong>lien ya eyano</strong> oyo ekopiami yango moko. Atindeli yo yango.',
     how_4_title: 'Tia &amp; bokangami',
-    how_4_body:  'Tia lien ya eyano na bango — bokangami mbala moko. Nyonso ezali <strong>ekangami ndɛlɛ-na-ndɛlɛ</strong>. Konti te, sɛrvɛr te, istware te. Ekosila ntango okokanga onglet.',
+    how_4_body:  'Tia lien ya eyano na bango, bokangami mbala moko. Nyonso ezali <strong>ekangami ndɛlɛ-na-ndɛlɛ</strong>. Konti te, sɛrvɛr te, istware te. Ekosila ntango okokanga onglet.',
 
     // ── Use cases ─────────────────────────────────────────────────────────
     usecases_title:        'Banani basalelaka Btwinus',
     uc_journalists_title:  'Bazwa-sango &amp; basangisi',
-    uc_journalists_body:   'Yamba bansango ya bonkundi mpe sololela bato bayebani te oyo balingi koyebisa makambo, kozanga kotika nzela na sɛrvɛr. Eloko ebombami te — ata métadonnée te.',
+    uc_journalists_body:   'Yamba bansango ya bonkundi mpe sololela bato bayebani te oyo balingi koyebisa makambo, kozanga kotika nzela na sɛrvɛr. Eloko ebombami te, ata métadonnée te.',
     uc_lawyers_title:      'Avocats &amp; ba-kliyan',
-    uc_lawyers_body:       'Masolo ya sekele oyo ekobungisama ntango okokanga. Sɛrvɛr ya cabinet te, cloud te — kokangana kaka ya semba mpe ekangami.',
+    uc_lawyers_body:       'Masolo ya sekele oyo ekobungisama ntango okokanga. Sɛrvɛr ya cabinet te, cloud te, kokangana kaka ya semba mpe ekangami.',
     uc_negotiations_title: 'Bondimi ya sekele',
-    uc_negotiations_body:  'Solola makambo ya kitoko na bonkundi — lifuti, boyokani, matata — kozanga botiki maloba mpe kozanga kolakisa nani ozali.',
+    uc_negotiations_body:  'Solola makambo ya kitoko na bonkundi (lifuti, boyokani, matata) kozanga botiki maloba mpe kozanga kolakisa nani ozali.',
     uc_feedback_title:     'Maloba ya bonkundi',
     uc_feedback_body:      'Basali, bayekoli, to ba-kliyan bapesi makanisi ya solo kozanga kobanga ete bakoyebana. Konti te, nzela te.',
     uc_passwords_title:    'Botindi ya bansinga ya bokɔti &amp; sekele',
-    uc_passwords_body:     'Kabola sinza ya bokɔti, fungola API, to liloba ya crypto mbala moko — kaka navigateur na navigateur. Ezali na libateli koleka email, Slack, to WhatsApp.',
+    uc_passwords_body:     'Kabola sinza ya bokɔti, fungola API, to liloba ya crypto mbala moko, kaka navigateur na navigateur. Ezali na libateli koleka email, Slack, to WhatsApp.',
     uc_support_title:      'Lisalisi ya yo moko ya sekele',
-    uc_support_body:       'Mibembo ya lisalisi, lisalisi ya baninga, makita ya thérapie — lisolo ya ntango moke oyo etiki istware te.',
+    uc_support_body:       'Mibembo ya lisalisi, lisalisi ya baninga, makita ya thérapie. Lisolo ya ntango moke oyo etiki istware te.',
 
     // ── Chat page ─────────────────────────────────────────────────────────
     chat_new_chat:    'Lisolo ya sika',
@@ -294,6 +306,12 @@ const I18N = {
     footer_no_servers: 'Sɛrvɛr te',
     footer_disappears: 'Esili na bofungwami',
     footer_anonymous:  'Bonkundi',
+
+    // ── Site footer ───────────────────────────────────────────────────────
+    site_footer_tagline: 'Lisolo ya bonkundi mpe ekangami ndɛlɛ-na-ndɛlɛ na nzela ya lien. Aplikasyo te, konti te, sɛrvɛr te.',
+    site_footer_guides:  'Malako',
+    site_footer_legal:   'Mibeko',
+    site_footer_privacy: 'Mibeko ya bonkundi',
   }
 };
 
