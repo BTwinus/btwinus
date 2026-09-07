@@ -288,9 +288,13 @@ Cloudflare can set for a GitHub Pages site:
 - 2026-09-07: Cloudflare done by the owner: HSTS one year, Response Header Transform rule with
   CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Verified live.
   Bot report on PR #802 answered. Remaining red marks (repo age, stars, contributors) need time.
+- 2026-09-07: lissy93/awesome-privacy #802 CLOSED by the maintainer: "doesn't meet quality or privacy
+  requirements", no specifics. Read as maturity (age, stars, single contributor, AI commits, no audit).
+  Do not reopen or resubmit before March 2027, and only with stars, a second contributor, and at least
+  one outside review of app.js. pluja #1088 and anondotli #52 still open.
 - 2026-09-07: AlternativeTo listing submitted by the owner with ~12 alternatives (Privnote, Telegram,
   Signal, One-Time Secret, BurnChat, Niltalk, vanish.so, Nix, Olvid, Session, SimpleX, Briar, Wire).
-  Awaiting review; check the My submissions page. Hacker News skipped on purpose: new-account
+  ACCEPTED 2026-09-07, listing is live. Hacker News skipped on purpose: new-account
   restriction on Show HN plus their rule against AI-written text; the owner would have to write and
   discuss it personally. Screenshots for directories live in docs/screenshots/.
   GSC Performance (all time): 1 query "btmessage", 1 impression, 0 clicks. Bing index: 0 pages.
