@@ -116,14 +116,14 @@ Btwinus lets two people open a private chat without installing anything or signi
 
 There is no backend. The site is static files on GitHub Pages. Nothing is stored server-side because there is no server to store it; the only outside party in the connection is a STUN server used to discover public IP addresses.
 
-Limitations, stated plainly: both people must be online at the same time; peers see each other's IP addresses; the generated passphrase is short and should be treated as a session secret, not a password; the code is loaded from the web host on each visit; there has been no independent audit. The current session's messages are kept in the browser's local storage for up to 24 hours so that a refresh shows a read-only copy, and are cleared when a new chat starts.
+Limitations, stated plainly: both people must be online at the same time; peers see each other's IP addresses; the invite link should be treated as sensitive even though it is encrypted; the code is loaded from the web host on each visit; there has been no independent audit. The current session's messages are kept in the browser's session storage so that a reload of the same tab shows a read-only copy; the browser discards them when the tab closes.
 
-Available in English, French and Lingala. Vanilla HTML, CSS and JavaScript, around 700 lines for the app.
+Available in English, French and Lingala. Vanilla HTML, CSS and JavaScript, about 840 lines for the app. MIT licensed.
 ```
 
 **Website:** `https://btwinus.com`
 **Source code:** `https://github.com/BTwinus/btwinus`
-**License:** Open Source (add the exact license once LICENSE is committed; until then leave the field as "Open Source" and mention in the description that the license file is pending)
+**License:** Open source, MIT
 **Platforms:** Web (Online), Progressive Web App, Chrome, Firefox, Safari, Edge (any modern browser, desktop and mobile)
 
 **Alternative to (add each one; use the "why it is an alternative" box):**
