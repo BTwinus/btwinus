@@ -80,7 +80,7 @@ the on-page work is. Each item below is one link from a relevant site.
 - [ ] **C3. Product Hunt launch.** One-line tagline plus 3 screenshots (light + dark + mobile).
 - [ ] **C4. AlternativeTo.** Create a listing as an alternative to Signal, ChatCrypt, otr.to,
       Privnote, OneTimeSecret.
-- [ ] **C5. GitHub awesome lists.** Open PRs to `awesome-privacy`, `awesome-webrtc`,
+- [x] **C5. GitHub awesome lists.** Open PRs to `awesome-privacy`, `awesome-webrtc`,
       `awesome-selfhosted` (not applicable, no server; skip), `awesome-e2ee` style lists.
 - [ ] **C6. Privacy Guides forum** (discuss.privacyguides.net), post in "Tool Suggestions" with
       an honest threat-model writeup. They will push back on "military-grade" wording; that is
@@ -256,5 +256,12 @@ because those communities will find them within an hour. Fixing them first makes
   crypto.getRandomValues; SAS bound to DTLS fingerprints; history in sessionStorage; STUN trade-off
   is FAQ question 7. README, outreach copy, privacy pages, CLAUDE.md updated to match. I5 (LICENSE)
   still open: owner's choice.
+- 2026-09-06 (GitHub side): MIT LICENSE added. Repo has description, homepage, 10 topics, release
+  v1.0.0. Pull requests opened from the gradikay account, each disclosing authorship and AI drafting:
+  https://github.com/lissy93/awesome-privacy/pull/802,
+  https://github.com/pluja/awesome-privacy/pull/1088,
+  https://github.com/anondotli/awesome-privacy-tools/pull/52.
+  emircem/awesome-webrtc skipped (0 stars, last commit 2017). Check the PRs weekly for maintainer
+  questions; reply from the same account.
   GSC Performance (all time): 1 query "btmessage", 1 impression, 0 clicks. Bing index: 0 pages.
   Backlinks: 0. AI crawlers: blocked at Cloudflare (403).
