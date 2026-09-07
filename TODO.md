@@ -74,11 +74,11 @@ the on-page work is. Each item below is one link from a relevant site.
 - [x] **C1. Public GitHub README.** The repo is `github.com/BTwinus/btwinus`. Make sure it is
       public and the README describes the product, links to `https://btwinus.com`, and explains
       the crypto (reuse `llms.txt`). GitHub links are nofollow but they get crawled and cited.
-- [ ] **C2. Show HN.** Post "Show HN: Btwinus – E2E encrypted P2P chat in a link, no server,
+- [ ] **C2. Show HN.** (parked, see Status: needs the owner's own words and presence) Post "Show HN: Btwinus – E2E encrypted P2P chat in a link, no server,
       no account" with a short technical explanation (SDP compressed + AES-GCM in the URL
       fragment, two-channel passphrase). HN links get scraped by dozens of aggregators.
 - [ ] **C3. Product Hunt launch.** One-line tagline plus 3 screenshots (light + dark + mobile).
-- [ ] **C4. AlternativeTo.** Create a listing as an alternative to Signal, ChatCrypt, otr.to,
+- [x] **C4. AlternativeTo.** Create a listing as an alternative to Signal, ChatCrypt, otr.to,
       Privnote, OneTimeSecret.
 - [x] **C5. GitHub awesome lists.** Open PRs to `awesome-privacy`, `awesome-webrtc`,
       `awesome-selfhosted` (not applicable, no server; skip), `awesome-e2ee` style lists.
@@ -288,5 +288,10 @@ Cloudflare can set for a GitHub Pages site:
 - 2026-09-07: Cloudflare done by the owner: HSTS one year, Response Header Transform rule with
   CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Verified live.
   Bot report on PR #802 answered. Remaining red marks (repo age, stars, contributors) need time.
+- 2026-09-07: AlternativeTo listing submitted by the owner with ~12 alternatives (Privnote, Telegram,
+  Signal, One-Time Secret, BurnChat, Niltalk, vanish.so, Nix, Olvid, Session, SimpleX, Briar, Wire).
+  Awaiting review; check the My submissions page. Hacker News skipped on purpose: new-account
+  restriction on Show HN plus their rule against AI-written text; the owner would have to write and
+  discuss it personally. Screenshots for directories live in docs/screenshots/.
   GSC Performance (all time): 1 query "btmessage", 1 impression, 0 clicks. Bing index: 0 pages.
   Backlinks: 0. AI crawlers: blocked at Cloudflare (403).
