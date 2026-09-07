@@ -226,7 +226,7 @@ because those communities will find them within an hour. Fixing them first makes
       behind symmetric NATs cannot connect at all. Adding a TURN relay would fix connectivity but
       contradicts "no server" and would see (encrypted) traffic; state the trade-off in the FAQ instead,
       and consider a non-Google STUN host.
-- [ ] **I5. Add a LICENSE file.** README says "see LICENSE (not yet added)". Lissy93/awesome-privacy
+- [x] **I5. Add a LICENSE file.** README says "see LICENSE (not yet added)". Lissy93/awesome-privacy
       and AlternativeTo both require one. MIT or AGPL are the usual choices for this kind of tool.
 
 ## H. Measurement (so this list can be re-checked)

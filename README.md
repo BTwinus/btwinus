@@ -91,4 +91,4 @@ The landing pages exist in English (`/`), French (`/fr/`), and Lingala (`/ln/`),
 
 ## License
 
-License: see LICENSE (not yet added)
+MIT. See [LICENSE](LICENSE).
