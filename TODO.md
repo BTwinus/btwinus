@@ -235,9 +235,9 @@ Done in the repo: CSP meta tag on every page, `/.well-known/security.txt` (+ `/s
 `.nojekyll`, GitHub private vulnerability reporting enabled. The rest are HTTP headers, which only
 Cloudflare can set for a GitHub Pages site:
 
-- [ ] **J1. HSTS to one year.** Cloudflare → SSL/TLS → Edge Certificates → HTTP Strict Transport
+- [x] **J1. HSTS to one year.** Cloudflare → SSL/TLS → Edge Certificates → HTTP Strict Transport
       Security → Enable: Max Age 12 months, Include subdomains on, Preload on. Currently 30 days.
-- [ ] **J2. Response headers.** Cloudflare → Rules → Transform Rules → Modify Response Header →
+- [x] **J2. Response headers.** Cloudflare → Rules → Transform Rules → Modify Response Header →
       Create rule "Security headers", expression `true` (all requests), Set static:
       - `X-Frame-Options` = `DENY`
       - `X-Content-Type-Options` = `nosniff`
@@ -285,5 +285,8 @@ Cloudflare can set for a GitHub Pages site:
   https://github.com/anondotli/awesome-privacy-tools/pull/52.
   emircem/awesome-webrtc skipped (0 stars, last commit 2017). Check the PRs weekly for maintainer
   questions; reply from the same account.
+- 2026-09-07: Cloudflare done by the owner: HSTS one year, Response Header Transform rule with
+  CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Verified live.
+  Bot report on PR #802 answered. Remaining red marks (repo age, stars, contributors) need time.
   GSC Performance (all time): 1 query "btmessage", 1 impression, 0 clicks. Bing index: 0 pages.
   Backlinks: 0. AI crawlers: blocked at Cloudflare (403).
