@@ -8,7 +8,7 @@ Btwinus is **anonymous, end-to-end encrypted, browser-only, peer-to-peer chat vi
 
 The pitch on the homepage — "no app, no account, no server" — is **literally true**, not marketing. There is no backend. The `server/` directory exists but is empty. The encryption happens in the browser, the WebRTC handshake travels through the URL itself, and once two peers are connected, messages go directly browser-to-browser. Preserve that invariant.
 
-Domain: `btwinus.com`. Hosting: GitHub Pages (via `CNAME` file). Analytics: Google `gtag.js` (`G-G0XHHXR5YY`) with **Consent Mode v2** — `analytics_storage` defaults to `denied` (inline in each GA page's head, before `config`), flipped to `granted` only by the cookie banner in `js/consent.js`. There are no ads, so `ad_*` consent signals stay permanently denied. Choice persists in `localStorage['btw_consent']` (`granted`/`denied`). GA is only on `/`, `/fr/`, `/ln/`, `/chat.html` — blog pages have no analytics. Bing Webmaster verification meta tag is in all main landing pages.
+Domain: `btwinus.com`. Hosting: GitHub Pages (via `CNAME` file), **proxied by Cloudflare** (`server: cloudflare` on every response). Cloudflare's bot settings sit in front of `robots.txt`: its "Block AI bots" toggle returns 403 to GPTBot/ClaudeBot/PerplexityBot no matter what `robots.txt` says, so keep it off. Verify with `curl -o /dev/null -w '%{http_code}' -A GPTBot https://btwinus.com/` → must be 200. Analytics: Google `gtag.js` (`G-G0XHHXR5YY`) with **Consent Mode v2** — `analytics_storage` defaults to `denied` (inline in each GA page's head, before `config`), flipped to `granted` only by the cookie banner in `js/consent.js`. There are no ads, so `ad_*` consent signals stay permanently denied. Choice persists in `localStorage['btw_consent']` (`granted`/`denied`). GA is only on `/`, `/fr/`, `/ln/`, `/chat.html` — blog pages have no analytics. Bing Webmaster verification meta tag is in all main landing pages.
 
 ## How to work on it
 
@@ -40,6 +40,10 @@ There is **no build step**. No bundler, no transpiler, no package.json. You edit
 /sitemap.xml         → Lists en/fr/ln/chat/blog URLs with hreflang annotations
 /robots.txt          → Allows everything, points to sitemap
 /llms.txt            → AI-crawler-friendly summary of the product
+/blog/feed.xml       → RSS feed of the blog. Hand-maintained; add an <item> when you publish a post.
+/og.png              → 1200×630 social share image. Rendered from og.svg with headless Chrome; keep og.svg as the source.
+/<32 hex>.txt        → IndexNow key file. See \"After deploying\" below.
+/404.html            → Real not-found page (noindex). GitHub Pages serves it with a 404 status.
 /privacy/            → Privacy policy (en). Also /fr/privacy/ and /ln/privacy/. Linked from the consent banner.
 /server/             → Empty placeholder. There is no backend. Don't fill it without discussing first.
 ```
@@ -103,13 +107,24 @@ If you add a new asset that should work offline, add it to the `ASSETS` array an
 ## Cache version numbers (current state)
 
 These are scattered. When you change a file, find the existing `?v=N` references and bump. Approximate current values:
-- `style.css?v=19`
-- `blog.css?v=3`
+- `style.css?v=22`
+- `blog.css?v=4`
 - `theme.js?v=17`
-- `i18n.js?v=20`
+- `i18n.js?v=22`
 - `matrix.js`, `home.js`, `demo.js` → `?v=16`
+- `consent.js?v=2`
 
 This is fragile. Don't be afraid to bump even if you're not 100% sure — over-bumping costs one extra fetch, under-bumping serves stale content.
+
+## After deploying
+
+Ping IndexNow so Bing and Yandex pick up changed URLs within minutes (Google does not use IndexNow). The key is the filename of the `.txt` at the repo root:
+
+```
+curl "https://api.indexnow.org/indexnow?url=https://btwinus.com/&key=a6b6e5f6d2e0ba8a54dda1e1b505f81c"
+```
+
+For several URLs, POST a JSON body (`host`, `key`, `urlList`) to `https://api.indexnow.org/indexnow` instead. Also bump `lastmod` in `sitemap.xml` for any page whose content changed.
 
 ## Conventions
 
@@ -120,6 +135,8 @@ This is fragile. Don't be afraid to bump even if you're not 100% sure — over-b
 - **`data-i18n="key"`** for translatable text. `data-i18n-ph="key"` for placeholders.
 - **Absolute paths (`/css/...`, `/js/...`) in subdirectory pages** (`/fr/`, `/ln/`, `/blog/*/`). Root `index.html` uses relative (`css/...`) — both forms exist for historical reasons. Don't mass-rewrite.
 - **`<noscript>` fallback is mandatory on JS-critical pages.** The whole product is JS-driven (crypto, WebRTC, UI). `chat.html` has a full-screen `.noscript-screen` ("JavaScript is required"); the three landing pages have a localized `.noscript-banner` (en/fr/ln, hardcoded since i18n.js can't run with JS off). Keep these in sync if you add a language or a new app page. Styles are in `style.css` (`.noscript-banner` / `.noscript-screen`).
+- **The homepage `<h1>` is the tagline, not the logo.** The logo is a `<div class="logo">`; `home_tagline` sits in `<h1 class="home-tagline">`. Keep it that way, it is the only keyword-bearing H1 on the page.
+- **No "military-grade", "spy-grade", "NSA approved" copy.** Removed everywhere (ticker, sec_title, JSON-LD, keywords). Privacy communities treat it as a red flag and Google treated the old ticker as keyword stuffing. Describe the actual primitives instead.
 - **Never render the contact email as visible plain text.** The privacy contact (`artivicolab@gmail.com`) must only appear inside a `mailto:` `href`, shown to users as a localized "Contact us" link (EN "contact us", FR "contactez-nous", LN "benga biso"). Keeps it out of naive scrapers while still satisfying GDPR's working-contact requirement. Applies anywhere the address would otherwise be printed.
 
 ## Gotchas that already bit us

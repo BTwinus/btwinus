@@ -14,7 +14,7 @@ const I18N = {
 
     // ── Security strip ────────────────────────────────────────────────────
     sec_eyebrow:    '🛡 Encryption standard',
-    sec_title:      'We put military-grade encryption<br>in a browser link. No app. No account. No server.',
+    sec_title:      'We put AES-256 end-to-end encryption<br>in a browser link. No app. No account. No server.',
     sec_sub:        'Until now, this level of encryption required apps, accounts, and trust in a company. Signal needs your phone number. PGP needs software. Enterprise tools need registration. Btwinus puts AES-256 end-to-end encryption directly in a shareable link. Anyone can use it, nothing is stored, and no one is in between.',
     spec_cipher:    'Cipher',
     spec_key_deriv: 'Key derivation',
@@ -97,10 +97,27 @@ const I18N = {
     footer_disappears: 'Disappears on close',
     footer_anonymous:  'Anonymous',
 
+    // ── FAQ ───────────────────────────────────────────────────────────────
+    faq_title: 'Frequently asked questions',
+    faq_1_q: 'Is Btwinus free?',
+    faq_1_a: 'Yes. There is no subscription, no ads, and no premium tier. Everything runs in your browser, so there is nothing to pay for.',
+    faq_2_q: 'Do I need to install an app or create an account?',
+    faq_2_a: 'No. Open the link in any modern browser. No email, no phone number, no sign-up of any kind.',
+    faq_3_q: 'Where are my messages stored?',
+    faq_3_a: 'Nowhere. Messages travel directly between the two browsers over an encrypted WebRTC connection. When either person closes the tab, the conversation is gone.',
+    faq_4_q: 'Why do I have to send the passphrase separately?',
+    faq_4_a: 'The link is encrypted with the passphrase. If both travel through the same channel, whoever can read that channel has both. Sending the passphrase by phone, SMS, or in person means an attacker would have to compromise two channels instead of one.',
+    faq_5_q: 'How is this different from Signal or WhatsApp?',
+    faq_5_a: 'Those need an app, a phone number, and a company’s servers to route messages. Btwinus needs none of that. It is built for one-off private conversations, not as a replacement for your everyday messenger.',
+    faq_6_q: 'Does it work on mobile?',
+    faq_6_a: 'Yes, in Chrome, Safari, Firefox, and Edge on iOS and Android. The invite link can be shown as a QR code so the other person only has to scan it.',
+
     // ── Site footer ───────────────────────────────────────────────────────
     site_footer_tagline: 'Anonymous, end-to-end encrypted chat via a link. No app, no account, no server.',
     site_footer_guides:  'Guides',
     site_footer_legal:   'Legal',
+    site_footer_project: 'Project',
+    site_footer_source:  'Source code on GitHub',
     site_footer_privacy: 'Privacy policy',
   },
 
@@ -119,7 +136,7 @@ const I18N = {
 
     // ── Security strip ────────────────────────────────────────────────────
     sec_eyebrow:    '🛡 Standard de chiffrement',
-    sec_title:      'Nous avons mis le chiffrement militaire<br>dans un lien. Sans appli. Sans compte. Sans serveur.',
+    sec_title:      'Nous avons mis le chiffrement AES-256 de bout en bout<br>dans un lien. Sans appli. Sans compte. Sans serveur.',
     sec_sub:        'Jusqu\'ici, ce niveau de chiffrement nécessitait des applications, des comptes et de la confiance envers une entreprise. Signal demande votre numéro. PGP demande un logiciel. Btwinus met le chiffrement AES-256 directement dans un lien partageable. Accessible à tous, rien n\'est stocké, personne n\'est au milieu.',
     spec_cipher:    'Chiffrement',
     spec_key_deriv: 'Dérivation de clé',
@@ -202,10 +219,27 @@ const I18N = {
     footer_disappears: 'Disparaît à la fermeture',
     footer_anonymous:  'Anonyme',
 
+    // ── FAQ ───────────────────────────────────────────────────────────────
+    faq_title: 'Questions fréquentes',
+    faq_1_q: 'Btwinus est-il gratuit ?',
+    faq_1_a: 'Oui. Pas d’abonnement, pas de publicité, pas de version premium. Tout fonctionne dans votre navigateur, il n’y a donc rien à payer.',
+    faq_2_q: 'Faut-il installer une appli ou créer un compte ?',
+    faq_2_a: 'Non. Ouvrez le lien dans n’importe quel navigateur moderne. Ni email, ni numéro de téléphone, ni inscription.',
+    faq_3_q: 'Où sont stockés mes messages ?',
+    faq_3_a: 'Nulle part. Les messages circulent directement entre les deux navigateurs via une connexion WebRTC chiffrée. Dès que l’un des deux ferme l’onglet, la conversation disparaît.',
+    faq_4_q: 'Pourquoi envoyer la phrase de passe séparément ?',
+    faq_4_a: 'Le lien est chiffré avec la phrase de passe. Si les deux passent par le même canal, quiconque lit ce canal possède les deux. Envoyer la phrase de passe par téléphone, SMS ou en personne oblige un attaquant à compromettre deux canaux au lieu d’un.',
+    faq_5_q: 'Quelle différence avec Signal ou WhatsApp ?',
+    faq_5_a: 'Ces services demandent une appli, un numéro de téléphone et les serveurs d’une entreprise pour acheminer les messages. Btwinus n’a besoin de rien de tout cela. Il est conçu pour des conversations privées ponctuelles, pas pour remplacer votre messagerie quotidienne.',
+    faq_6_q: 'Ça marche sur mobile ?',
+    faq_6_a: 'Oui, dans Chrome, Safari, Firefox et Edge sur iOS et Android. Le lien d’invitation peut s’afficher en QR code : l’autre personne n’a qu’à le scanner.',
+
     // ── Site footer ───────────────────────────────────────────────────────
     site_footer_tagline: 'Chat anonyme et chiffré de bout en bout via un lien. Sans application, sans compte, sans serveur.',
     site_footer_guides:  'Guides',
     site_footer_legal:   'Mentions légales',
+    site_footer_project: 'Projet',
+    site_footer_source:  'Code source sur GitHub',
     site_footer_privacy: 'Confidentialité',
   },
 
@@ -224,7 +258,7 @@ const I18N = {
 
     // ── Security strip ────────────────────────────────────────────────────
     sec_eyebrow:    '🛡 Mibeko ya bokangami',
-    sec_title:      'Tozali kotia bokangami ya mampinga<br>na kati ya lien. Aplikasyo te. Konti te. Sɛrvɛr te.',
+    sec_title:      'Tozali kotia bokangami AES-256 ya ndɛlɛ-na-ndɛlɛ<br>na kati ya lien. Aplikasyo te. Konti te. Sɛrvɛr te.',
     sec_sub:        'Tii lelo, bokangami ya boye esengaki aplikasyo, konti, mpe kotyela kompani motema. Signal esɛngaka nimero ya yo. PGP esɛngaka logiciel. Btwinus etii bokangami AES-256 ya ndɛlɛ-na-ndɛlɛ na lien moko ya kopesa. Moto nyonso akoki kosalela yango, eloko ebombami te, mpe moto azali na katikati te.',
     spec_cipher:    'Bokangami',
     spec_key_deriv: 'Bobimisi ya fungola',
@@ -307,10 +341,27 @@ const I18N = {
     footer_disappears: 'Esili na bofungwami',
     footer_anonymous:  'Bonkundi',
 
+    // ── FAQ ───────────────────────────────────────────────────────────────
+    faq_title: 'Mituna oyo batunaka mingi',
+    faq_1_q: 'Btwinus ezali ofele?',
+    faq_1_a: 'Ɛɛ. Abonnement te, piblisite te, version premium te. Nyonso esalaka na navigateur ya yo, boye eloko ya kofuta ezali te.',
+    faq_2_q: 'Nasengeli kotia aplikasyo to kofungola konti?',
+    faq_2_a: 'Te. Fungola lien na navigateur nyonso ya sika. Email te, nimero ya telefoni te, inscription te.',
+    faq_3_q: 'Ba-message na ngai ebombami wapi?',
+    faq_3_a: 'Esika moko te. Ba-message ekendaka semba kati ya ba-navigateur mibale na nzela ya WebRTC ekangami. Soki moto moko akangi onglet, lisolo esili.',
+    faq_4_q: 'Mpo na nini nasengeli kotinda liloba ya bokɔti na nzela mosusu?',
+    faq_4_a: 'Lien ekangami na liloba ya bokɔti. Soki nyonso mibale eleki na nzela moko, moto oyo atangi nzela yango azwi nyonso mibale. Kotinda liloba ya bokɔti na mbila, SMS, to miso na miso elingi koloba moyibi asengeli kobuka nzela mibale, kasi moko te.',
+    faq_5_q: 'Ekeseni ndenge nini na Signal to WhatsApp?',
+    faq_5_a: 'Yango esɛngaka aplikasyo, nimero ya telefoni, mpe ba-sɛrvɛr ya kompani mpo na kotinda ba-message. Btwinus esɛngaka ata moko te. Esalemi mpo na masolo ya sekele ya mbala moko, kasi mpo na kokitanisa messagerie ya yo ya mokolo na mokolo te.',
+    faq_6_q: 'Esalaka na telefoni?',
+    faq_6_a: 'Ɛɛ, na Chrome, Safari, Firefox, mpe Edge na iOS mpe Android. Lien ya libyangi ekoki komonisama lokola code QR mpo moto mosusu a-scanner yango kaka.',
+
     // ── Site footer ───────────────────────────────────────────────────────
     site_footer_tagline: 'Lisolo ya bonkundi mpe ekangami ndɛlɛ-na-ndɛlɛ na nzela ya lien. Aplikasyo te, konti te, sɛrvɛr te.',
     site_footer_guides:  'Malako',
     site_footer_legal:   'Mibeko',
+    site_footer_project: 'Mosala',
+    site_footer_source:  'Code source na GitHub',
     site_footer_privacy: 'Mibeko ya bonkundi',
   }
 };

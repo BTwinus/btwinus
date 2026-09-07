@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Btwinus Blog</title>
+  <link>https://btwinus.com/blog/</link>
+  <description>Practical writing on private messaging, end-to-end encryption, anonymous chat, and how to share secrets safely without leaving a trail.</description>
+  <language>en</language>
+  <atom:link href="https://btwinus.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>How to share a password without leaving a copy behind</title>
+    <link>https://btwinus.com/blog/share-password-securely/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/share-password-securely/</guid>
+    <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+    <description>Email, Slack, and WhatsApp keep a copy of every password you send. Here&#x27;s what actually goes wrong, and the safer ways to share credentials.</description>
+  </item>
+  <item>
+    <title>Encrypted chat with no account: how Btwinus puts AES-256 in a link</title>
+    <link>https://btwinus.com/blog/encrypted-chat-no-account/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/encrypted-chat-no-account/</guid>
+    <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+    <description>Most &#x27;encrypted&#x27; messengers still need a phone number and a server. Here&#x27;s how Btwinus puts real AES-256 directly inside a shareable link.</description>
+  </item>
+  <item>
+    <title>Signal vs Telegram vs Btwinus: which one is actually anonymous?</title>
+    <link>https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/</guid>
+    <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+    <description>The word &#x27;anonymous&#x27; gets thrown around loosely in messaging. Here&#x27;s how Signal, Telegram, and Btwinus actually compare on identity, server retention, and metadata leakage — with an honest table.</description>
+  </item>
+  <item>
+    <title>For journalists: how to receive anonymous tips without leaving a server trail</title>
+    <link>https://btwinus.com/blog/anonymous-tips-for-journalists/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/anonymous-tips-for-journalists/</guid>
+    <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+    <description>Most &#x27;secure&#x27; tip lines still leak metadata or require sources to install something. Here&#x27;s a practical guide to receiving anonymous tips with the lowest possible friction and the smallest possible trail.</description>
+  </item>
+</channel>
+</rss>

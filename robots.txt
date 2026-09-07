@@ -1,7 +1,9 @@
 User-agent: *
 Allow: /
 
-# AI crawlers — explicitly welcome
+# AI crawlers — explicitly welcome.
+# NOTE: the domain is proxied by Cloudflare. Its "Block AI bots" setting overrides
+# this file; keep it off (or allow-list these agents) or the rules below do nothing.
 User-agent: GPTBot
 Allow: /
 
