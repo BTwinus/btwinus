@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat chiffré sans compte : comment Btwinus met de l'AES-256 dans un lien | Btwinus Chat</title>
+  <meta name="description" content="La plupart des messageries « chiffrées » exigent encore un numéro de téléphone et un serveur. Voici comment Btwinus place un vrai chiffrement AES-256 directement dans un lien partageable.">
+  <meta name="keywords" content="chat chiffré sans compte, chat anonyme sans inscription, chat privé sans numéro de téléphone, chat chiffré navigateur, lien de chat AES-256, alternative à signal sans téléphone, chiffrement de bout en bout navigateur, chat chiffré éphémère, chat chiffré WebRTC, messagerie chiffrée P2P">
+  <link rel="alternate" type="application/rss+xml" title="Btwinus Blog" href="https://btwinus.com/blog/feed.xml">
+  <link rel="canonical" href="https://btwinus.com/fr/blog/chat-chiffre-sans-compte/">
+  <link rel="alternate" hreflang="en" href="https://btwinus.com/blog/encrypted-chat-no-account/">
+  <link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/chat-chiffre-sans-compte/">
+  <link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/encrypted-chat-no-account/">
+  <meta property="og:title" content="Chat chiffré sans compte : comment Btwinus met de l'AES-256 dans un lien">
+  <meta property="og:description" content="La plupart des applications « chiffrées » exigent encore un numéro de téléphone et un serveur. Voici comment Btwinus place un vrai chiffrement AES-256 directement dans un lien partageable.">
+  <meta property="og:url" content="https://btwinus.com/fr/blog/chat-chiffre-sans-compte/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://btwinus.com/og.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chat chiffré sans compte : comment Btwinus met de l'AES-256 dans un lien">
+  <meta name="twitter:description" content="Comment Btwinus place un chiffrement AES-256 de bout en bout directement dans un lien partageable — sans compte, sans serveur.">
+  <meta name="twitter:image" content="https://btwinus.com/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Chat chiffré sans compte : comment Btwinus met de l'AES-256 dans un lien",
+    "description": "La plupart des messageries « chiffrées » exigent encore un numéro de téléphone, un compte et un serveur. Voici comment Btwinus place un vrai chiffrement de bout en bout directement dans un lien partageable.",
+    "author": { "@type": "Person", "name": "Gradi K.", "url": "https://github.com/BTwinus" },
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" },
+    "datePublished": "2026-05-10",
+    "dateModified": "2026-09-06",
+    "mainEntityOfPage": "https://btwinus.com/fr/blog/chat-chiffre-sans-compte/",
+    "image": "https://btwinus.com/og.png",
+    "inLanguage": "fr"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://btwinus.com/fr/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://btwinus.com/fr/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Chat chiffré sans compte", "item": "https://btwinus.com/fr/blog/chat-chiffre-sans-compte/" }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <meta name="msapplication-TileColor" content="#5865f2">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="/css/style.css?v=22">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/fr/">Btwinus</a>
+    <a href="/fr/blog/">← Tous les articles</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <p class="blog-meta">10 mai 2026 · 8 min de lecture</p>
+    <h1 class="blog-title">Chat chiffré sans compte : comment Btwinus met de l'AES-256 dans un lien</h1>
+    <p class="blog-lede">Presque toutes les messageries qui se présentent comme « chiffrées » demandent encore un numéro de téléphone, conservent vos messages sur un serveur, ou les deux. Voici la raison technique pour laquelle c'est une contradiction — et comment s'en passer.</p>
+
+    <div class="blog-body">
+      <p>Ouvrez Signal, la référence absolue de la messagerie chiffrée, et la première chose qu'elle vous demande est votre numéro de téléphone. Ouvrez Telegram et ce sera pareil — et à moins d'ouvrir explicitement une « conversation secrète », vos messages restent sur les serveurs de Telegram sous une forme qu'ils peuvent lire. WhatsApp chiffre les messages de bout en bout, mais lie votre identité à un téléphone, synchronise les métadonnées chez Meta et stocke les messages non remis sur ses serveurs.</p>
+
+      <p>Rien de tout cela n'est une escroquerie — ces outils sont infiniment plus sûrs que les simples SMS — mais le discours sur le chiffrement a ses limites. Il protège le contenu en transit. Il ne vous rend pas anonyme, il ne rend pas la conversation éphémère, et il suppose que vous fassiez confiance à une entreprise.</p>
+
+      <p>Btwinus tente de répondre à une question plus étroite : <strong>peut-on avoir une conversation chiffrée ponctuelle avec quelqu'un, sans compte d'un côté ni de l'autre, sans serveur au milieu, et sans qu'il ne reste rien après avoir fermé l'onglet ?</strong> Il s'avère que la réponse est oui, et le mécanisme est intéressant.</p>
+
+      <h2>Ce que « sans compte » exige réellement</h2>
+
+      <p>Pour qu'un chat n'exige véritablement aucun compte, trois conditions doivent être réunies :</p>
+
+      <ol>
+        <li><strong>Aucun lien avec une identité.</strong> Pas de numéro de téléphone, pas d'e-mail, pas de nom d'utilisateur — parce que chacun de ces éléments est une ligne dans une base de données quelque part.</li>
+        <li><strong>Aucune rétention sur serveur.</strong> Si un serveur stocke les messages « jusqu'à leur remise », c'est aussi une base de données. Même de façon éphémère.</li>
+        <li><strong>Transport direct.</strong> Les messages doivent voyager d'un navigateur à l'autre sans passer par un relais capable de les lire.</li>
+      </ol>
+
+      <p>La plupart des outils de chat « sans inscription » échouent au point 2 ou au point 3. Ils utilisent un serveur pour relayer les messages, et même s'ils les suppriment après remise, le serveur peut tout lire en transit.</p>
+
+      <h2>Le modèle Btwinus : le chiffrement dans l'URL</h2>
+
+      <p>Voici l'astuce : au lieu d'utiliser un serveur pour mettre deux navigateurs en relation, la mise en relation passe <em>par le lien lui-même</em>. Le lien contient les informations chiffrées nécessaires pour démarrer une connexion pair-à-pair. Le navigateur du destinataire les déchiffre, répond, et les deux navigateurs se connectent directement sans jamais parler à un serveur.</p>
+
+      <p>Étape par étape :</p>
+
+      <ol>
+        <li><strong>Alice clique sur « Démarrer un nouveau chat ».</strong> Son navigateur génère une nouvelle clé AES-256, dérivée d'une phrase secrète générée aléatoirement grâce à PBKDF2 avec 100 000 itérations. Le navigateur crée également une offre WebRTC — le matériel cryptographique de négociation nécessaire pour établir une connexion pair-à-pair.</li>
+        <li><strong>L'offre est chiffrée avec la clé AES,</strong> encodée en base64 et intégrée dans un fragment d'URL (la partie après le <code>#</code>). Les fragments d'URL ne sont jamais envoyés à un serveur, pas même par le navigateur. L'offre chiffrée voyage donc uniquement côté client.</li>
+        <li><strong>Alice envoie le lien par WhatsApp, e-mail, n'importe quoi.</strong> Elle envoie la phrase secrète par un canal différent — un appel téléphonique, un SMS, en personne.</li>
+        <li><strong>Bob ouvre le lien.</strong> Son navigateur voit le blob chiffré dans le fragment, lui demande la phrase secrète, dérive la même clé et déchiffre l'offre.</li>
+        <li><strong>Le navigateur de Bob génère une réponse WebRTC,</strong> la chiffre avec la même clé et produit un lien de réponse qu'il renvoie à Alice.</li>
+        <li><strong>Alice colle le lien de réponse de Bob.</strong> Son navigateur déchiffre la réponse, la transmet à WebRTC, et les deux navigateurs terminent la négociation.</li>
+        <li><strong>À partir de là, les deux navigateurs communiquent directement</strong> via un DataChannel WebRTC, chiffré avec DTLS 1.3. Aucun serveur n'intervient dans aucun message.</li>
+      </ol>
+
+      <p>L'ensemble du dispositif n'exige aucun état côté serveur. La « mise en relation », c'est le lien ; l'« authentification », c'est la phrase secrète ; le « transport », c'est le DTLS intégré à WebRTC. Les seuls appels réseau se font directement de navigateur à navigateur.</p>
+
+      <h2>Pourquoi deux canaux (lien + phrase secrète)</h2>
+
+      <p>La propriété de sécurité la plus importante ici n'est pas l'AES-256 — c'est une commodité. C'est la <strong>séparation en deux canaux</strong>.</p>
+
+      <p>Si vous envoyiez le lien chiffré <em>et</em> la phrase secrète par le même canal (disons, les deux par WhatsApp), un attaquant qui compromet ce canal obtient les deux moitiés et peut tout déchiffrer. Tout le discours sur le chiffrement s'effondre.</p>
+
+      <p>Les envoyer séparément oblige l'attaquant à compromettre deux canaux différents — votre WhatsApp <em>et</em> votre ligne téléphonique, votre e-mail <em>et</em> l'échange verbal en personne. C'est bien plus difficile. Cela signifie aussi que vous pouvez utiliser un canal pas très sécurisé pour le lien (le lien est chiffré, on peut donc le partager publiquement sans risque), tant que la phrase secrète emprunte un chemin plus étroit.</p>
+
+      <p>Ce schéma a un nom en cryptographie : c'est une forme de vérification « hors bande » ou par « canal secondaire », comparable au fonctionnement des numéros de sécurité de Signal, en plus léger.</p>
+
+      <h2>Les briques, nommées</h2>
+
+      <table>
+        <tr>
+          <th>Composant</th>
+          <th>Ce qu'il fait</th>
+        </tr>
+        <tr>
+          <td><strong>AES-256-GCM</strong></td>
+          <td>Chiffrement symétrique de l'offre/réponse WebRTC. Un chiffrement AES-256 de bout en bout, standard éprouvé, ouvert et largement audité.</td>
+        </tr>
+        <tr>
+          <td><strong>PBKDF2 (100 000 itérations)</strong></td>
+          <td>Étire la phrase secrète lisible par un humain (« storm-fox-river-4821 ») en une clé de 256 bits. Les 100 000 itérations rendent la force brute coûteuse, même pour des phrases courtes.</td>
+        </tr>
+        <tr>
+          <td><strong>DataChannel WebRTC</strong></td>
+          <td>Le transport pair-à-pair. Natif au navigateur, aucune bibliothèque nécessaire. Une fois établi, les messages ne touchent aucun serveur.</td>
+        </tr>
+        <tr>
+          <td><strong>DTLS 1.3</strong></td>
+          <td>Le chiffrement de transport que WebRTC utilise par défaut. Moderne, rapide, avec confidentialité persistante parfaite — même si une clé est compromise plus tard, le trafic passé reste illisible.</td>
+        </tr>
+        <tr>
+          <td><strong>Chaîne d'authentification courte</strong></td>
+          <td>Un court condensé des clés de session affiché aux deux utilisateurs, pour qu'ils puissent le comparer de vive voix et confirmer qu'il n'y a pas d'intermédiaire malveillant.</td>
+        </tr>
+      </table>
+
+      <h2>Ce pour quoi cette approche est faite, et ce pour quoi elle ne l'est pas</h2>
+
+      <p><strong>Elle convient pour :</strong> les conversations ponctuelles avec quelqu'un avec qui vous ne partagez aucune relation de compte — <a href="/fr/blog/sources-anonymes-journalistes/">un journaliste qui reçoit une information anonyme d'une source</a>, un avocat avec un nouveau client, un moment confidentiel qui ne devrait exister nulle part ensuite. <a href="/fr/blog/partager-un-mot-de-passe/">Envoyer un secret unique comme un mot de passe</a>. Éviter qu'une entreprise, quelle qu'elle soit, sache que la conversation a eu lieu.</p>
+
+      <p><strong>Elle ne convient pas pour :</strong> la messagerie quotidienne avec des amis. Les messages asynchrones (les deux navigateurs doivent être en ligne pour communiquer). Les discussions de groupe. Le transfert de fichiers au-delà de petits volumes. Tout ce qui doit persister après la fermeture de l'onglet.</p>
+
+      <p>C'est un périmètre délibéré. Les outils qui essaient d'être à la fois privés <em>et</em> toujours disponibles dérivent vers le besoin de serveurs et de comptes. Btwinus a choisi l'inverse — accepter les limites du « tous les deux en ligne, éphémère, une conversation à la fois » en échange des propriétés de confidentialité les plus fortes possible.</p>
+
+      <h2>Le modèle mental, enfin</h2>
+
+      <p>Un chat chiffré n'a pas vraiment besoin d'une application de chat. Il a besoin de :</p>
+
+      <ul>
+        <li>Un moyen pour deux navigateurs de se trouver (le lien)</li>
+        <li>Un secret partagé qu'eux seuls connaissent (la phrase secrète)</li>
+        <li>Un transport direct (WebRTC)</li>
+      </ul>
+
+      <p>Une fois qu'on accepte que la « mise en relation » puisse voyager par n'importe quel canal contrôlé par un humain — WhatsApp pour le lien, appel téléphonique pour la phrase secrète — toute l'infrastructure serveur dont dépendent la plupart des applications de chat devient inutile. Le lien et la phrase secrète réunis <em>sont</em> la mise en relation.</p>
+
+      <p>C'est pourquoi Btwinus tient en une seule page HTML. Rien à héberger, rien où se connecter, rien qui puisse fuiter.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Essayez — démarrez un chat en 5 secondes, sans compte, rien à installer.</p>
+      <a href="/fr/">Démarrer un chat privé →</a>
+    </div>
+
+    <aside class="blog-related">
+      <h2>À lire aussi</h2>
+      <ul>
+        <li><a href="/fr/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus : lequel est vraiment anonyme ?</a></li>
+        <li><a href="/fr/blog/partager-un-mot-de-passe/">Comment partager un mot de passe sans en laisser une copie derrière soi</a></li>
+        <li><a href="/fr/blog/sources-anonymes-journalistes/">Pour les journalistes : recevoir des informations anonymes sans laisser de trace sur un serveur</a></li>
+      </ul>
+    </aside>
+
+    <p class="blog-back"><a href="/fr/blog/">← Retour à tous les articles</a></p>
+  </article>
+</body>
+</html>

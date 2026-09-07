@@ -25,7 +25,10 @@ There is **no build step**. No bundler, no transpiler, no package.json. You edit
 /fr/                 → French landing (full static, translated body + meta)
 /ln/                 → Lingála landing (full static, translated body + meta)
 /chat.html           → The actual app (English only — see "What's NOT translated" below)
-/blog/               → SEO content (4 posts + index)
+/blog/               → SEO content (8 posts + index, English). RSS at /blog/feed.xml
+/fr/blog/            → French translations of the 4 original posts + index, hreflang-paired with /blog/
+/use/                → Six use-case landing pages + hub, linked from the homepage cards
+/docs/outreach.md    → Ready-to-post launch copy (HN, PH, AlternativeTo, Privacy Guides, Reddit, dev.to). Not served.
 /css/style.css       → Everything except blog
 /css/blog.css        → Blog only
 /js/app.js           → The chat app itself (handshake + WebRTC + UI). 713 lines.
@@ -60,6 +63,10 @@ This is the heart of the product. See `js/app.js` lines ~79–115 (crypto primit
 6. **Session verification:** a short authentication string (SAS) is shown to both users so they can verbally compare — defends against MITM during handshake.
 
 Don't change this stack without thinking carefully. The crypto choices are deliberate and conservative (PBKDF2 with high iteration count, AES-GCM for AEAD, WebRTC's standard DTLS).
+
+## Brand in titles
+
+Every `<title>` uses **"Btwinus Chat"**, not bare "Btwinus" (landing pages start with it, all other pages end with `| Btwinus Chat`). Decathlon's BTWIN bike brand owns the bare term in search; "btwinus chat" is the brand query we can actually win. The `WebSite` schema name is "Btwinus Chat" with alternateName "Btwinus". Keep the pattern on new pages.
 
 ## Languages and SEO
 

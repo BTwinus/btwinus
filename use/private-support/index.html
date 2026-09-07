@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private one-on-one support chat that leaves no history | Btwinus Chat</title>
+  <meta name="description" content="For crisis lines, peer support, and therapy pre-sessions: an encrypted browser-to-browser chat with no account, no server, and no message history for anyone to find afterwards.">
+  <meta name="keywords" content="private support chat, anonymous support chat, peer support chat no account, crisis chat no history, confidential chat with counsellor, encrypted chat no account, therapy intake chat private, ephemeral support chat">
+  <link rel="canonical" href="https://btwinus.com/use/private-support/">
+  <meta property="og:title" content="Private one-on-one support chat that leaves no history">
+  <meta property="og:description" content="For crisis lines, peer support, and therapy pre-sessions: an encrypted browser-to-browser chat with no account, no server, and no message history.">
+  <meta property="og:url" content="https://btwinus.com/use/private-support/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://btwinus.com/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Private one-on-one support chat that leaves no history">
+  <meta name="twitter:description" content="Encrypted browser-to-browser support chat. No account, no server, no history left on the device.">
+  <meta name="twitter:image" content="https://btwinus.com/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Private one-on-one support chat that leaves no history",
+    "description": "For crisis lines, peer support, and therapy pre-sessions: an encrypted browser-to-browser chat with no account, no server, and no message history for anyone to find afterwards.",
+    "url": "https://btwinus.com/use/private-support/",
+    "inLanguage": "en",
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://btwinus.com/use/" },
+      { "@type": "ListItem", "position": 3, "name": "Private one-on-one support", "item": "https://btwinus.com/use/private-support/" }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <meta name="msapplication-TileColor" content="#5865f2">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="/css/style.css?v=22">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/">← Home</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <h1 class="blog-title">Private one-on-one support chat that leaves no history</h1>
+    <p class="blog-lede">Someone reaching out for help may be on a shared phone, a family computer, or a device their partner checks. The safest conversation is one that never existed on the device at all. Btwinus is an encrypted, browser-only chat with no account, no server, and nothing left in the history when the tab closes.</p>
+
+    <div class="blog-body">
+      <h2>The problem</h2>
+
+      <p>Peer supporters, helpline volunteers, counsellors doing a first intake, and mentors in sensitive programmes all face the same tension. The person they are helping needs to be able to talk without creating evidence that they talked. A message thread titled "Domestic abuse helpline" on a phone that someone else unlocks is not a neutral artifact. Neither is an app icon, a login email, or a browser history entry.</p>
+
+      <p>At the same time, the supporter does not want to run infrastructure, keep transcripts they are then responsible for, or ask a person in distress to install anything.</p>
+
+      <h2>Why ordinary tools leak</h2>
+
+      <ul>
+        <li><strong>WhatsApp, Messenger, and iMessage</strong> leave the thread on the device, with a name and a preview, and often in a cloud backup. Deleting it is a manual step that people in crisis forget.</li>
+        <li><strong>Dedicated support apps</strong> require an install, an account, often a phone number, and an icon on the home screen that announces itself.</li>
+        <li><strong>Web chat widgets on support sites</strong> usually run through a third-party vendor that stores transcripts, sets tracking cookies, and logs the visitor's IP.</li>
+        <li><strong>Email</strong> creates a searchable record on both sides with a revealing subject line.</li>
+        <li><strong>Video calls</strong> need a quiet room and a face. Text can be done silently, from anywhere, without being overheard.</li>
+      </ul>
+
+      <h2>How Btwinus fits</h2>
+
+      <p>Btwinus is one web page that runs in any modern browser, on any phone or computer, with no account and nothing to install. Starting a chat produces an encrypted invite link and a passphrase. The link carries a WebRTC handshake encrypted with AES-256-GCM, the key derived from the passphrase via PBKDF2 with 100,000 iterations, in the URL fragment, which browsers never send to a server. When both sides connect, messages travel directly between the two browsers. There is no server, no transcript, and no message history. When the tab closes, the conversation is gone from both devices.</p>
+
+      <p>For the person seeking support this means: open a link, type a few words, talk, close the tab. A private browsing window removes even the browser history entry. Nothing to uninstall, nothing to delete, no notification later.</p>
+
+      <h2>Step by step for a support volunteer or counsellor</h2>
+
+      <ol>
+        <li><strong>Agree a time through whatever contact you already have.</strong> Btwinus is a live channel, so it works like an appointment. Even a short reply, "I'll be there at 8", is enough.</li>
+        <li><strong>Start the chat and send the link.</strong> Open btwinus.com, click Start a new chat, and send the invite link through the channel the person first used to reach you. On its own it reveals nothing about the conversation.</li>
+        <li><strong>Send the passphrase separately.</strong> If they reached you by email, send the passphrase by SMS, or read it out on a brief call. If you are agreeing a recurring window, you can agree the passphrase once in person.</li>
+        <li><strong>Receive the reply link.</strong> They open the link, enter the passphrase, and get a reply link copied to their clipboard. They send it back to you. Guide them through this gently; it is the only fiddly step.</li>
+        <li><strong>Connect and check.</strong> Paste the reply link. Both screens show a short authentication string. If you have a voice channel, compare it; matching codes mean no one intercepted the setup.</li>
+        <li><strong>Talk, then close.</strong> When you finish, both of you close the tab. Suggest they use a private browsing window if the device is shared. If your role requires case notes, write them in your own secure system afterwards, from memory.</li>
+      </ol>
+
+      <p>For walk-in settings, a QR code of the invite link on a printed card or a screen, with the passphrase given by the receptionist, lets a person connect from their own phone without saying anything out loud.</p>
+
+      <h2>Honest limitations</h2>
+
+      <ul>
+        <li><strong>Both people must be online at once.</strong> Btwinus is not a hotline queue and has no voicemail. If a person opens a link and no one is there, nothing happens. Publish clear hours.</li>
+        <li><strong>One to one only.</strong> One supporter, one person. Not a group session.</li>
+        <li><strong>IP addresses are mutually visible.</strong> As with any WebRTC connection, each browser learns the other's IP. Btwinus never sees either. For most support contexts this is acceptable; for a person hiding their location from a specific individual, a VPN adds a layer.</li>
+        <li><strong>No message history means no continuity.</strong> The next session starts from nothing. Keep whatever notes your role and ethics allow, in your own system.</li>
+        <li><strong>Not a replacement for a daily messenger, or for emergency services.</strong> Btwinus is a private channel, not a crisis service. If someone is in immediate danger, direct them to local emergency numbers.</li>
+        <li><strong>The device can still be watched.</strong> Btwinus removes the record. It cannot protect against someone looking over a shoulder or monitoring software on the device itself.</li>
+      </ul>
+
+      <p>Btwinus is free and <a href="https://github.com/BTwinus/btwinus">open source</a>. An organisation can review the code before recommending it to the people it serves.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Give someone a way to talk that leaves nothing on their device. No account, no app, no history.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+        <li><a href="/blog/anonymous-tips-for-journalists/">For journalists: how to receive anonymous tips without leaving a server trail</a></li>
+      </ul>
+    </aside>
+
+    <p class="blog-back"><a href="/use/">← All use cases</a></p>
+  </article>
+</body>
+</html>

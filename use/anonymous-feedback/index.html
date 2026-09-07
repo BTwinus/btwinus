@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anonymous feedback channel with no account | Btwinus Chat</title>
+  <meta name="description" content="Let employees, students, or customers give honest feedback in a live encrypted chat that asks for no identity, stores nothing, and cannot be traced back through an account.">
+  <meta name="keywords" content="anonymous feedback tool, anonymous feedback channel, anonymous employee feedback, anonymous student feedback, honest feedback no account, anonymous chat with manager, encrypted chat no account, anonymous suggestion box alternative">
+  <link rel="canonical" href="https://btwinus.com/use/anonymous-feedback/">
+  <meta property="og:title" content="Anonymous feedback channel with no account">
+  <meta property="og:description" content="Let employees, students, or customers give honest feedback in a live encrypted chat that asks for no identity and stores nothing.">
+  <meta property="og:url" content="https://btwinus.com/use/anonymous-feedback/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://btwinus.com/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anonymous feedback channel with no account">
+  <meta name="twitter:description" content="Honest feedback in a live encrypted chat that asks for no identity and stores nothing.">
+  <meta name="twitter:image" content="https://btwinus.com/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Anonymous feedback channel with no account",
+    "description": "Let employees, students, or customers give honest feedback in a live encrypted chat that asks for no identity, stores nothing, and cannot be traced back through an account.",
+    "url": "https://btwinus.com/use/anonymous-feedback/",
+    "inLanguage": "en",
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://btwinus.com/use/" },
+      { "@type": "ListItem", "position": 3, "name": "Anonymous feedback", "item": "https://btwinus.com/use/anonymous-feedback/" }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <meta name="msapplication-TileColor" content="#5865f2">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="/css/style.css?v=22">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/">← Home</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <h1 class="blog-title">Anonymous feedback channel with no account</h1>
+    <p class="blog-lede">People tell the truth when they are sure it cannot be traced back to them. Most "anonymous" feedback tools still know who submitted what. Btwinus is a live, encrypted, browser-only chat that never asks for an identity and keeps no record of the conversation.</p>
+
+    <div class="blog-body">
+      <h2>The problem</h2>
+
+      <p>A manager wants to know what the team really thinks. A teacher wants a student to say what is actually going wrong. A small business wants a customer to be blunt. In each case the honest answer only comes if the person is certain there is no way to link it to them, and certain that it will not sit in a database someone can search later.</p>
+
+      <p>Anonymous survey forms are one-way and impersonal. A real conversation, where you can ask a follow-up question, is far more useful, but until now a real conversation has meant a real identity.</p>
+
+      <h2>Why ordinary tools leak</h2>
+
+      <ul>
+        <li><strong>"Anonymous" survey tools</strong> often record the respondent's email, IP address, browser fingerprint, or the unique link they were sent. The admin dashboard may hide it, but the vendor's database has it.</li>
+        <li><strong>Google Forms and Microsoft Forms</strong> on a workplace account can be set to collect the signed-in user. Even when they are not, the organisation's admin logs show who opened what.</li>
+        <li><strong>Slack, Teams, and work email</strong> are tied to a named account and archived by the employer. There is no anonymous option.</li>
+        <li><strong>Throwaway email accounts</strong> are more work than most people will do, and the provider still logs the signup IP and device.</li>
+        <li><strong>Dedicated HR feedback platforms</strong> promise anonymity, but the feedback lives on their servers and small teams make de-anonymisation trivial ("only three people work night shift").</li>
+      </ul>
+
+      <h2>How Btwinus fits</h2>
+
+      <p>Btwinus is a single web page with no sign-up. Starting a chat generates an encrypted invite link and a passphrase. The link contains a WebRTC handshake encrypted with AES-256-GCM (key derived from the passphrase using PBKDF2 with 100,000 iterations) in the URL fragment, which browsers do not send to servers. When the two browsers connect, messages go directly between them. Btwinus never asks for a name, an email, or a phone number. There is no server, so there is no database of submissions, and no history on either side once the tab is closed.</p>
+
+      <p>Because the person giving feedback can be the one who <em>starts</em> the chat, they control the moment of contact and never have to log in anywhere.</p>
+
+      <h2>Step by step for a manager or teacher</h2>
+
+      <ol>
+        <li><strong>Announce a feedback window.</strong> "Every Friday from 15:00 to 16:00 I'll have Btwinus open. If you want to tell me something anonymously, do this."</li>
+        <li><strong>Tell people how to reach you.</strong> They open btwinus.com, click Start a new chat, and get a link and a passphrase. Have them post the link to a channel where you will see it, ideally one that does not show who posted, such as an anonymous shared inbox, a printed slip in a box, or a shared document with editing history turned off. They send the passphrase a different way, or simply choose one from an agreed list you published in advance.</li>
+        <li><strong>Open the link and enter the passphrase.</strong> Btwinus gives you a reply link. Post it back through the same anonymous channel.</li>
+        <li><strong>Talk.</strong> The person pastes the reply link and you are connected. You can ask follow-up questions; they can decline to answer. Neither side has an identity in the chat unless they type one.</li>
+        <li><strong>Write down the substance, not the person.</strong> There is no transcript. Note the feedback themes for yourself before closing the tab.</li>
+      </ol>
+
+      <p>For a small group in one room, a simpler version works: show a QR code of an invite link on screen, say the passphrase aloud, and let whoever wants to talk scan it. Only the first person to reply connects, so repeat for the next.</p>
+
+      <h2>Honest limitations</h2>
+
+      <ul>
+        <li><strong>Both people must be online at once.</strong> This is a conversation, not a suggestion box. Publish a window and be there.</li>
+        <li><strong>One to one only.</strong> One person at a time. For collecting many short responses, a survey may still be the better tool.</li>
+        <li><strong>Anonymity depends on the channel you use to exchange links.</strong> If the link arrives from a named Slack account, you know who it is. Design the drop-off point carefully.</li>
+        <li><strong>IP addresses are mutually visible.</strong> As with any WebRTC connection, your browser can see the other person's IP. On a shared office or school network that usually reveals little, but a careful person can use a VPN or mobile data. Btwinus itself never sees either IP.</li>
+        <li><strong>Writing style can identify people.</strong> In a small team, how someone writes may give them away. That is true of every anonymous channel.</li>
+        <li><strong>No history.</strong> If you want to act on the feedback, take your own notes.</li>
+      </ul>
+
+      <p>Btwinus is free and <a href="https://github.com/BTwinus/btwinus">open source</a>, which matters here: the people giving feedback can check for themselves that the page stores nothing.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Open a channel people will actually use. No account, no server, no record. Just an honest conversation.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/anonymous-tips-for-journalists/">For journalists: how to receive anonymous tips without leaving a server trail</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+      </ul>
+    </aside>
+
+    <p class="blog-back"><a href="/use/">← All use cases</a></p>
+  </article>
+</body>
+</html>

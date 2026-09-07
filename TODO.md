@@ -51,7 +51,7 @@ Quick summary of what was found:
 
 ## B. Cloudflare and crawler access
 
-- [ ] **B1. Unblock AI crawlers.** In the Cloudflare dashboard: Security → Bots → turn off
+- [x] **B1. Unblock AI crawlers.** In the Cloudflare dashboard: Security → Bots → turn off
       "Block AI bots" (or "AI Scrapers and Crawlers"), or add a WAF custom rule that allows
       user agents `GPTBot`, `ClaudeBot`, `anthropic-ai`, `PerplexityBot`, `ChatGPT-User`,
       `Applebot`. Verify with:
@@ -71,7 +71,7 @@ Quick summary of what was found:
 A four-month-old domain with zero links will not rank for commercial queries no matter how good
 the on-page work is. Each item below is one link from a relevant site.
 
-- [ ] **C1. Public GitHub README.** The repo is `github.com/BTwinus/btwinus`. Make sure it is
+- [x] **C1. Public GitHub README.** The repo is `github.com/BTwinus/btwinus`. Make sure it is
       public and the README describes the product, links to `https://btwinus.com`, and explains
       the crypto (reuse `llms.txt`). GitHub links are nofollow but they get crawled and cited.
 - [ ] **C2. Show HN.** Post "Show HN: Btwinus – E2E encrypted P2P chat in a link, no server,
@@ -137,7 +137,7 @@ the on-page work is. Each item below is one link from a relevant site.
 
 ## E. Brand and naming
 
-- [ ] **E1. Decide the brand strategy.** Ranking for "btwinus" against Decathlon and a
+- [x] **E1. Decide the brand strategy.** Ranking for "btwinus" against Decathlon and a
       five-year-old Kinshasa company is a long fight. Options, pick one and write it down here:
       (a) keep the name, accept that discovery comes from descriptive queries and links, not
       the brand term; (b) add a descriptor everywhere the name appears in titles, e.g.
@@ -156,17 +156,17 @@ the on-page work is. Each item below is one link from a relevant site.
 - [ ] **F1. Publish cadence.** Nothing since 2026-06-14. Commit to one post every two weeks and
       set real `datePublished` values per post (all four currently say 2026-05-10, which makes
       the blog look like a one-day dump).
-- [ ] **F2. French blog.** `/fr/blog/` does not exist. The French SERP for "chat chiffré sans
+- [x] **F2. French blog.** `/fr/blog/` does not exist. The French SERP for "chat chiffré sans
       serveur sans compte" is far less crowded than the English one and the FR landing page has
       no supporting content. Translate the four existing posts first, then write FR-native
       posts. Add each to `sitemap.xml` with hreflang pairs and to `sw.js` navigate fallback
       (`/fr/blog/...` → `/fr/index.html` already works via the `/fr/` prefix rule; verify).
 - [ ] **F3. Lingála blog.** At least one post, e.g. the "share a password" one, to give `/ln/`
       something to link to. Lingála search volume is tiny but there is zero competition.
-- [ ] **F4. Comparison pages.** Competitors rank with pages titled "X vs Y". Write
+- [x] **F4. Comparison pages.** Competitors rank with pages titled "X vs Y". Write
       `/blog/btwinus-vs-privnote/`, `/blog/btwinus-vs-onetimesecret/`, `/blog/btwinus-vs-chatcrypt/`,
       `/blog/btwinus-vs-otr-to/`. Honest tables, same format as the existing Signal post.
-- [ ] **F5. Use-case pages.** The homepage lists six use cases (`uc_*` keys). Each deserves a
+- [x] **F5. Use-case pages.** The homepage lists six use cases (`uc_*` keys). Each deserves a
       500–800 word page: `/use/journalists/`, `/use/lawyers/`, `/use/share-a-password/`,
       `/use/anonymous-feedback/`, `/use/negotiations/`, `/use/support/`. Link them from the
       use-case cards on the homepage. These pages need the `body.blog-page`-style
@@ -176,7 +176,7 @@ the on-page work is. Each item below is one link from a relevant site.
 - [ ] **F7. Blog index has no analytics.** That is deliberate per CLAUDE.md, but it means you
       cannot see which posts get organic traffic. Either add GA with the same Consent Mode
       block to blog pages, or rely on GSC "Performance" per URL. Decide and write it down.
-- [ ] **F8. Author byline.** Posts use `"author": { "@type": "Organization" }`. Google's
+- [x] **F8. Author byline.** Posts use `"author": { "@type": "Organization" }`. Google's
       helpful-content signals favour a named person. Add a `Person` author with a short bio.
 
 ## G. Technical SEO housekeeping (small, do alongside the above)
@@ -200,6 +200,35 @@ the on-page work is. Each item below is one link from a relevant site.
       duplicates the homepage intent. Consider `noindex` on `chat.html` and remove it from the
       sitemap; the app surface does not need to rank, the landing page does.
 
+## I. App weaknesses found while writing the README (fix before Show HN / Privacy Guides)
+
+Found by reading `js/app.js`. Each is already disclosed honestly in `README.md` and `docs/outreach.md`,
+because those communities will find them within an hour. Fixing them first makes the launch land better.
+
+- [ ] **I1. Passphrase entropy is ~28 bits.** `genPassphrase()` (`js/app.js:73`) picks 3 words from a
+      30-word `WORDS` list plus a 4-digit number: 30³ × 9000 ≈ 2.4 × 10⁸ combinations. With the link in
+      hand, PBKDF2 at 100k iterations makes a GPU brute force a matter of hours. Word choice also uses
+      `Math.random`, not `crypto.getRandomValues`. Fix: expand to an EFF-style list of at least 1,000
+      words (4 words ≈ 40 bits, 5 words ≈ 50 bits) and pick with `crypto.getRandomValues`. Keep the
+      `word-word-word-1234` shape so it stays sayable over the phone.
+- [ ] **I2. The SAS is not bound to the DTLS session.** `computeSessionCode()` (`js/app.js:272`) hashes
+      two nonces exchanged over the data channel itself, so a relaying man-in-the-middle forwards them
+      unchanged and both sides still see a matching code. Fix: hash the two DTLS certificate
+      fingerprints from the local and remote SDP (`a=fingerprint:` lines) instead of, or in addition
+      to, the nonces.
+- [ ] **I3. Messages are persisted to localStorage.** `saveMessages()` writes the session to
+      `localStorage['btw_msgs']` for 24 hours (`js/app.js:21`). The "No history" tagline is not literally
+      true while this exists. Either drop the feature, make it opt-in, or change the copy to
+      "cleared when a new chat starts" everywhere the tagline appears (i18n `home_tagline`,
+      `site_footer_tagline`, JSON-LD featureList, llms.txt, privacy pages).
+- [ ] **I4. Single Google STUN server, no TURN.** `ICE_SERVERS` (`js/app.js:2`) is
+      `stun.l.google.com:19302` only. Google sees the public IP of every participant, and two users
+      behind symmetric NATs cannot connect at all. Adding a TURN relay would fix connectivity but
+      contradicts "no server" and would see (encrypted) traffic; state the trade-off in the FAQ instead,
+      and consider a non-Google STUN host.
+- [ ] **I5. Add a LICENSE file.** README says "see LICENSE (not yet added)". Lissy93/awesome-privacy
+      and AlternativeTo both require one. MIT or AGPL are the usual choices for this kind of tool.
+
 ## H. Measurement (so this list can be re-checked)
 
 - [ ] **H1. Monthly check.** GSC Coverage: number of indexed pages (target: all sitemap URLs).
@@ -218,5 +247,10 @@ the on-page work is. Each item below is one link from a relevant site.
   the sitemap at priority 0.3 rather than noindexed. Still open: A2–A5, B1–B2, C (all), E1–E2, F1–F5, F7–F8.
   Note for E1: the Organization `sameAs` already points at the Btwin Us Facebook/Instagram accounts, so
   those profiles are ours; the only real name collision is Decathlon BTWIN.
+- 2026-09-06 (later): Cloudflare AI-bot block confirmed off (GPTBot/ClaudeBot/PerplexityBot → 200).
+  GSC Pages: 4 of 10 indexed (/, /blog/, /chat.html, /fr/). Not indexed: /ln/, 4 blog posts, 3 privacy.
+  Done: E1 → option (b), every title now "Btwinus Chat". F2 French blog (5 pages). F4 four comparison
+  posts. F5 six use-case pages + hub. F8 Person author. C1 README. docs/outreach.md holds all section C
+  copy ready to post. Sitemap now 28 URLs, feed 8 items. New section I lists app weaknesses found.
   GSC Performance (all time): 1 query "btmessage", 1 impression, 0 clicks. Bing index: 0 pages.
   Backlinks: 0. AI crawlers: blocked at Cloudflare (403).

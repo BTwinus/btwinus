@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encrypted lawyer–client chat with no firm server | Btwinus Chat</title>
+  <meta name="description" content="A privileged conversation should not live on a law firm server or a cloud provider. Btwinus is an encrypted, browser-only chat between lawyer and client that stores nothing.">
+  <meta name="keywords" content="secure lawyer client chat, encrypted chat for lawyers, attorney client privilege messaging, confidential client communication, law firm secure messaging, encrypted chat no account, ephemeral legal chat">
+  <link rel="canonical" href="https://btwinus.com/use/lawyers/">
+  <meta property="og:title" content="Encrypted lawyer–client chat with no firm server">
+  <meta property="og:description" content="A privileged conversation should not live on a firm server or a cloud provider. Btwinus is an encrypted, browser-only chat that stores nothing.">
+  <meta property="og:url" content="https://btwinus.com/use/lawyers/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://btwinus.com/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Encrypted lawyer–client chat with no firm server">
+  <meta name="twitter:description" content="Encrypted, browser-only chat between lawyer and client. No account, no server, nothing stored.">
+  <meta name="twitter:image" content="https://btwinus.com/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Encrypted lawyer–client chat with no firm server",
+    "description": "A privileged conversation should not live on a law firm server or a cloud provider. Btwinus is an encrypted, browser-only chat between lawyer and client that stores nothing.",
+    "url": "https://btwinus.com/use/lawyers/",
+    "inLanguage": "en",
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://btwinus.com/use/" },
+      { "@type": "ListItem", "position": 3, "name": "Lawyers and clients", "item": "https://btwinus.com/use/lawyers/" }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <meta name="msapplication-TileColor" content="#5865f2">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="/css/style.css?v=22">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/">← Home</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <h1 class="blog-title">Encrypted lawyer–client chat with no firm server</h1>
+    <p class="blog-lede">Privilege protects a conversation in court. It does not protect the copy sitting on your practice management platform, your client's employer's mail server, or a cloud backup neither of you thought about. Btwinus is a direct, encrypted, browser-to-browser chat that leaves none of those copies behind.</p>
+
+    <div class="blog-body">
+      <h2>The problem</h2>
+
+      <p>Lawyers and clients need to talk quickly, and they usually reach for whatever is at hand: email, WhatsApp, a text message. Each of those creates a durable record on infrastructure controlled by somebody else. That record can be reached by a breach at the provider, a discovery request against a third party, a client's employer who owns the device, or a family member who shares the phone.</p>
+
+      <p>The moments that matter most are also the ones where a record is most dangerous: an initial consultation before the client has decided to engage, a frank assessment of a weak position, or a conversation the client does not want a spouse or employer to find.</p>
+
+      <h2>Why ordinary tools leak</h2>
+
+      <ul>
+        <li><strong>Email</strong> is stored on the firm's mail server, the client's mail server, and both parties' devices and backups. If the client wrote from a work address, their employer typically has the right to read it, which can undermine privilege entirely.</li>
+        <li><strong>Client portals and practice management tools</strong> keep everything by design. That is useful for the file, but it means a vendor's breach is your breach, and the vendor's retention policy becomes your retention policy.</li>
+        <li><strong>WhatsApp and iMessage</strong> encrypt in transit, but the conversation lives on both phones and often in unencrypted cloud backups. A phone handed to a partner, a border agent, or a repair shop exposes it.</li>
+        <li><strong>SMS</strong> is unencrypted, logged by carriers, and visible to anyone who picks up the phone.</li>
+      </ul>
+
+      <h2>How Btwinus fits</h2>
+
+      <p>Btwinus runs entirely in the browser. When you start a chat, your browser creates an encrypted invite link and a passphrase. The WebRTC handshake inside the link is encrypted with AES-256-GCM, with the key derived from the passphrase via PBKDF2 (100,000 iterations), and carried in the URL fragment, which browsers never transmit to any server. Once the client opens the link and enters the passphrase, both browsers connect directly to each other. Messages never touch a firm server, a cloud provider, or Btwinus. There is no account and nothing is written to disk. When either side closes the tab, the conversation is gone.</p>
+
+      <p>The important habit is keeping the <strong>link</strong> and the <strong>passphrase</strong> on different channels. Then no single compromised mailbox or chat app is enough to open the conversation.</p>
+
+      <h2>Step by step for a lawyer</h2>
+
+      <ol>
+        <li><strong>Agree a time on the phone.</strong> Btwinus is live only while both of you are in the tab. Set a time the way you would set a call.</li>
+        <li><strong>Start the chat and email the link.</strong> Open btwinus.com, click Start a new chat, and send the invite link to the client by email or any messenger. On its own the link is unreadable.</li>
+        <li><strong>Give the passphrase by phone.</strong> Call the client and read the passphrase out loud. It is designed to be spoken, something like <code>storm-fox-river-4821</code>. Never type it into the same channel as the link.</li>
+        <li><strong>Receive the reply link.</strong> The client opens the link, enters the passphrase, and Btwinus copies a reply link to their clipboard. They send it back to you by the same route the invite took.</li>
+        <li><strong>Paste it and verify.</strong> Paste the reply link and you are connected. Compare the short authentication string with the client over the phone. If it matches, nobody intercepted the handshake.</li>
+        <li><strong>Record what the file needs, then close.</strong> Anything that must be on the file goes into your own notes, on your own terms. Then close the tab and there is nothing left to secure.</li>
+      </ol>
+
+      <p>If the client is with you in person, you can show the invite link as a QR code instead of sending it, and say the passphrase across the desk.</p>
+
+      <h2>Honest limitations</h2>
+
+      <ul>
+        <li><strong>Both people must be online at once.</strong> There is no inbox. It is a call, not a letter.</li>
+        <li><strong>One to one only.</strong> Not for a client team or a multi-party conference.</li>
+        <li><strong>IP addresses are mutually visible.</strong> As with any WebRTC connection, the client's browser sees your IP and yours sees theirs. Btwinus itself sees neither. If that matters, connect through a VPN.</li>
+        <li><strong>Not a replacement for your file.</strong> Btwinus keeps no history by design. Your record-keeping and professional obligations are unchanged. Take notes.</li>
+        <li><strong>Not a replacement for a daily messenger.</strong> Use it for the sensitive conversations, not for scheduling.</li>
+        <li><strong>Your own rules still apply.</strong> Check your bar or regulator's guidance on client communication and record retention before adopting any tool.</li>
+      </ul>
+
+      <p>Btwinus is free and <a href="https://github.com/BTwinus/btwinus">open source</a>, so your IT lead can read every line of what runs in the browser.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Have a conversation with a client that lives nowhere but your two browsers. No account, no firm server, gone on close.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+        <li><a href="/blog/share-password-securely/">How to share a password without leaving a copy behind</a></li>
+      </ul>
+    </aside>
+
+    <p class="blog-back"><a href="/use/">← All use cases</a></p>
+  </article>
+</body>
+</html>

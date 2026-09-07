@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receive anonymous tips from sources without a server trail | Btwinus Chat</title>
+  <meta name="description" content="A no-account, no-server encrypted chat for journalists and sources. The link and passphrase travel on two channels, messages go browser to browser, and nothing is stored.">
+  <meta name="keywords" content="anonymous tips journalists, secure chat for journalists, whistleblower chat, source protection tool, encrypted chat no account, talk to a journalist anonymously, secure drop alternative, anonymous source communication">
+  <link rel="canonical" href="https://btwinus.com/use/journalists/">
+  <meta property="og:title" content="Receive anonymous tips from sources without a server trail">
+  <meta property="og:description" content="A no-account, no-server encrypted chat for journalists and sources. Link and passphrase on two channels, browser to browser, nothing stored.">
+  <meta property="og:url" content="https://btwinus.com/use/journalists/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://btwinus.com/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Receive anonymous tips from sources without a server trail">
+  <meta name="twitter:description" content="No-account, no-server encrypted chat for journalists and sources. Nothing stored, gone on close.">
+  <meta name="twitter:image" content="https://btwinus.com/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Receive anonymous tips from sources without a server trail",
+    "description": "A no-account, no-server encrypted chat for journalists and sources. The link and passphrase travel on two channels, messages go browser to browser, and nothing is stored.",
+    "url": "https://btwinus.com/use/journalists/",
+    "inLanguage": "en",
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://btwinus.com/use/" },
+      { "@type": "ListItem", "position": 3, "name": "Journalists and sources", "item": "https://btwinus.com/use/journalists/" }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <meta name="msapplication-TileColor" content="#5865f2">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="/css/style.css?v=22">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/">← Home</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <h1 class="blog-title">Receive anonymous tips from sources without a server trail</h1>
+    <p class="blog-lede">A source who wants to talk to you should not have to create an account, install an app, or leave a record on a company server to do it. Btwinus is a browser-only encrypted chat that opens from a link, needs no identity from either side, and disappears when the tab closes.</p>
+
+    <div class="blog-body">
+      <h2>The problem</h2>
+
+      <p>The hardest part of source protection is not the encryption. It is the first contact. A person with something to tell you is usually nervous, non-technical, and on a phone. If the first step is "download Signal and send me your number" or "set up a Tor browser and find our SecureDrop", most of them stop right there. The ones who push through often make a mistake along the way, like messaging from a work account, that undoes the whole point.</p>
+
+      <p>You need a channel that a first-time source can open in ten seconds, that does not ask them who they are, and that does not leave a record anywhere a subpoena, a leak, or a curious IT department could later reach.</p>
+
+      <h2>Why ordinary tools leak</h2>
+
+      <ul>
+        <li><strong>Email</strong> stores every message on at least two mail servers, indefinitely, with full headers showing who wrote to whom and when. Even if you delete it, your provider and theirs still have it.</li>
+        <li><strong>Twitter/X, Instagram, or LinkedIn DMs</strong> tie the conversation to two real, logged-in identities. The platform can read it, and the account itself is the leak.</li>
+        <li><strong>WhatsApp</strong> is end-to-end encrypted, but the source needs your phone number and you get theirs. Contact lists and message metadata sit with Meta, and backups to iCloud or Google Drive are often not encrypted.</li>
+        <li><strong>Signal</strong> is excellent for ongoing relationships, but it still requires a phone number and an app install. For a one-off, anonymous first contact that is a lot to ask.</li>
+        <li><strong>SecureDrop</strong> is the gold standard for document submission, but it requires a newsroom to run and maintain a server, and it requires the source to use Tor. Many newsrooms, especially small and independent ones, cannot run it.</li>
+      </ul>
+
+      <h2>How Btwinus fits</h2>
+
+      <p>Btwinus is a single web page. When you start a chat, your browser generates an encrypted invite link and a human-readable passphrase. The WebRTC handshake is encrypted with AES-256-GCM (key derived from the passphrase with PBKDF2, 100,000 iterations) and packed into the URL fragment, the part after the <code>#</code>, which browsers never send to a server. Once both sides connect, messages travel directly browser to browser over a WebRTC data channel. There is no account, no relay, no message store, and no history. Close the tab and it is gone.</p>
+
+      <p>The security comes from splitting two things across two channels: the <strong>link</strong> goes one way, the <strong>passphrase</strong> goes another. Someone who intercepts only the link has an encrypted blob they cannot open. A short authentication string shown to both sides lets you confirm nobody sat in the middle of the handshake.</p>
+
+      <h2>Step by step for a newsroom</h2>
+
+      <ol>
+        <li><strong>Publish a standing invitation.</strong> On your contact page, tell sources: "Open btwinus.com, click Start a new chat, and send the link it gives you to us at [a public inbox or DM]. Send the passphrase a different way, for example by voice, or a different platform." The source starts the chat, so they never have to trust a link you published.</li>
+        <li><strong>Keep a window open at agreed times.</strong> Btwinus needs both people online at the same moment. Publish a window, for example "weekdays 14:00–16:00 UTC", when a reporter will watch the inbox and open incoming links promptly.</li>
+        <li><strong>Enter the passphrase, get the reply link, send it back.</strong> When you open a source's link and type the passphrase, Btwinus generates a reply link and copies it to your clipboard. Send it back the same way the link came in. The source pastes it and you are connected.</li>
+        <li><strong>Compare the short authentication string.</strong> Read the code out loud to each other if you have a voice channel, or compare it on the platform used for the passphrase. Matching codes mean no one intercepted the handshake.</li>
+        <li><strong>Move documents through a separate path.</strong> Btwinus is for the conversation. For files, agree a method in the chat and, if you have it, direct them to SecureDrop.</li>
+        <li><strong>Keep your own notes.</strong> Nothing is saved. Write down what you need, offline, before you close the tab.</li>
+      </ol>
+
+      <p>For the newsroom-side detail on inboxes, timing, and burner accounts, see the fuller guide to <a href="/blog/anonymous-tips-for-journalists/">receiving anonymous tips without a server trail</a>.</p>
+
+      <h2>Honest limitations</h2>
+
+      <ul>
+        <li><strong>Both people must be online at once.</strong> There is no inbox. If the source opens a link and you are not there, nothing happens.</li>
+        <li><strong>One to one only.</strong> A source talks to one reporter, not a desk.</li>
+        <li><strong>IP addresses are visible to each other's browsers.</strong> This is true of every WebRTC connection. A source who needs to hide their network location should connect through a VPN or a network that is not their own. Btwinus never sees either IP, but the two browsers do.</li>
+        <li><strong>It is not a daily messenger.</strong> Use it for first contact and sensitive moments, then move to Signal for an ongoing relationship.</li>
+        <li><strong>No history means no record.</strong> That protects the source, but it also means you must take your own notes.</li>
+        <li><strong>The public inbox you use to receive links is still a channel.</strong> Choose it with care, and never let the passphrase travel through it.</li>
+      </ul>
+
+      <p>Btwinus is free and <a href="https://github.com/BTwinus/btwinus">open source</a>, so anyone can read exactly what the page does before trusting it with a source.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Give a source a way to reach you that needs no account, no app, and no server. Start a chat and see how the link and passphrase work.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/anonymous-tips-for-journalists/">For journalists: how to receive anonymous tips without leaving a server trail</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+      </ul>
+    </aside>
+
+    <p class="blog-back"><a href="/use/">← All use cases</a></p>
+  </article>
+</body>
+</html>

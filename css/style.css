@@ -1463,6 +1463,16 @@ a.logo:hover { color: var(--accent-h); }
   margin: 0;
 }
 
+.usecase-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.usecase-link:hover { color: var(--accent-h); text-decoration: underline; }
+
 @media (max-width: 400px) {
   .usecases-grid { grid-template-columns: 1fr; }
 }

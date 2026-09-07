@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Btwinus Blog</title>
+  <title>Btwinus Chat Blog</title>
   <link>https://btwinus.com/blog/</link>
   <description>Practical writing on private messaging, end-to-end encryption, anonymous chat, and how to share secrets safely without leaving a trail.</description>
   <language>en</language>
   <atom:link href="https://btwinus.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Btwinus vs Privnote: which one should you use to share a secret?</title>
+    <link>https://btwinus.com/blog/btwinus-vs-privnote/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/btwinus-vs-privnote/</guid>
+    <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+    <description>Privnote is a one-shot self-destructing note. Btwinus is a live encrypted chat with no server. Here&#x27;s an honest comparison of how each handles storage, keys, and the recipient being offline.</description>
+  </item>
+  <item>
+    <title>Btwinus vs OneTimeSecret: which one should you use to share a secret?</title>
+    <link>https://btwinus.com/blog/btwinus-vs-onetimesecret/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/btwinus-vs-onetimesecret/</guid>
+    <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+    <description>OneTimeSecret is an open source, self-hostable one-shot secret link with server-side encryption. Btwinus is a live serverless chat. An honest comparison of storage, keys, offline recipients, and cost.</description>
+  </item>
+  <item>
+    <title>Btwinus vs ChatCrypt: which one should you use for a private chat?</title>
+    <link>https://btwinus.com/blog/btwinus-vs-chatcrypt/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/btwinus-vs-chatcrypt/</guid>
+    <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+    <description>ChatCrypt is an encrypted group chat room relayed through a server. Btwinus is a one-to-one chat with no server at all. An honest comparison of relay vs P2P, groups, ads, source code, and verification.</description>
+  </item>
+  <item>
+    <title>Btwinus vs otr.to: which one should you use for a private chat?</title>
+    <link>https://btwinus.com/blog/btwinus-vs-otr-to/</link>
+    <guid isPermaLink="true">https://btwinus.com/blog/btwinus-vs-otr-to/</guid>
+    <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+    <description>otr.to and Btwinus are both browser-based P2P chats with no account. The difference is how peers find each other: otr.to uses a PeerJS broker, Btwinus puts the handshake in the link. An honest comparison.</description>
+  </item>
   <item>
     <title>How to share a password without leaving a copy behind</title>
     <link>https://btwinus.com/blog/share-password-securely/</link>

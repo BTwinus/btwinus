@@ -52,6 +52,7 @@ const I18N = {
     uc_passwords_body:     'Share a password, API key, or crypto seed phrase once, directly browser-to-browser. Far safer than email, Slack, or WhatsApp.',
     uc_support_title:      'Private one-on-one support',
     uc_support_body:       'Crisis lines, peer support, therapy pre-sessions. Temporary secure chat that leaves no history behind.',
+    uc_more:               'Learn more →',
 
     // ── Chat page ─────────────────────────────────────────────────────────
     chat_new_chat:    'New chat',
@@ -174,6 +175,7 @@ const I18N = {
     uc_passwords_body:     'Partagez un mot de passe, une clé API ou une phrase mnémotechnique une seule fois, de navigateur à navigateur. Bien plus sûr que l\'email, Slack ou WhatsApp.',
     uc_support_title:      'Soutien individuel privé',
     uc_support_body:       'Lignes de crise, soutien entre pairs, pré-séances thérapeutiques. Chat temporaire et sécurisé sans aucun historique.',
+    uc_more:               'En savoir plus →',
 
     // ── Chat page ─────────────────────────────────────────────────────────
     chat_new_chat:    'Nouvelle conversation',
@@ -296,6 +298,7 @@ const I18N = {
     uc_passwords_body:     'Kabola sinza ya bokɔti, fungola API, to liloba ya crypto mbala moko, kaka navigateur na navigateur. Ezali na libateli koleka email, Slack, to WhatsApp.',
     uc_support_title:      'Lisalisi ya yo moko ya sekele',
     uc_support_body:       'Mibembo ya lisalisi, lisalisi ya baninga, makita ya thérapie. Lisolo ya ntango moke oyo etiki istware te.',
+    uc_more:               'Yeba mingi →',
 
     // ── Chat page ─────────────────────────────────────────────────────────
     chat_new_chat:    'Lisolo ya sika',

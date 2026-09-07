@@ -39,33 +39,48 @@
   </url>
   <url>
     <loc>https://btwinus.com/blog/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/"/>
   </url>
   <url>
     <loc>https://btwinus.com/blog/share-password-securely/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/share-password-securely/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/partager-un-mot-de-passe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/share-password-securely/"/>
   </url>
   <url>
     <loc>https://btwinus.com/blog/encrypted-chat-no-account/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/encrypted-chat-no-account/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/chat-chiffre-sans-compte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/encrypted-chat-no-account/"/>
   </url>
   <url>
     <loc>https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/signal-vs-telegram-vs-btwinus/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/"/>
   </url>
   <url>
     <loc>https://btwinus.com/blog/anonymous-tips-for-journalists/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/anonymous-tips-for-journalists/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/sources-anonymes-journalistes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/anonymous-tips-for-journalists/"/>
   </url>
   <url>
     <loc>https://btwinus.com/privacy/</loc>
@@ -96,5 +111,116 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/privacy/"/>
     <xhtml:link rel="alternate" hreflang="ln" href="https://btwinus.com/ln/privacy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/fr/blog/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/fr/blog/partager-un-mot-de-passe/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/share-password-securely/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/partager-un-mot-de-passe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/share-password-securely/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/fr/blog/chat-chiffre-sans-compte/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/encrypted-chat-no-account/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/chat-chiffre-sans-compte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/encrypted-chat-no-account/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/fr/blog/signal-vs-telegram-vs-btwinus/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/signal-vs-telegram-vs-btwinus/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/signal-vs-telegram-vs-btwinus/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/fr/blog/sources-anonymes-journalistes/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://btwinus.com/blog/anonymous-tips-for-journalists/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://btwinus.com/fr/blog/sources-anonymes-journalistes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://btwinus.com/blog/anonymous-tips-for-journalists/"/>
+  </url>
+  <url>
+    <loc>https://btwinus.com/blog/btwinus-vs-privnote/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/blog/btwinus-vs-onetimesecret/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/blog/btwinus-vs-chatcrypt/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/blog/btwinus-vs-otr-to/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/use/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/use/journalists/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/use/lawyers/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/use/negotiations/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/use/anonymous-feedback/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/use/share-a-password/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://btwinus.com/use/private-support/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

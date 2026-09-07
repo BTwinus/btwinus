@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Btwinus vs otr.to: which one should you use for a private chat? | Btwinus Chat</title>
+  <meta name="description" content="otr.to and Btwinus are both browser-based P2P chats with no account. The difference is how peers find each other: otr.to uses a PeerJS broker, Btwinus puts the handshake in the link. An honest comparison.">
+  <meta name="keywords" content="btwinus vs otr.to, otr.to alternative, otr.to review, p2p chat in browser, webrtc chat no account, off the record chat browser, otr.to vs btwinus, peerjs chat, serverless encrypted chat">
+  <link rel="alternate" type="application/rss+xml" title="Btwinus Blog" href="https://btwinus.com/blog/feed.xml">
+  <link rel="canonical" href="https://btwinus.com/blog/btwinus-vs-otr-to/">
+  <meta property="og:title" content="Btwinus vs otr.to: which one should you use for a private chat?">
+  <meta property="og:description" content="Two browser-based P2P chats with no account. Where otr.to wins, where Btwinus wins, and what 'no servers' really means for each.">
+  <meta property="og:url" content="https://btwinus.com/blog/btwinus-vs-otr-to/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://btwinus.com/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Btwinus vs otr.to: which one should you use for a private chat?">
+  <meta name="twitter:description" content="Two browser-based P2P chats with no account. An honest comparison of what 'no servers' really means.">
+  <meta name="twitter:image" content="https://btwinus.com/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Btwinus vs otr.to: which one should you use for a private chat?",
+    "description": "Two browser-based P2P chats with no account. Where otr.to wins, where Btwinus wins, and what 'no servers' really means for each.",
+    "author": { "@type": "Person", "name": "Gradi K.", "url": "https://github.com/BTwinus" },
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" },
+    "datePublished": "2026-09-06",
+    "dateModified": "2026-09-06",
+    "mainEntityOfPage": "https://btwinus.com/blog/btwinus-vs-otr-to/",
+    "image": "https://btwinus.com/og.png",
+    "inLanguage": "en"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://btwinus.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Btwinus vs otr.to", "item": "https://btwinus.com/blog/btwinus-vs-otr-to/" }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <meta name="msapplication-TileColor" content="#5865f2">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="/css/style.css?v=22">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/blog/">← All posts</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <p class="blog-meta">September 6, 2026 · 6 min read</p>
+    <h1 class="blog-title">Btwinus vs otr.to: which one should you use for a private chat?</h1>
+    <p class="blog-lede">Of all the tools we've compared, otr.to is the closest cousin to Btwinus: a browser-only, no-account, peer-to-peer chat that keeps nothing. Both say "no servers". Only one of them means it literally — and the reason is a small, important detail about how two browsers find each other.</p>
+
+    <div class="blog-body">
+      <p>otr.to launched in 2015 and got a burst of attention for bringing the Off-the-Record protocol into a web page. Btwinus arrived much later with the same instinct — WebRTC, browser only, nothing stored — but a different answer to the hard question of signalling. This post is mostly about that question, because it's where the two actually differ.</p>
+
+      <h2>What otr.to is</h2>
+
+      <p>otr.to is a peer-to-peer chat in the browser, tagline "Anonymous, no logs, no servers". There's no account. Historically you got a short temporary code, shared it, and the other person used it to connect; messages then flowed over a WebRTC data channel between the two browsers, so nothing passed through a chat server. The original 2015 code, published under the Apache 2.0 licence, built on three open libraries: PeerJS for the WebRTC plumbing, a JavaScript implementation of the OTR protocol for message encryption, and CryptoJS for a separate "self-destructing message" feature that stored an AES-encrypted note on a server with the key kept client-side.</p>
+
+      <p>Here's what we could and couldn't verify in 2026. The site is up and still built on PeerJS — the current bundle points at PeerJS's public signalling and TURN servers plus Google's STUN. That matters: PeerJS needs a broker server so that two browsers can exchange connection details before they talk directly. The broker doesn't see your messages, but it does see that two peers connected, from which addresses, and when. "No servers" is true of the chat itself, not of the introduction. The public GitHub repository hasn't had a commit since 2015 and its README is two lines; the live site appears to have been rebuilt since, and we couldn't confirm from the shipped code whether the OTR protocol is still applied on top of WebRTC's own transport encryption. The self-destructing-note page returned a 404 when we checked. We also couldn't find documentation of group chat or file transfer, so we're treating both as unsupported. If you know otherwise, the site's own code is the source of truth.</p>
+
+      <p>None of that is an accusation. It's a one-person open source project from a decade ago that still runs, which is more than most. But if you're choosing it for a sensitive conversation, you should know that some of its 2015 description may not describe what's deployed today.</p>
+
+      <h2>What Btwinus is</h2>
+
+      <p><a href="/">Btwinus</a> is also a one-to-one WebRTC chat with no account, but it removes the broker. When you click "Start a new chat", your browser creates a WebRTC offer, compresses it, encrypts it with AES-256-GCM using a key derived from a generated passphrase (PBKDF2, 100,000 iterations), and puts the result in the URL fragment of an invite link. You send that link one way and the passphrase another. The other person opens the link, enters the passphrase, and their browser produces a reply link the same way; you paste it in and the connection is up. The introduction travels inside the links themselves — no signalling server, no room code, nothing for a third party to log.</p>
+
+      <p>Once connected, messages go directly between the two browsers over WebRTC's built-in DTLS encryption. Both sides see a short authentication string to compare out loud, which catches a man-in-the-middle on the handshake. Close either tab and the session is gone. It's free, has no ads, and is <a href="https://github.com/BTwinus/btwinus">open source</a> with recent commits; the whole app is a static page. (Details in <a href="/blog/encrypted-chat-no-account/">how Btwinus puts AES-256 in a link</a>.)</p>
+
+      <p>The costs are the same shape as otr.to's: two people, both online, text only, no history. Plus one that's specific to Btwinus: the handshake asks more of the recipient — open a link, type a passphrase, send a link back.</p>
+
+      <h2>The honest comparison table</h2>
+
+      <table>
+        <tr>
+          <th>Property</th>
+          <th>otr.to</th>
+          <th>Btwinus</th>
+        </tr>
+        <tr>
+          <td>Account required</td>
+          <td>None</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Message transport</td>
+          <td>WebRTC, browser to browser</td>
+          <td>WebRTC, browser to browser</td>
+        </tr>
+        <tr>
+          <td>How peers find each other</td>
+          <td>PeerJS signalling server (public broker)</td>
+          <td>Encrypted offer/answer inside the links</td>
+        </tr>
+        <tr>
+          <td>Server in the loop</td>
+          <td>Signalling broker + STUN/TURN</td>
+          <td>STUN only, for address discovery</td>
+        </tr>
+        <tr>
+          <td>Secret that gates the chat</td>
+          <td>Short code / link</td>
+          <td>Link + passphrase on separate channels</td>
+        </tr>
+        <tr>
+          <td>Message encryption</td>
+          <td>OTR over WebRTC in 2015 source; unverified in current build; DTLS regardless</td>
+          <td>AES-256-GCM handshake; DTLS on the channel</td>
+        </tr>
+        <tr>
+          <td>Handshake verification</td>
+          <td>OTR supports it in principle; not confirmed in the current UI</td>
+          <td>Short authentication string on both sides</td>
+        </tr>
+        <tr>
+          <td>Both online at once</td>
+          <td>Yes</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Groups</td>
+          <td>Not documented</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Files</td>
+          <td>Not documented</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Open source</td>
+          <td>Yes (Apache 2.0), last commit 2015</td>
+          <td>Yes, actively maintained</td>
+        </tr>
+        <tr>
+          <td>Self-hostable</td>
+          <td>In theory, with your own PeerJS server</td>
+          <td>Yes — static files</td>
+        </tr>
+        <tr>
+          <td>Cost / ads</td>
+          <td>Free, no ads seen</td>
+          <td>Free, no ads</td>
+        </tr>
+      </table>
+
+      <h2>Where otr.to is the better choice</h2>
+
+      <p><strong>Simpler to start.</strong> A broker means you can hand someone a short code and be connected in seconds. Btwinus's link-then-passphrase-then-reply-link flow is more to explain, especially on a phone.</p>
+
+      <p><strong>Shorter links.</strong> Btwinus links carry a whole compressed, encrypted WebRTC offer, so they're long. otr.to's are short, which is nicer for reading out loud or typing.</p>
+
+      <p><strong>TURN relay for hostile networks.</strong> The current otr.to bundle lists TURN servers. If a direct connection can't be made — some corporate firewalls, some mobile carriers — TURN relays the encrypted stream and the chat still works. Btwinus uses STUN only and has no relay fallback, so on those networks it may not connect at all.</p>
+
+      <p><strong>You specifically want the OTR protocol.</strong> If OTR's deniability properties are what you're after and the current build does still use it, otr.to is the only one of the two offering it. Just verify that yourself first.</p>
+
+      <h2>Where Btwinus is the better choice</h2>
+
+      <p><strong>Nobody is introduced by a third party.</strong> With otr.to, a public PeerJS broker learns that two peers connected, their addresses and the time. Btwinus moves the introduction into the links, so the only servers involved are the static host that serves the page and a STUN server that tells your browser its own public address. There's no metadata trail of "these two talked".</p>
+
+      <p><strong>Two secrets on two channels.</strong> A code that anyone can type is a single secret. Btwinus always splits link and passphrase, so an attacker reading one channel has nothing. (This is the same principle behind <a href="/blog/share-password-securely/">sharing a password without leaving a copy behind</a>.)</p>
+
+      <p><strong>You can verify the handshake.</strong> Both people read out a short code; if it differs, someone's in the middle. We couldn't confirm otr.to surfaces anything equivalent today.</p>
+
+      <p><strong>You can see what you're running.</strong> Btwinus's deployed code matches its public repository and is maintained. otr.to's repository is a decade old and the live bundle has clearly moved on, so what you're auditing isn't what you're using.</p>
+
+      <p><strong>Wrong passphrase fails loudly.</strong> AES-GCM's authentication tag means a mistyped or wrong passphrase simply refuses to decrypt — you get a clear error, not a silent bad connection.</p>
+
+      <h2>How to decide</h2>
+
+      <ul>
+        <li>Quick chat with a friend, low stakes, awkward network → otr.to.</li>
+        <li>Something that matters, and you'd rather no broker know the two of you connected → Btwinus.</li>
+        <li>You want to audit the code you're actually running → Btwinus.</li>
+        <li>Recipient who can't handle a two-step handshake → otr.to, or a phone call.</li>
+        <li>Groups, files, offline delivery → neither; see <a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus</a>.</li>
+      </ul>
+
+      <p>These two are siblings. otr.to showed in 2015 that a browser could do this at all. Btwinus takes the last server out of the room and pays for it in link length and a slightly longer handshake. Whether that trade is worth it depends entirely on how much the fact of the conversation needs to stay private, not just its contents.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Want P2P chat with no broker in between? The handshake lives in the link.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+        <li><a href="/blog/share-password-securely/">How to share a password without leaving a copy behind</a></li>
+      </ul>
+    </aside>
+
+    <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
+  </article>
+</body>
+</html>

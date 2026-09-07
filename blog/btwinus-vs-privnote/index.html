@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Btwinus vs Privnote: which one should you use to share a secret? | Btwinus Chat</title>
+  <meta name="description" content="Privnote is a one-shot self-destructing note. Btwinus is a live encrypted chat with no server. Here's an honest comparison of how each handles storage, keys, and the recipient being offline.">
+  <meta name="keywords" content="btwinus vs privnote, privnote alternative, privnote vs btwinus, self destructing note, one time note, send secret link, privnote safe, privnote open source, encrypted note vs encrypted chat, share password link">
+  <link rel="alternate" type="application/rss+xml" title="Btwinus Blog" href="https://btwinus.com/blog/feed.xml">
+  <link rel="canonical" href="https://btwinus.com/blog/btwinus-vs-privnote/">
+  <meta property="og:title" content="Btwinus vs Privnote: which one should you use to share a secret?">
+  <meta property="og:description" content="A one-shot self-destructing note versus a live serverless chat. Where Privnote wins, where Btwinus wins, and how to pick.">
+  <meta property="og:url" content="https://btwinus.com/blog/btwinus-vs-privnote/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://btwinus.com/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Btwinus vs Privnote: which one should you use to share a secret?">
+  <meta name="twitter:description" content="A one-shot self-destructing note versus a live serverless chat. An honest comparison.">
+  <meta name="twitter:image" content="https://btwinus.com/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Btwinus vs Privnote: which one should you use to share a secret?",
+    "description": "A one-shot self-destructing note versus a live serverless chat. Where Privnote wins, where Btwinus wins, and how to pick.",
+    "author": { "@type": "Person", "name": "Gradi K.", "url": "https://github.com/BTwinus" },
+    "publisher": { "@type": "Organization", "name": "Btwinus", "url": "https://btwinus.com" },
+    "datePublished": "2026-09-06",
+    "dateModified": "2026-09-06",
+    "mainEntityOfPage": "https://btwinus.com/blog/btwinus-vs-privnote/",
+    "image": "https://btwinus.com/og.png",
+    "inLanguage": "en"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://btwinus.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://btwinus.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Btwinus vs Privnote", "item": "https://btwinus.com/blog/btwinus-vs-privnote/" }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <meta name="msapplication-TileColor" content="#5865f2">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <link rel="stylesheet" href="/css/style.css?v=22">
+  <link rel="stylesheet" href="/css/blog.css?v=4">
+  <script src="/js/theme.js?v=17"></script>
+</head>
+<body class="blog-page">
+  <nav class="blog-nav">
+    <a class="blog-brand" href="/">Btwinus</a>
+    <a href="/blog/">← All posts</a>
+  </nav>
+
+  <article class="blog-wrap">
+    <p class="blog-meta">September 6, 2026 · 6 min read</p>
+    <h1 class="blog-title">Btwinus vs Privnote: which one should you use to share a secret?</h1>
+    <p class="blog-lede">Privnote has been the default "paste it here, send the link, it burns after reading" tool since 2008. Btwinus is a different shape of thing: a live, encrypted, browser-to-browser chat with no server at all. They overlap on one job — getting a secret to one person — and diverge on almost everything else.</p>
+
+    <div class="blog-body">
+      <p>People search for "Privnote alternative" for two very different reasons. Some want the same one-shot note with fewer ads or cleaner crypto. Others want something that doesn't store their secret on anyone's server, even for a minute. Btwinus only answers the second group, and this post tries to be honest about that.</p>
+
+      <h2>What Privnote is</h2>
+
+      <p>Privnote is a free website. You type a note, click a button, and get a link. The recipient opens the link, reads the note, and Privnote deletes it. No account on either side, nothing to install.</p>
+
+      <p>Under the hood, the note is encrypted in your browser before upload. The decryption key is placed in the URL fragment — the part after the <code>#</code> — which browsers never send to a server. So Privnote's servers hold the ciphertext and (in principle) never see the key. You can optionally add a manual password, set a time-based expiry so an unopened note still dies, and ask for an email when the note is read.</p>
+
+      <p>Two things to know. First, Privnote is closed source: the JavaScript is inspectable in your browser, but there's no published repository, so you take the deletion and key-handling claims on trust. Third-party writeups have reported that it uses an old AES-CBC library with MD5 key derivation; we couldn't confirm that independently, so treat it as a claim rather than a fact. Second, the site is ad-supported and loads third-party tracking scripts, and it has been repeatedly impersonated by look-alike domains (<code>privnotes.com</code>, <code>privnote.co</code>) that quietly rewrite crypto addresses in notes. If you use it, bookmark the real domain.</p>
+
+      <h2>What Btwinus is</h2>
+
+      <p><a href="/">Btwinus</a> is a live one-to-one chat that runs entirely in two browser tabs. You click "Start a new chat" and get two things: an invite link and a passphrase like <code>storm-fox-river-4821</code>. The link carries an encrypted WebRTC offer in its URL fragment — encrypted with AES-256-GCM, with the key derived from the passphrase using PBKDF2 (100,000 iterations). You send the link through one channel and the passphrase through a different one. The other person opens the link, types the passphrase, and sends you back a reply link. Once you paste it, the two browsers connect directly over WebRTC and you're chatting.</p>
+
+      <p>There is no server in that loop. Nothing is uploaded, nothing is stored, nothing can be subpoenaed. When either tab closes, the conversation is gone. A short authentication string is shown on both sides so you can read it aloud and confirm nobody sat in the middle of the handshake. Btwinus is free and <a href="https://github.com/BTwinus/btwinus">open source</a>. (Here's the <a href="/blog/encrypted-chat-no-account/">full explanation of how the link carries the encryption</a>.)</p>
+
+      <p>The cost of "no server" is real: both of you must be online at the same time, it's strictly two people, and it's text only — there's no file transfer.</p>
+
+      <h2>The honest comparison table</h2>
+
+      <table>
+        <tr>
+          <th>Property</th>
+          <th>Privnote</th>
+          <th>Btwinus</th>
+        </tr>
+        <tr>
+          <td>Shape</td>
+          <td>One-shot note</td>
+          <td>Live chat</td>
+        </tr>
+        <tr>
+          <td>Account required</td>
+          <td>None</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Where the secret lives</td>
+          <td>Privnote's servers (encrypted) until read or expired</td>
+          <td>Nowhere — travels browser to browser</td>
+        </tr>
+        <tr>
+          <td>Encryption</td>
+          <td>Client-side, key in URL fragment</td>
+          <td>AES-256-GCM, PBKDF2 from a passphrase, key never in the link</td>
+        </tr>
+        <tr>
+          <td>Second factor</td>
+          <td>Optional manual password</td>
+          <td>Passphrase always required, sent out of band</td>
+        </tr>
+        <tr>
+          <td>Recipient can be offline</td>
+          <td>Yes</td>
+          <td>No — both online at once</td>
+        </tr>
+        <tr>
+          <td>Two-way conversation</td>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Groups</td>
+          <td>No</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Files</td>
+          <td>Text only</td>
+          <td>Text only</td>
+        </tr>
+        <tr>
+          <td>Open source</td>
+          <td>No</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Self-hostable</td>
+          <td>No</td>
+          <td>Yes — it's a static page</td>
+        </tr>
+        <tr>
+          <td>Ads / trackers</td>
+          <td>Yes</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Cost</td>
+          <td>Free</td>
+          <td>Free</td>
+        </tr>
+      </table>
+
+      <h2>Where Privnote is the better choice</h2>
+
+      <p><strong>The recipient isn't around.</strong> This is the big one. A Privnote link sits on their server for as long as you set, and the other person opens it whenever they get to it. Btwinus needs a live handshake: if your colleague is asleep in another time zone, you're waiting.</p>
+
+      <p><strong>You want one link and nothing else.</strong> A Privnote note is a single URL. With Btwinus there's a link <em>and</em> a passphrase <em>and</em> a reply link coming back, and a non-technical recipient has to follow that. It's one more step than "click here".</p>
+
+      <p><strong>You're pasting into a form field, not talking.</strong> A Wi-Fi password, a door code, a tracking number. There's no conversation to have; a note is the right shape.</p>
+
+      <p><strong>You want read receipts.</strong> Privnote can email you when a note is opened. Btwinus has no notifications because there's nothing to send them.</p>
+
+      <h2>Where Btwinus is the better choice</h2>
+
+      <p><strong>You don't want the secret on anyone's server, even encrypted.</strong> Privnote's promise is "we can't read it and we delete it." Both are plausible, and neither is verifiable from the outside. Btwinus sidesteps the question: there's no upload, so there's nothing to trust.</p>
+
+      <p><strong>A single intercepted link must not be enough.</strong> A plain Privnote link is the whole secret: whoever gets the URL gets the note. (Its optional password fixes this, but it's off by default.) In Btwinus the passphrase is mandatory and never travels in the link, so an attacker who reads your email or your Slack still has only half. (This two-channel idea is the core of <a href="/blog/share-password-securely/">how to share a password without leaving a copy behind</a>.)</p>
+
+      <p><strong>You need a back-and-forth.</strong> "Here's the key — which environment? — staging — okay, and the username?" A note can't do that. A chat can, and closes without a trace.</p>
+
+      <p><strong>You want to verify who you're talking to.</strong> Btwinus shows both sides a short code to compare out loud. A note has no equivalent; you find out it went to the wrong person only if it did.</p>
+
+      <p><strong>You want to read the code.</strong> Btwinus is a few hundred lines of vanilla JavaScript on GitHub. Privnote's stack is private.</p>
+
+      <p><strong>You'd rather not feed an ad network.</strong> Btwinus has no ads and no trackers beyond a consent-gated analytics tag on the landing page — none on the chat itself.</p>
+
+      <h2>How to decide</h2>
+
+      <ul>
+        <li>Recipient offline, low-stakes secret, one link only → Privnote (with a manual password, from the bookmarked real domain).</li>
+        <li>Recipient available now, high-stakes secret, or you need a conversation → Btwinus.</li>
+        <li>You can't tolerate a server holding the ciphertext, even briefly → Btwinus.</li>
+        <li>You need groups or files → neither; look at Signal or a shared password manager.</li>
+        <li>It's a seed phrase or a master password → don't send it digitally at all.</li>
+      </ul>
+
+      <p>The short version: Privnote is a mailbox that burns its contents; Btwinus is a room with no walls that vanishes when you leave. Use the mailbox when the other person isn't there. Use the room when they are and it matters.</p>
+    </div>
+
+    <div class="blog-cta">
+      <p>Need to hand someone a secret right now, with nothing stored anywhere? Btwinus is one click away.</p>
+      <a href="/">Start a private chat →</a>
+    </div>
+
+    <aside class="blog-related">
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/share-password-securely/">How to share a password without leaving a copy behind</a></li>
+        <li><a href="/blog/encrypted-chat-no-account/">Encrypted chat with no account: how Btwinus puts AES-256 in a link</a></li>
+        <li><a href="/blog/signal-vs-telegram-vs-btwinus/">Signal vs Telegram vs Btwinus: which one is actually anonymous?</a></li>
+      </ul>
+    </aside>
+
+    <p class="blog-back"><a href="/blog/">← Back to all posts</a></p>
+  </article>
+</body>
+</html>
