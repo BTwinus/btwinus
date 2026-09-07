@@ -205,23 +205,23 @@ the on-page work is. Each item below is one link from a relevant site.
 Found by reading `js/app.js`. Each is already disclosed honestly in `README.md` and `docs/outreach.md`,
 because those communities will find them within an hour. Fixing them first makes the launch land better.
 
-- [ ] **I1. Passphrase entropy is ~28 bits.** `genPassphrase()` (`js/app.js:73`) picks 3 words from a
+- [x] **I1. Passphrase entropy is ~28 bits.** `genPassphrase()` (`js/app.js:73`) picks 3 words from a
       30-word `WORDS` list plus a 4-digit number: 30³ × 9000 ≈ 2.4 × 10⁸ combinations. With the link in
       hand, PBKDF2 at 100k iterations makes a GPU brute force a matter of hours. Word choice also uses
       `Math.random`, not `crypto.getRandomValues`. Fix: expand to an EFF-style list of at least 1,000
       words (4 words ≈ 40 bits, 5 words ≈ 50 bits) and pick with `crypto.getRandomValues`. Keep the
       `word-word-word-1234` shape so it stays sayable over the phone.
-- [ ] **I2. The SAS is not bound to the DTLS session.** `computeSessionCode()` (`js/app.js:272`) hashes
+- [x] **I2. The SAS is not bound to the DTLS session.** `computeSessionCode()` (`js/app.js:272`) hashes
       two nonces exchanged over the data channel itself, so a relaying man-in-the-middle forwards them
       unchanged and both sides still see a matching code. Fix: hash the two DTLS certificate
       fingerprints from the local and remote SDP (`a=fingerprint:` lines) instead of, or in addition
       to, the nonces.
-- [ ] **I3. Messages are persisted to localStorage.** `saveMessages()` writes the session to
+- [x] **I3. Messages are persisted to localStorage.** `saveMessages()` writes the session to
       `localStorage['btw_msgs']` for 24 hours (`js/app.js:21`). The "No history" tagline is not literally
       true while this exists. Either drop the feature, make it opt-in, or change the copy to
       "cleared when a new chat starts" everywhere the tagline appears (i18n `home_tagline`,
       `site_footer_tagline`, JSON-LD featureList, llms.txt, privacy pages).
-- [ ] **I4. Single Google STUN server, no TURN.** `ICE_SERVERS` (`js/app.js:2`) is
+- [x] **I4. Single Google STUN server, no TURN.** `ICE_SERVERS` (`js/app.js:2`) is
       `stun.l.google.com:19302` only. Google sees the public IP of every participant, and two users
       behind symmetric NATs cannot connect at all. Adding a TURN relay would fix connectivity but
       contradicts "no server" and would see (encrypted) traffic; state the trade-off in the FAQ instead,
@@ -252,5 +252,9 @@ because those communities will find them within an hour. Fixing them first makes
   Done: E1 → option (b), every title now "Btwinus Chat". F2 French blog (5 pages). F4 four comparison
   posts. F5 six use-case pages + hub. F8 Person author. C1 README. docs/outreach.md holds all section C
   copy ready to post. Sitemap now 28 URLs, feed 8 items. New section I lists app weaknesses found.
+- 2026-09-06 (later still): I1–I4 fixed in js/app.js (v17): 4-word EFF passphrase ≈54 bits via
+  crypto.getRandomValues; SAS bound to DTLS fingerprints; history in sessionStorage; STUN trade-off
+  is FAQ question 7. README, outreach copy, privacy pages, CLAUDE.md updated to match. I5 (LICENSE)
+  still open: owner's choice.
   GSC Performance (all time): 1 query "btmessage", 1 impression, 0 clicks. Bing index: 0 pages.
   Backlinks: 0. AI crawlers: blocked at Cloudflare (403).

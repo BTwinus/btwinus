@@ -79,7 +79,7 @@ const I18N = {
 
     hs_pass_title:    'Enter the passphrase',
     hs_pass_label:    'The person who invited you should have sent it via a separate channel',
-    hs_pass_ph:       'e.g. storm-fox-river-4821',
+    hs_pass_ph:       'e.g. storm-fox-river-oak-4821',
     hs_unlock:        'Unlock',
     hs_pass_error:    'Wrong passphrase — try again',
 
@@ -112,6 +112,8 @@ const I18N = {
     faq_5_a: 'Those need an app, a phone number, and a company’s servers to route messages. Btwinus needs none of that. It is built for one-off private conversations, not as a replacement for your everyday messenger.',
     faq_6_q: 'Does it work on mobile?',
     faq_6_a: 'Yes, in Chrome, Safari, Firefox, and Edge on iOS and Android. The invite link can be shown as a QR code so the other person only has to scan it.',
+    faq_7_q: 'Is there really no server at all?',
+    faq_7_a: 'No Btwinus server, and no relay. The handshake travels inside the link, and messages go straight between the two browsers. The one outside party is a STUN server (currently Google’s), which each browser asks for its own public address. It sees your IP, never any content. There is no fallback relay, so on some strict corporate or mobile networks a direct connection cannot be made and the chat will not connect.',
 
     // ── Site footer ───────────────────────────────────────────────────────
     site_footer_tagline: 'Anonymous, end-to-end encrypted chat via a link. No app, no account, no server.',
@@ -202,7 +204,7 @@ const I18N = {
 
     hs_pass_title:    'Entrez la phrase de passe',
     hs_pass_label:    'La personne qui vous a invité devrait vous l\'avoir envoyée via un canal séparé',
-    hs_pass_ph:       'ex. tempête-renard-rivière-4821',
+    hs_pass_ph:       'ex. tempête-renard-rivière-chêne-4821',
     hs_unlock:        'Déverrouiller',
     hs_pass_error:    'Phrase de passe incorrecte — réessayez',
 
@@ -235,6 +237,8 @@ const I18N = {
     faq_5_a: 'Ces services demandent une appli, un numéro de téléphone et les serveurs d’une entreprise pour acheminer les messages. Btwinus n’a besoin de rien de tout cela. Il est conçu pour des conversations privées ponctuelles, pas pour remplacer votre messagerie quotidienne.',
     faq_6_q: 'Ça marche sur mobile ?',
     faq_6_a: 'Oui, dans Chrome, Safari, Firefox et Edge sur iOS et Android. Le lien d’invitation peut s’afficher en QR code : l’autre personne n’a qu’à le scanner.',
+    faq_7_q: 'Il n’y a vraiment aucun serveur ?',
+    faq_7_a: 'Aucun serveur Btwinus et aucun relais. La poignée de main voyage dans le lien, et les messages vont directement d’un navigateur à l’autre. Le seul tiers est un serveur STUN (actuellement celui de Google), que chaque navigateur interroge pour connaître sa propre adresse publique. Il voit votre IP, jamais le contenu. Il n’y a pas de relais de secours : sur certains réseaux d’entreprise ou mobiles très stricts, la connexion directe est impossible et le chat ne s’établit pas.',
 
     // ── Site footer ───────────────────────────────────────────────────────
     site_footer_tagline: 'Chat anonyme et chiffré de bout en bout via un lien. Sans application, sans compte, sans serveur.',
@@ -325,7 +329,7 @@ const I18N = {
 
     hs_pass_title:    'Koma liloba ya bokɔti',
     hs_pass_label:    'Moto oyo abyangi yo asengelaki kotinda yango na nzela mosusu',
-    hs_pass_ph:       'ndakisa: mopepe-mbwa-ebale-4821',
+    hs_pass_ph:       'ndakisa: mopepe-mbwa-ebale-nzete-4821',
     hs_unlock:        'Fungola',
     hs_pass_error:    'Liloba ya bokɔti ezali mabe — meka lisusu',
 
@@ -358,6 +362,8 @@ const I18N = {
     faq_5_a: 'Yango esɛngaka aplikasyo, nimero ya telefoni, mpe ba-sɛrvɛr ya kompani mpo na kotinda ba-message. Btwinus esɛngaka ata moko te. Esalemi mpo na masolo ya sekele ya mbala moko, kasi mpo na kokitanisa messagerie ya yo ya mokolo na mokolo te.',
     faq_6_q: 'Esalaka na telefoni?',
     faq_6_a: 'Ɛɛ, na Chrome, Safari, Firefox, mpe Edge na iOS mpe Android. Lien ya libyangi ekoki komonisama lokola code QR mpo moto mosusu a-scanner yango kaka.',
+    faq_7_q: 'Sɛrvɛr ezali mpenza te?',
+    faq_7_a: 'Sɛrvɛr ya Btwinus te, mpe relais te. Bokutani ekendaka na kati ya lien, mpe ba-message ekendaka semba kati ya ba-navigateur mibale. Moto ya libanda kaka moko: sɛrvɛr STUN (sikoyo oyo ya Google), oyo navigateur moko na moko etunaka mpo na koyeba adrɛsi na yango ya libanda. Emonaka IP na yo, kasi makambo ya lisolo te. Relais ya lisungi ezali te: na ba-réseaux mosusu ya kompani to ya telefoni oyo ezali makasi, bokutani ya semba ekoki te mpe lisolo ekokangana te.',
 
     // ── Site footer ───────────────────────────────────────────────────────
     site_footer_tagline: 'Lisolo ya bonkundi mpe ekangami ndɛlɛ-na-ndɛlɛ na nzela ya lien. Aplikasyo te, konti te, sɛrvɛr te.',

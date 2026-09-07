@@ -111,6 +111,8 @@
       { "@type": "Question", "name": "Pourquoi envoyer la phrase de passe séparément ?", "acceptedAnswer": { "@type": "Answer", "text": "Le lien est chiffré avec la phrase de passe. Si les deux passent par le même canal, quiconque lit ce canal possède les deux. Envoyer la phrase de passe par téléphone, SMS ou en personne oblige un attaquant à compromettre deux canaux au lieu d’un." } },
       { "@type": "Question", "name": "Quelle différence avec Signal ou WhatsApp ?", "acceptedAnswer": { "@type": "Answer", "text": "Ces services demandent une appli, un numéro de téléphone et les serveurs d’une entreprise pour acheminer les messages. Btwinus n’a besoin de rien de tout cela. Il est conçu pour des conversations privées ponctuelles, pas pour remplacer votre messagerie quotidienne." } },
       { "@type": "Question", "name": "Ça marche sur mobile ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, dans Chrome, Safari, Firefox et Edge sur iOS et Android. Le lien d’invitation peut s’afficher en QR code : l’autre personne n’a qu’à le scanner." } }
+,
+      { "@type": "Question", "name": "Il n’y a vraiment aucun serveur ?", "acceptedAnswer": { "@type": "Answer", "text": "Aucun serveur Btwinus et aucun relais. La poignée de main voyage dans le lien, et les messages vont directement d’un navigateur à l’autre. Le seul tiers est un serveur STUN (actuellement celui de Google), que chaque navigateur interroge pour connaître sa propre adresse publique. Il voit votre IP, jamais le contenu. Il n’y a pas de relais de secours : sur certains réseaux d’entreprise ou mobiles très stricts, la connexion directe est impossible et le chat ne s’établit pas." } }
     ]
   }
   </script>
@@ -385,6 +387,10 @@
         <summary data-i18n="faq_6_q">Ça marche sur mobile ?</summary>
         <p data-i18n="faq_6_a">Oui, dans Chrome, Safari, Firefox et Edge sur iOS et Android. Le lien d’invitation peut s’afficher en QR code : l’autre personne n’a qu’à le scanner.</p>
       </details>
+      <details class="faq-item">
+        <summary data-i18n="faq_7_q">Il n’y a vraiment aucun serveur ?</summary>
+        <p data-i18n="faq_7_a">Aucun serveur Btwinus et aucun relais. La poignée de main voyage dans le lien, et les messages vont directement d’un navigateur à l’autre. Le seul tiers est un serveur STUN (actuellement celui de Google), que chaque navigateur interroge pour connaître sa propre adresse publique. Il voit votre IP, jamais le contenu. Il n’y a pas de relais de secours : sur certains réseaux d’entreprise ou mobiles très stricts, la connexion directe est impossible et le chat ne s’établit pas.</p>
+      </details>
     </div>
   </section>
 
@@ -417,6 +423,6 @@
   <script src="/js/matrix.js?v=16"></script>
   <script src="/js/home.js?v=16"></script>
   <script src="/js/demo.js?v=16"></script>
-  <script src="/js/i18n.js?v=22"></script>
+  <script src="/js/i18n.js?v=23"></script>
 </body>
 </html>

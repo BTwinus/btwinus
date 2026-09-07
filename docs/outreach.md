@@ -39,11 +39,11 @@ The property I care about is the two-channel split: the link goes over one chann
 
 Things I want scrutiny on, because I know they are weak:
 
-- The passphrase is 3 words from a 30-word list plus a 4-digit number, about 28 bits. With the link in hand, offline guessing is feasible in hours on a GPU despite PBKDF2. A larger word list is the obvious fix.
-- The session verification code is SHA-256 over two nonces exchanged on the data channel, not over the DTLS fingerprints. A MITM who relays both directions passes the nonces through unchanged, so the code does not catch that case. It should be bound to the fingerprints from the SDP.
+- The generated passphrase is 4 words from the EFF short list plus 4 digits, about 54 bits, picked with crypto.getRandomValues. Someone who types their own short passphrase instead is on their own.
+- The session verification code is SHA-256 over both DTLS certificate fingerprints (from local and remote SDP) plus two exchanged nonces. A relaying MITM terminates DTLS with its own cert, so the codes differ. It only helps if people actually compare it aloud.
 - Single Google STUN server, no TURN. Peers see each other's IPs, Google sees your public IP, and symmetric NATs fail to connect.
 - You trust the host on every page load. No SRI, no signing. Clone it and serve it yourself if that matters to you.
-- Messages of the current session are mirrored to localStorage for 24h so a refresh shows a read-only view. Clear site data if you need nothing left on the device.
+- Messages of the current session are mirrored to sessionStorage so a reload of the same tab shows a read-only view. The browser drops it when the tab closes.
 - No audit.
 
 Code is 700 lines of vanilla JS: https://github.com/BTwinus/btwinus (js/app.js). Site: https://btwinus.com. Write-up on the fragment trick: [dev.to link]. Happy to answer anything.
@@ -164,11 +164,11 @@ Protects against: a party who sees only the link (they get ciphertext); a party 
 
 Does not protect against, and I want to be upfront:
 - WebRTC IP exposure. ICE candidates put both peers' IPs in the SDP. Your peer sees your IP, and the single STUN server (stun.l.google.com) sees your public IP. This is not an anonymity tool; use it behind a VPN if that matters.
-- Offline passphrase guessing from the link. The passphrase is 3 words from a 30-word list plus a 4-digit number, about 28 bits. PBKDF2 slows a GPU to the order of hours, not years. Enlarging the list is the planned fix; until then the link must be treated as sensitive.
-- The SAS as implemented hashes two nonces sent over the data channel, not the DTLS fingerprints, so a relaying MITM who already has the passphrase is not detected by it. I intend to bind it to the fingerprints.
+- Offline passphrase guessing from the link. The generated passphrase is 4 EFF-short-list words plus 4 digits (about 54 bits) behind PBKDF2 at 100k iterations, which is out of reach. A user-typed short passphrase is not, and the link should still be treated as sensitive.
+- The SAS hashes both DTLS fingerprints plus two nonces, so a relaying MITM shows as a mismatch, but only if both people compare the code over a channel the attacker does not control.
 - No forward secrecy claims beyond fresh keys per session. A later-recovered passphrase reveals the recorded SDP, not the DTLS-protected messages.
 - Trusting the host on every load. The JS comes from GitHub Pages; no SRI, no signing, no reproducible build. Self-hosting from the repo removes that.
-- Messages of the current session are mirrored to localStorage for 24h for a read-only reload view; clear site data if that is a problem.
+- Messages of the current session are mirrored to sessionStorage for a read-only reload view; the browser discards it when the tab closes.
 - No audit. The app is one 700-line file.
 
 Why it is different from current entries
@@ -207,7 +207,7 @@ Things I learned:
 - No TURN means symmetric NAT users cannot connect. I accepted that to keep "no server" literally true.
 - Lazy-load the QR library on first tap; it is 55 KB and most people never tap.
 
-Known weaknesses I would rather list than have you find: the generated passphrase is only ~28 bits (short word list, fixing it), the session verification code hashes nonces rather than DTLS fingerprints (also fixing), and peers see each other's IPs.
+Known limitations I would rather list than have you find: peers see each other's IPs (WebRTC), both people must be online at once, and you trust the host on every page load.
 
 No framework, no build step, no dependencies except a vendored QR generator. Repo: https://github.com/BTwinus/btwinus (js/app.js is the whole app). Live: https://btwinus.com. Longer write-up: [dev.to link].
 ```
@@ -229,10 +229,10 @@ The idea: a two-person chat where the WebRTC handshake is encrypted inside the i
 
 What it does not do, so nobody has to dig:
 - It is not anonymity software. WebRTC exposes your IP to your peer and to the STUN server (a Google one, the only external party). Use a VPN if that matters to you.
-- The passphrase is short (three words from a small list plus four digits). Someone with the link can brute-force it offline in hours. That is the biggest weakness right now and the word list is getting enlarged.
-- The verification code shown to both sides is not yet bound to the DTLS fingerprints, so it does not detect a relaying MITM. Planned fix.
+- The generated passphrase is four EFF-short-list words plus four digits, about 54 bits, behind PBKDF2. If you replace it with your own short phrase, someone holding the link can brute-force that.
+- The verification code is bound to both DTLS fingerprints, so a relaying MITM shows up as a mismatch. It only works if you actually compare it aloud.
 - You are trusting the host each time you load the page. Self-host from the repo if you need to remove that.
-- Current session messages sit in localStorage for 24 hours for a reload view. Clear site data if that bothers you.
+- Current session messages sit in sessionStorage for a reload view and are discarded by the browser when the tab closes.
 - Analytics on the page is consent-gated and off by default; it never sees links or messages.
 - No audit.
 
@@ -403,14 +403,14 @@ This is the part I like most. GCM is authenticated encryption, so a wrong key do
 
 Once the channel is open, the passphrase is removed from `sessionStorage`; it has done its job. Messages are JSON over the `RTCDataChannel`, which the browser encrypts with DTLS. The app adds no message-layer encryption on top; the point of the passphrase step was to protect the signaling, and DTLS keys come from certificates whose fingerprints were inside that protected SDP.
 
-Both sides then exchange a random 8-byte nonce and display the first 6 bytes of `SHA-256(sorted(n1 + n2))` as a code to compare aloud.
+Both sides then exchange a random 8-byte nonce and display the first 6 bytes of `SHA-256(sorted(fp_local, fp_remote) + sorted(n1 + n2))` as a code to compare aloud, where the `fp` values are the DTLS certificate fingerprints parsed from the local and remote SDP (`a=fingerprint:sha-256 ...`). A relay that terminates DTLS on each side has its own certificate, so the two users get different codes.
 
 ## What is still weak
 
 I would rather list these than have someone find them:
 
-- **The passphrase is small.** Three words from a 30-word list plus a four-digit number is about 2^28 possibilities. PBKDF2 at 100k iterations makes each guess cost something, but a GPU with the link in hand gets through that in hours. The word list needs to be a few thousand entries, and the word selection currently uses `Math.random` rather than `crypto.getRandomValues`.
-- **The verification code is not bound to DTLS.** It hashes nonces that travel over the channel itself. An attacker who had the passphrase and inserted themselves as a relay would forward the nonces and both sides would see the same code. Hashing the DTLS fingerprints from both SDPs instead is the correct construction, and it is next on the list.
+- **The passphrase is only as strong as the generated one.** Four words from the 1,295-word EFF short list plus four digits is about 2^54, drawn with `crypto.getRandomValues` and rejection sampling. Someone who deletes it and types "hello123" has thrown that away, and the UI does not stop them.
+- **The verification code depends on humans.** It is bound to both DTLS fingerprints, so a relay is detectable, but only if both people read the six bytes to each other over a channel the attacker does not control. Most people skip that step.
 - **IPs are in the SDP.** Your peer learns your IP, and the STUN server learns your public one. This is inherent to WebRTC without a relay.
 - **You trust the host per load.** The JS comes from GitHub Pages, network-first. No subresource integrity, no signing. Cloning the repo and serving it locally removes that dependency; `python3 -m http.server` is enough.
 - **No audit.** The app is about 700 lines in one file, which is short enough to read in an evening.

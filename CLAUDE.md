@@ -55,12 +55,13 @@ There is **no build step**. No bundler, no transpiler, no package.json. You edit
 
 This is the heart of the product. See `js/app.js` lines ~79–115 (crypto primitives) and ~406–494 (offer/answer flow).
 
-1. **Key derivation:** `PBKDF2-SHA256, 100,000 iterations, 16-byte salt` → 256-bit AES key. The passphrase is human-readable (e.g. `storm-fox-river-4821`).
+1. **Key derivation:** `PBKDF2-SHA256, 100,000 iterations, 16-byte salt` → 256-bit AES key. The passphrase is human-readable: 4 words from the EFF short wordlist (1,295 words, in `app.js`) + 4 digits, e.g. `storm-fox-river-oak-4821`, ≈54 bits, drawn with `crypto.getRandomValues` and rejection sampling. Don't shrink the list.
 2. **SDP encryption:** WebRTC offer/answer is **compressed**, then encrypted with `AES-256-GCM` (12-byte IV), then base64'd, then embedded in the **URL fragment** (`#offer=...` / `#answer=...`). Fragments never get sent to a server.
 3. **Out-of-band signaling:** the encrypted link goes through one channel (WhatsApp, email). The passphrase goes through a different channel (phone, SMS, in person). **This two-channel split is the most important security property** — not the AES-256 itself, which is commodity. If both pieces travel the same channel, an attacker who compromises that channel gets everything.
 4. **Wrong passphrase = GCM auth tag failure** → throws on decrypt → UI shows "wrong passphrase". This is intentional and is how we detect mismatched secrets.
 5. **Transport:** once handshake completes, `RTCPeerConnection` + `RTCDataChannel`. **DTLS 1.3 transport encryption is browser-default** — we don't implement it, the browser does. All chat messages flow through this.
-6. **Session verification:** a short authentication string (SAS) is shown to both users so they can verbally compare — defends against MITM during handshake.
+6. **Session verification:** a short authentication string (SAS) is shown to both users so they can verbally compare — defends against MITM during handshake. It is `SHA-256(sorted DTLS fingerprints from local+remote SDP + sorted nonces)`. The fingerprint binding is what makes a relaying MITM visible; don't drop it.
+7. **Message history lives in `sessionStorage`** (`btw_msgs`), never `localStorage`, so "gone when you close the tab" stays literally true. A reload of the same tab shows a read-only view.
 
 Don't change this stack without thinking carefully. The crypto choices are deliberate and conservative (PBKDF2 with high iteration count, AES-GCM for AEAD, WebRTC's standard DTLS).
 
