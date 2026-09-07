@@ -63,24 +63,24 @@
   <article class="blog-wrap">
     <p class="blog-meta">September 6, 2026 · 6 min read</p>
     <h1 class="blog-title">Btwinus vs OneTimeSecret: which one should you use to share a secret?</h1>
-    <p class="blog-lede">OneTimeSecret is the tool a lot of ops teams reach for when a password has to cross a chat log: paste it, get a link, the link dies after one view. It's open source and you can run it yourself. Btwinus solves a neighbouring problem with the opposite architecture — no server at all. Here's where each one earns its place.</p>
+    <p class="blog-lede">OneTimeSecret is the tool a lot of ops teams reach for when a password has to cross a chat log: paste it, get a link, the link dies after one view. It's open source and you can run it yourself. Btwinus solves a neighbouring problem with the opposite architecture, no server at all. Here's where each one earns its place.</p>
 
     <div class="blog-body">
       <p>Both tools exist because "just DM it to me" leaves a copy of the secret in Slack, in email, in two phones, and in whatever cloud backs those up. They agree on the problem and disagree on the fix. OneTimeSecret says: store it briefly, encrypted, then destroy it. Btwinus says: don't store it at all.</p>
 
       <h2>What OneTimeSecret is</h2>
 
-      <p>OneTimeSecret (often written OTS) is a web app. You paste a secret, optionally add a passphrase and an expiry, and get a single-use link. The first person to open the link sees the secret; the server then purges it. No account is required for the basic flow. The hosted service lets you pick the region where your secret sits — Canada, the EU, New Zealand, the UK or the US — which matters if you have data-residency rules.</p>
+      <p>OneTimeSecret (often written OTS) is a web app. You paste a secret, optionally add a passphrase and an expiry, and get a single-use link. The first person to open the link sees the secret; the server then purges it. No account is required for the basic flow. The hosted service lets you pick the region where your secret sits, Canada, the EU, New Zealand, the UK or the US, which matters if you have data-residency rules.</p>
 
       <p>It's open source under the MIT licence (Ruby backend, Redis for storage), with a Docker image and documentation for self-hosting behind your own reverse proxy. That's the feature that sets it apart from most one-shot note sites: you can put it inside your own network and the secret never leaves your infrastructure.</p>
 
       <p>The encryption model is server-side. The secret is encrypted on the server with a per-secret key; OTS says decryption keys live on the application server and never in the database, and adding your own passphrase adds a second layer the server needs before it can decrypt. What that means in plain terms: with a plain link, the operator of the OTS instance <em>could</em> technically read a secret while it's stored. That's fine if the operator is you. It's a trust question if it's someone else. With a passphrase, the operator can't read it without that passphrase.</p>
 
-      <p>The hosted service is free for individuals. Paid tiers (Identity Plus and Team Plus at the time of writing) add custom domains, branding, SSO and team management. We didn't find file uploads documented on any tier — it's a text secret tool.</p>
+      <p>The hosted service is free for individuals. Paid tiers (Identity Plus and Team Plus at the time of writing) add custom domains, branding, SSO and team management. We didn't find file uploads documented on any tier, it's a text secret tool.</p>
 
       <h2>What Btwinus is</h2>
 
-      <p><a href="/">Btwinus</a> is a live one-to-one chat with no backend. Clicking "Start a new chat" produces an invite link and a passphrase. The link's URL fragment carries a WebRTC offer encrypted with AES-256-GCM, the key derived from the passphrase via PBKDF2 (100,000 iterations). You send the link one way and the passphrase another way. The recipient opens the link, enters the passphrase, and sends back a reply link; you paste it and both browsers connect directly. Messages then go browser to browser over WebRTC. Close a tab and the conversation is gone — not deleted, simply never written anywhere.</p>
+      <p><a href="/">Btwinus</a> is a live one-to-one chat with no backend. Clicking "Start a new chat" produces an invite link and a passphrase. The link's URL fragment carries a WebRTC offer encrypted with AES-256-GCM, the key derived from the passphrase via PBKDF2 (100,000 iterations). You send the link one way and the passphrase another way. The recipient opens the link, enters the passphrase, and sends back a reply link; you paste it and both browsers connect directly. Messages then go browser to browser over WebRTC. Close a tab and the conversation is gone, not deleted, simply never written anywhere.</p>
 
       <p>A short authentication string on both screens lets you confirm out loud that nobody intercepted the handshake. It's free, <a href="https://github.com/BTwinus/btwinus">open source</a>, and because it's a static page, "self-hosting" means copying the files to any web host. (More on <a href="/blog/encrypted-chat-no-account/">how the link carries the encryption</a>.)</p>
 
@@ -107,12 +107,12 @@
         <tr>
           <td>Where the secret lives</td>
           <td>Server (Redis), encrypted, until viewed or expired</td>
-          <td>Nowhere — browser to browser</td>
+          <td>Nowhere, browser to browser</td>
         </tr>
         <tr>
           <td>Who could read it in storage</td>
           <td>Server operator, unless you add a passphrase</td>
-          <td>Nobody — nothing is stored</td>
+          <td>Nobody, nothing is stored</td>
         </tr>
         <tr>
           <td>Encryption</td>
@@ -122,7 +122,7 @@
         <tr>
           <td>Recipient can be offline</td>
           <td>Yes</td>
-          <td>No — both online at once</td>
+          <td>No, both online at once</td>
         </tr>
         <tr>
           <td>Two-way conversation</td>
@@ -152,7 +152,7 @@
         <tr>
           <td>Data residency</td>
           <td>Choose region, or self-host</td>
-          <td>Not applicable — no data at rest</td>
+          <td>Not applicable, no data at rest</td>
         </tr>
         <tr>
           <td>Cost</td>
@@ -165,7 +165,7 @@
 
       <p><strong>The recipient isn't online.</strong> Hand-offs across time zones, "read this when you start your shift", a credential for a contractor who'll log in tomorrow. OTS holds the secret until they get to it. Btwinus can't; it needs both of you there.</p>
 
-      <p><strong>You want it inside your own infrastructure.</strong> A self-hosted OTS behind your VPN, with your own logs and your own retention rules, is a genuinely strong setup for a company. Btwinus can be self-hosted too, but there's nothing to log and nothing to audit after the fact — which some compliance teams consider a bug, not a feature.</p>
+      <p><strong>You want it inside your own infrastructure.</strong> A self-hosted OTS behind your VPN, with your own logs and your own retention rules, is a genuinely strong setup for a company. Btwinus can be self-hosted too, but there's nothing to log and nothing to audit after the fact, which some compliance teams consider a bug, not a feature.</p>
 
       <p><strong>You need team features.</strong> Custom domains, SSO, an API to generate links from scripts, a branded "send me a secret" page. OTS has these. Btwinus has a link and a passphrase.</p>
 
@@ -175,9 +175,9 @@
 
       <p><strong>You don't want to trust an operator.</strong> On the hosted OTS, a plain link is readable by the operator while it's stored, by design. Btwinus never uploads anything, so the question doesn't arise.</p>
 
-      <p><strong>One leaked channel must not be enough.</strong> A plain OTS link is the whole secret until it's opened. Btwinus always splits it: the link is useless without the passphrase, and the passphrase goes through a different channel. (OTS can do this too, if you remember to set a passphrase and send it separately — Btwinus just doesn't let you skip it. See <a href="/blog/share-password-securely/">how to share a password without leaving a copy behind</a>.)</p>
+      <p><strong>One leaked channel must not be enough.</strong> A plain OTS link is the whole secret until it's opened. Btwinus always splits it: the link is useless without the passphrase, and the passphrase goes through a different channel. (OTS can do this too, if you remember to set a passphrase and send it separately, Btwinus just doesn't let you skip it. See <a href="/blog/share-password-securely/">how to share a password without leaving a copy behind</a>.)</p>
 
-      <p><strong>It's a conversation, not a drop.</strong> "Which account? — the deploy one — password is X, and rotate it after" is three messages and a reply. That's a chat.</p>
+      <p><strong>It's a conversation, not a drop.</strong> "Which account?, the deploy one, password is X, and rotate it after" is three messages and a reply. That's a chat.</p>
 
       <p><strong>You want to verify the other end.</strong> Btwinus's short authentication string is compared out loud. OTS has no equivalent: the first person to open the link wins.</p>
 

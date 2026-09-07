@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Btwinus Chat — Start a Secure Anonymous Chat, No Account Needed</title>
-  <meta name="description" content="Your secure anonymous chat room is ready. No account, no servers, no history — connect directly with one person via a link. End-to-end encrypted. Messages disappear when you close the tab.">
+  <title>Btwinus Chat: Start a Secure Anonymous Chat, No Account Needed</title>
+  <meta name="description" content="Your secure anonymous chat room is ready. No account, no servers, no history, connect directly with one person via a link. End-to-end encrypted. Messages disappear when you close the tab.">
   <meta name="keywords" content="anonymous chat, secure chat, encrypted chat, private chat, temporary chat, no account, WebRTC chat, disposable chat">
   <link rel="canonical" href="https://btwinus.com/chat.html">
   <!-- Open Graph -->
-  <meta property="og:title" content="Btwinus Chat — Start a Secure Anonymous Chat, No Account Needed">
-  <meta property="og:description" content="Your secure anonymous chat room is ready. No account, no servers, no history — end-to-end encrypted via a link.">
+  <meta property="og:title" content="Btwinus Chat: Start a Secure Anonymous Chat, No Account Needed">
+  <meta property="og:description" content="Your secure anonymous chat room is ready. No account, no servers, no history, end-to-end encrypted via a link.">
   <meta property="og:url" content="https://btwinus.com/chat.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://btwinus.com/og.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Btwinus — Anonymous Encrypted Chat. No account. No servers. Free.">
+  <meta property="og:image:alt" content="Btwinus, Anonymous Encrypted Chat. No account. No servers. Free.">
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Btwinus Chat — Start a Secure Anonymous Chat, No Account Needed">
-  <meta name="twitter:description" content="Your secure anonymous chat room is ready. No account, no servers, no history — end-to-end encrypted via a link.">
+  <meta name="twitter:title" content="Btwinus Chat: Start a Secure Anonymous Chat, No Account Needed">
+  <meta name="twitter:description" content="Your secure anonymous chat room is ready. No account, no servers, no history, end-to-end encrypted via a link.">
   <meta name="twitter:image" content="https://btwinus.com/og.png">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0XHHXR5YY"></script>
@@ -28,7 +28,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // Consent Mode v2 — analytics denied until the visitor opts in (see js/consent.js).
+    // Consent Mode v2, analytics denied until the visitor opts in (see js/consent.js).
     // No ads on Btwinus, so ad signals stay permanently denied.
     gtag('consent', 'default', {
       ad_storage: 'denied',
@@ -57,13 +57,13 @@
   <link rel="stylesheet" href="css/style.css?v=22">
   <script src="js/theme.js?v=16"></script>
   <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
-  <script src="/js/consent.js?v=2" defer></script>
+  <script src="/js/consent.js?v=3" defer></script>
 </head>
 <body>
   <noscript>
     <div class="noscript-screen">
       <h1>JavaScript is required</h1>
-      <p>Btwinus builds the encryption and the direct peer-to-peer connection entirely in your browser with JavaScript. With JavaScript disabled, the chat cannot run — there is no server-side fallback by design. Please enable JavaScript for this page and reload.</p>
+      <p>Btwinus builds the encryption and the direct peer-to-peer connection entirely in your browser with JavaScript. With JavaScript disabled, the chat cannot run, there is no server-side fallback by design. Please enable JavaScript for this page and reload.</p>
     </div>
   </noscript>
   <div class="layout">
@@ -94,7 +94,7 @@
         <div class="hs-step">
           <span class="hs-num">1</span>
           <div>
-            <p class="hs-label">Send this encrypted link to the other person <span class="hs-tip"><i class="hs-tip-icon" tabindex="0">?</i><span class="hs-tip-text">Safe to share publicly — it's encrypted. They still need the passphrase to use it.</span></span></p>
+            <p class="hs-label">Send this encrypted link to the other person <span class="hs-tip"><i class="hs-tip-icon" tabindex="0">?</i><span class="hs-tip-text">Safe to share publicly, it's encrypted. They still need the passphrase to use it.</span></span></p>
             <div class="hs-row">
               <input id="offer-url" type="text" readonly aria-label="Your encrypted invite link" aria-readonly="true">
               <button class="btn-accent" id="copy-offer" aria-label="Copy invite link">Copy</button>
@@ -102,7 +102,7 @@
             </div>
             <div class="hs-qr-wrap hidden" id="offer-qr-wrap">
               <div id="offer-qr" class="hs-qr-img" role="img" aria-label="QR code for the invite link"></div>
-              <p class="hs-qr-hint">Scan with your phone's camera — no copy/paste needed</p>
+              <p class="hs-qr-hint">Scan with your phone's camera, no copy/paste needed</p>
             </div>
             <div class="hs-expiry">
               <label for="expiry-select">Link expires:</label>
@@ -118,7 +118,7 @@
         <div class="hs-step">
           <span class="hs-num">2</span>
           <div>
-            <p class="hs-label">Send this passphrase via a <strong>different channel</strong> — SMS, voice, in person <span class="hs-tip"><i class="hs-tip-icon" tabindex="0">?</i><span class="hs-tip-text">If someone intercepts the link, they still can't connect without this passphrase. Two channels = two locks.</span></span></p>
+            <p class="hs-label">Send this passphrase via a <strong>different channel</strong>: SMS, voice, in person <span class="hs-tip"><i class="hs-tip-icon" tabindex="0">?</i><span class="hs-tip-text">If someone intercepts the link, they still can't connect without this passphrase. Two channels = two locks.</span></span></p>
             <div class="hs-passphrase-box">
               <code id="passphrase-display"></code>
               <button class="btn-ghost" id="copy-passphrase" aria-label="Copy passphrase">Copy</button>
@@ -146,7 +146,7 @@
           <input id="passphrase-input" type="text" placeholder="e.g. storm-fox-river-oak-4821" autocomplete="off" spellcheck="false" aria-label="Enter the passphrase sent by the person who invited you">
           <button class="btn-accent" id="unlock-btn" aria-label="Unlock with passphrase">Unlock</button>
         </div>
-        <p class="hs-error hidden" id="passphrase-error">Wrong passphrase — try again</p>
+        <p class="hs-error hidden" id="passphrase-error">Wrong passphrase, try again</p>
       </div>
 
       <!-- Expired link -->
@@ -173,7 +173,7 @@
 
     </div>
 
-    <!-- Peer status bar — visible only when connected -->
+    <!-- Peer status bar, visible only when connected -->
     <div id="peer-status" class="peer-status hidden">
       <span class="peer-dot" id="peer-dot"></span>
       <span id="peer-status-text"></span>
@@ -184,7 +184,7 @@
       </span>
     </div>
 
-    <!-- Chat area — hidden until connected -->
+    <!-- Chat area, hidden until connected -->
     <main id="messages" class="messages hidden"></main>
     <div id="typing-indicator" class="typing-indicator hidden" aria-live="polite" aria-atomic="true">
       <span class="typing-dots"><span></span><span></span><span></span></span>
@@ -209,6 +209,6 @@
   </div>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="js/app.js?v=17"></script>
+  <script src="js/app.js?v=18"></script>
 </body>
 </html>

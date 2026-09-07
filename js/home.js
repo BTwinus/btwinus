@@ -12,7 +12,7 @@ window.addEventListener('appinstalled', () => {
   _installPrompt = null;
 });
 
-// iOS Safari doesn't fire beforeinstallprompt — show manual hint instead
+// iOS Safari doesn't fire beforeinstallprompt, show manual hint instead
 const _isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
                (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
 if (_isIOS && !('standalone' in navigator && navigator.standalone)) {

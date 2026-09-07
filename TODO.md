@@ -1,4 +1,4 @@
-# TODO — Why nobody finds Btwinus, and what to fix
+# TODO: Why nobody finds Btwinus, and what to fix
 
 Audit date: 2026-09-06. Every item below was verified against the live site
 or the repo. Ordered by impact. Sections A and B are dashboard / outreach work
@@ -82,7 +82,7 @@ the on-page work is. Each item below is one link from a relevant site.
       Privnote, OneTimeSecret.
 - [ ] **C5. GitHub awesome lists.** Open PRs to `awesome-privacy`, `awesome-webrtc`,
       `awesome-selfhosted` (not applicable, no server; skip), `awesome-e2ee` style lists.
-- [ ] **C6. Privacy Guides forum** (discuss.privacyguides.net) — post in "Tool Suggestions" with
+- [ ] **C6. Privacy Guides forum** (discuss.privacyguides.net), post in "Tool Suggestions" with
       an honest threat-model writeup. They will push back on "military-grade" wording; that is
       one more reason to remove it (see D3).
 - [ ] **C7. Reddit.** r/privacy, r/privacytoolsIO, r/webdev ("I built..."), r/selfhosted (no),
@@ -196,7 +196,7 @@ the on-page work is. Each item below is one link from a relevant site.
 - [x] **G5. 404 page.** `404.html` is a meta-refresh to `/`. GitHub Pages serves it with a 404
       status, which is correct, but a refresh-to-home hides broken links from GSC. Make it a
       real page with a link home instead.
-- [x] **G6. `chat.html` title.** "Btwinus — Start a Secure Anonymous Chat, No Account Needed"
+- [x] **G6. `chat.html` title.** "Btwinus, Start a Secure Anonymous Chat, No Account Needed"
       duplicates the homepage intent. Consider `noindex` on `chat.html` and remove it from the
       sitemap; the app surface does not need to rank, the landing page does.
 

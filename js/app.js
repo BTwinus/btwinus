@@ -192,7 +192,7 @@ function genPassphrase() {
   return `${pick()}-${pick()}-${pick()}-${pick()}-${num}`;
 }
 
-// ── AES-GCM encryption (Web Crypto — no library) ──────────────────────────
+// ── AES-GCM encryption (Web Crypto, no library) ──────────────────────────
 
 async function deriveKey(passphrase, salt) {
   const raw = await crypto.subtle.importKey(
@@ -298,7 +298,7 @@ function showState(state) {
     document.getElementById('msg-input').focus();
   } else if (state === 'history') {
     document.getElementById('messages').classList.remove('hidden');
-    // composer stays hidden — read-only view of previous session
+    // composer stays hidden, read-only view of previous session
   } else {
     document.getElementById('handshake').classList.remove('hidden');
     const map = { loading:'hs-loading', offering:'hs-offering',
@@ -363,7 +363,7 @@ function startActivityTracking() {
     sendStatus(document.hidden ? 'away' : 'active');
   });
 
-  // Track mouse/keyboard — if silent for 60s, tell peer we're idle
+  // Track mouse/keyboard, if silent for 60s, tell peer we're idle
   const onActivity = () => {
     sendStatus('active');
     clearTimeout(activityTimer);
@@ -378,7 +378,7 @@ function startActivityTracking() {
   activityTimer = setTimeout(() => sendStatus('idle'), 60000);
 }
 
-// ── Session verification (SAS — short authentication string) ─────────────
+// ── Session verification (SAS, short authentication string) ─────────────
 
 function genNonce() {
   return Array.from(crypto.getRandomValues(new Uint8Array(8)))
@@ -475,8 +475,8 @@ function setupChannel(channel) {
     clearHistory();
     setStatus('🔒 Connected');
     showState('chat');
-    systemMsg('🔒 Chat started — end-to-end encrypted. Refreshing or closing this tab ends the session permanently.');
-    toast('Connected — fully encrypted');
+    systemMsg('🔒 Chat started, end-to-end encrypted. Refreshing or closing this tab ends the session permanently.');
+    toast('Connected, fully encrypted');
     setPeerStatus('connecting');
     startActivityTracking();
     sendStatus('active');
@@ -561,7 +561,7 @@ async function initOffer() {
 
   // Auto-copy invite link
   copyText(url, false);
-  toast('Invite link copied — share it, then send the passphrase separately');
+  toast('Invite link copied, share it, then send the passphrase separately');
 }
 
 // ── User B: show passphrase entry ─────────────────────────────────────────
@@ -623,7 +623,7 @@ async function buildAnswer(compressedOffer) {
   showState('answering');
 
   copyText(url, false);
-  toast('Reply link copied — send it back to them');
+  toast('Reply link copied, send it back to them');
 }
 
 // ── User A: decrypt answer + complete connection ──────────────────────────
@@ -649,7 +649,7 @@ async function completeConnection() {
   } catch (_) {
     showState('offering');
     setStatus('Waiting for reply');
-    toast('Invalid or tampered link — try again');
+    toast('Invalid or tampered link, try again');
   }
 }
 
@@ -659,11 +659,11 @@ function onConnState() {
       if (!peerLeft) {
         setStatus('Disconnected');
         setPeerStatus('disconnected');
-        systemMsg('Connection lost — start a new chat to reconnect');
+        systemMsg('Connection lost, start a new chat to reconnect');
       }
     } else {
       setStatus('Connection failed');
-      systemMsg('Could not connect — check your network and try a new chat');
+      systemMsg('Could not connect, check your network and try a new chat');
     }
     chatStarted = false;
   }
@@ -689,7 +689,7 @@ function sendMessage() {
 function render() {
   const el     = document.getElementById('messages');
   const banner = historyMode
-    ? '<div class="history-banner">Previous session — read only. Start a new chat to reconnect.</div>'
+    ? '<div class="history-banner">Previous session, read only. Start a new chat to reconnect.</div>'
     : '';
   if (!messages.length) {
     el.innerHTML = banner + '<div class="empty-state"><div class="icon">🔒</div><p>Connected &amp; encrypted.<br>Say hello.</p></div>';
@@ -806,7 +806,7 @@ async function init() {
     document.getElementById('offer-url').value = url;
     renderOfferQR(url);
     copyText(url, false);
-    toast('Link updated — share the new one');
+    toast('Link updated, share the new one');
   });
 
   if (offerEncoded) {
@@ -828,9 +828,9 @@ async function init() {
       setStatus('Previous session');
       showState('history');
       render();
-      toast('Previous session restored — tap "New chat" to reconnect');
+      toast('Previous session restored, tap "New chat" to reconnect');
     } else {
-      await initOffer();             // User A — fresh start
+      await initOffer();             // User A, fresh start
     }
   }
 }

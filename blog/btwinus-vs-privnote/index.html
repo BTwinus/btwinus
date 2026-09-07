@@ -63,7 +63,7 @@
   <article class="blog-wrap">
     <p class="blog-meta">September 6, 2026 · 6 min read</p>
     <h1 class="blog-title">Btwinus vs Privnote: which one should you use to share a secret?</h1>
-    <p class="blog-lede">Privnote has been the default "paste it here, send the link, it burns after reading" tool since 2008. Btwinus is a different shape of thing: a live, encrypted, browser-to-browser chat with no server at all. They overlap on one job — getting a secret to one person — and diverge on almost everything else.</p>
+    <p class="blog-lede">Privnote has been the default "paste it here, send the link, it burns after reading" tool since 2008. Btwinus is a different shape of thing: a live, encrypted, browser-to-browser chat with no server at all. They overlap on one job, getting a secret to one person, and diverge on almost everything else.</p>
 
     <div class="blog-body">
       <p>People search for "Privnote alternative" for two very different reasons. Some want the same one-shot note with fewer ads or cleaner crypto. Others want something that doesn't store their secret on anyone's server, even for a minute. Btwinus only answers the second group, and this post tries to be honest about that.</p>
@@ -72,17 +72,17 @@
 
       <p>Privnote is a free website. You type a note, click a button, and get a link. The recipient opens the link, reads the note, and Privnote deletes it. No account on either side, nothing to install.</p>
 
-      <p>Under the hood, the note is encrypted in your browser before upload. The decryption key is placed in the URL fragment — the part after the <code>#</code> — which browsers never send to a server. So Privnote's servers hold the ciphertext and (in principle) never see the key. You can optionally add a manual password, set a time-based expiry so an unopened note still dies, and ask for an email when the note is read.</p>
+      <p>Under the hood, the note is encrypted in your browser before upload. The decryption key is placed in the URL fragment, the part after the <code>#</code>: which browsers never send to a server. So Privnote's servers hold the ciphertext and (in principle) never see the key. You can optionally add a manual password, set a time-based expiry so an unopened note still dies, and ask for an email when the note is read.</p>
 
       <p>Two things to know. First, Privnote is closed source: the JavaScript is inspectable in your browser, but there's no published repository, so you take the deletion and key-handling claims on trust. Third-party writeups have reported that it uses an old AES-CBC library with MD5 key derivation; we couldn't confirm that independently, so treat it as a claim rather than a fact. Second, the site is ad-supported and loads third-party tracking scripts, and it has been repeatedly impersonated by look-alike domains (<code>privnotes.com</code>, <code>privnote.co</code>) that quietly rewrite crypto addresses in notes. If you use it, bookmark the real domain.</p>
 
       <h2>What Btwinus is</h2>
 
-      <p><a href="/">Btwinus</a> is a live one-to-one chat that runs entirely in two browser tabs. You click "Start a new chat" and get two things: an invite link and a passphrase like <code>storm-fox-river-4821</code>. The link carries an encrypted WebRTC offer in its URL fragment — encrypted with AES-256-GCM, with the key derived from the passphrase using PBKDF2 (100,000 iterations). You send the link through one channel and the passphrase through a different one. The other person opens the link, types the passphrase, and sends you back a reply link. Once you paste it, the two browsers connect directly over WebRTC and you're chatting.</p>
+      <p><a href="/">Btwinus</a> is a live one-to-one chat that runs entirely in two browser tabs. You click "Start a new chat" and get two things: an invite link and a passphrase like <code>storm-fox-river-4821</code>. The link carries an encrypted WebRTC offer in its URL fragment, encrypted with AES-256-GCM, with the key derived from the passphrase using PBKDF2 (100,000 iterations). You send the link through one channel and the passphrase through a different one. The other person opens the link, types the passphrase, and sends you back a reply link. Once you paste it, the two browsers connect directly over WebRTC and you're chatting.</p>
 
       <p>There is no server in that loop. Nothing is uploaded, nothing is stored, nothing can be subpoenaed. When either tab closes, the conversation is gone. A short authentication string is shown on both sides so you can read it aloud and confirm nobody sat in the middle of the handshake. Btwinus is free and <a href="https://github.com/BTwinus/btwinus">open source</a>. (Here's the <a href="/blog/encrypted-chat-no-account/">full explanation of how the link carries the encryption</a>.)</p>
 
-      <p>The cost of "no server" is real: both of you must be online at the same time, it's strictly two people, and it's text only — there's no file transfer.</p>
+      <p>The cost of "no server" is real: both of you must be online at the same time, it's strictly two people, and it's text only, there's no file transfer.</p>
 
       <h2>The honest comparison table</h2>
 
@@ -105,7 +105,7 @@
         <tr>
           <td>Where the secret lives</td>
           <td>Privnote's servers (encrypted) until read or expired</td>
-          <td>Nowhere — travels browser to browser</td>
+          <td>Nowhere, travels browser to browser</td>
         </tr>
         <tr>
           <td>Encryption</td>
@@ -120,7 +120,7 @@
         <tr>
           <td>Recipient can be offline</td>
           <td>Yes</td>
-          <td>No — both online at once</td>
+          <td>No, both online at once</td>
         </tr>
         <tr>
           <td>Two-way conversation</td>
@@ -145,7 +145,7 @@
         <tr>
           <td>Self-hostable</td>
           <td>No</td>
-          <td>Yes — it's a static page</td>
+          <td>Yes, it's a static page</td>
         </tr>
         <tr>
           <td>Ads / trackers</td>
@@ -175,13 +175,13 @@
 
       <p><strong>A single intercepted link must not be enough.</strong> A plain Privnote link is the whole secret: whoever gets the URL gets the note. (Its optional password fixes this, but it's off by default.) In Btwinus the passphrase is mandatory and never travels in the link, so an attacker who reads your email or your Slack still has only half. (This two-channel idea is the core of <a href="/blog/share-password-securely/">how to share a password without leaving a copy behind</a>.)</p>
 
-      <p><strong>You need a back-and-forth.</strong> "Here's the key — which environment? — staging — okay, and the username?" A note can't do that. A chat can, and closes without a trace.</p>
+      <p><strong>You need a back-and-forth.</strong> "Here's the key, which environment?, staging, okay, and the username?" A note can't do that. A chat can, and closes without a trace.</p>
 
       <p><strong>You want to verify who you're talking to.</strong> Btwinus shows both sides a short code to compare out loud. A note has no equivalent; you find out it went to the wrong person only if it did.</p>
 
       <p><strong>You want to read the code.</strong> Btwinus is a few hundred lines of vanilla JavaScript on GitHub. Privnote's stack is private.</p>
 
-      <p><strong>You'd rather not feed an ad network.</strong> Btwinus has no ads and no trackers beyond a consent-gated analytics tag on the landing page — none on the chat itself.</p>
+      <p><strong>You'd rather not feed an ad network.</strong> Btwinus has no ads and no trackers beyond a consent-gated analytics tag on the landing page, none on the chat itself.</p>
 
       <h2>How to decide</h2>
 

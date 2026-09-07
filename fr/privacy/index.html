@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Politique de confidentialité | Btwinus Chat</title>
-  <meta name="description" content="Ce que Btwinus collecte et ne collecte pas. Vos conversations ne sont jamais collectées — elles sont chiffrées de bout en bout et pair-à-pair. L'analyse d'audience ne fonctionne qu'avec votre consentement.">
+  <meta name="description" content="Ce que Btwinus collecte et ne collecte pas. Vos conversations ne sont jamais collectées, elles sont chiffrées de bout en bout et pair-à-pair. L'analyse d'audience ne fonctionne qu'avec votre consentement.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://btwinus.com/fr/privacy/">
   <link rel="alternate" hreflang="en" href="https://btwinus.com/privacy/">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/style.css?v=22">
   <link rel="stylesheet" href="/css/blog.css?v=4">
   <script src="/js/theme.js?v=17"></script>
-  <script src="/js/consent.js?v=2" defer></script>
+  <script src="/js/consent.js?v=3" defer></script>
 </head>
 <body class="blog-page">
   <nav class="blog-nav">
@@ -35,7 +35,7 @@
   <article class="blog-wrap">
     <p class="blog-meta">Dernière mise à jour : 13 mai 2026</p>
     <h1 class="blog-title">Politique de confidentialité</h1>
-    <p class="blog-lede">En bref : vos conversations ne sont jamais collectées, stockées ni transmises — elles sont chiffrées de bout en bout et circulent directement entre les navigateurs. La seule donnée collectée est une analyse d'audience anonyme, et uniquement si vous l'acceptez.</p>
+    <p class="blog-lede">En bref : vos conversations ne sont jamais collectées, stockées ni transmises, elles sont chiffrées de bout en bout et circulent directement entre les navigateurs. La seule donnée collectée est une analyse d'audience anonyme, et uniquement si vous l'acceptez.</p>
 
     <div class="blog-body">
       <h2>1. Qui nous sommes</h2>
@@ -46,23 +46,23 @@
       <ul>
         <li>Les messages sont <strong>chiffrés de bout en bout</strong> avec AES-256-GCM. La clé est dérivée d'une phrase de passe connue de vous seuls.</li>
         <li>Les messages circulent <strong>directement de navigateur à navigateur</strong> via WebRTC. Il n'y a aucun serveur Btwinus au milieu. Nous n'exploitons aucun backend pouvant recevoir, relayer ou stocker le contenu des messages.</li>
-        <li>Rien n'est écrit dans une base de données, car il n'y a pas de base de données. Quand vous fermez l'onglet, la conversation disparaît — elle n'a jamais été stockée nulle part.</li>
+        <li>Rien n'est écrit dans une base de données, car il n'y a pas de base de données. Quand vous fermez l'onglet, la conversation disparaît, elle n'a jamais été stockée nulle part.</li>
         <li>Nous ne collectons ni nom, ni email, ni numéro de téléphone, ni compte. Il n'y a pas d'inscription.</li>
       </ul>
-      <p>Nous ne pourrions remettre votre historique de conversation à personne — pas même à un tribunal — car nous ne l'avons pas et ne l'avons jamais eu.</p>
+      <p>Nous ne pourrions remettre votre historique de conversation à personne, pas même à un tribunal, car nous ne l'avons pas et ne l'avons jamais eu.</p>
 
       <h2>3. Analyse d'audience (Google Analytics)</h2>
       <p>Pour comprendre combien de personnes visitent le site et quelles pages elles lisent, nous utilisons Google Analytics 4 sur nos pages d'accueil. C'est la seule collecte de données du site, et elle est <strong>désactivée par défaut</strong>.</p>
       <p>Nous utilisons Google Consent Mode v2. Lors de votre première visite, le stockage analytique est défini sur <em>refusé</em>. Google Analytics ne collecte des données que si vous cliquez sur <strong>Accepter</strong> sur la bannière. Si vous cliquez sur <strong>Refuser</strong> (ou l'ignorez), aucun cookie d'analyse n'est posé et aucune donnée personnelle d'analyse n'est collectée.</p>
-      <p>Si vous consentez, Google Analytics peut traiter : une localisation approximative dérivée de votre adresse IP, votre type d'appareil et de navigateur, les pages consultées, et comment vous êtes arrivé sur le site. Nous ne recevons pas votre nom ni d'identifiant révélant qui vous êtes. Google agit comme sous-traitant ; voir la <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">politique de confidentialité de Google</a>. Nous n'utilisons pas Google Ads, ni la personnalisation publicitaire, ni aucun signal publicitaire — ils sont désactivés en permanence.</p>
+      <p>Si vous consentez, Google Analytics peut traiter : une localisation approximative dérivée de votre adresse IP, votre type d'appareil et de navigateur, les pages consultées, et comment vous êtes arrivé sur le site. Nous ne recevons pas votre nom ni d'identifiant révélant qui vous êtes. Google agit comme sous-traitant ; voir la <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">politique de confidentialité de Google</a>. Nous n'utilisons pas Google Ads, ni la personnalisation publicitaire, ni aucun signal publicitaire, ils sont désactivés en permanence.</p>
 
       <h2>4. Stockage local sur votre appareil</h2>
       <p>Btwinus stocke quelques petites valeurs dans le <code>localStorage</code> de votre navigateur. Elles ne quittent jamais votre appareil et ne nous sont pas envoyées :</p>
       <ul>
-        <li><code>btw_consent</code> — si vous avez accepté ou refusé l'analyse, pour ne pas redemander.</li>
-        <li><code>btw_lang</code> — votre préférence de langue (anglais / français / lingála).</li>
-        <li>préférence de thème — mode sombre ou clair.</li>
-        <li><code>btw_msgs</code> (dans <code>sessionStorage</code>, pas <code>localStorage</code>) — les messages du chat ouvert dans cet onglet, pour qu'un rechargement puisse les afficher en lecture seule. Votre navigateur les supprime à la fermeture de l'onglet.</li>
+        <li><code>btw_consent</code>: si vous avez accepté ou refusé l'analyse, pour ne pas redemander.</li>
+        <li><code>btw_lang</code>: votre préférence de langue (anglais / français / lingála).</li>
+        <li>préférence de thème, mode sombre ou clair.</li>
+        <li><code>btw_msgs</code> (dans <code>sessionStorage</code>, pas <code>localStorage</code>), les messages du chat ouvert dans cet onglet, pour qu'un rechargement puisse les afficher en lecture seule. Votre navigateur les supprime à la fermeture de l'onglet.</li>
       </ul>
       <p>Ce sont des réglages fonctionnels, pas du suivi. Vous pouvez les effacer à tout moment via l'option « effacer les données du site » de votre navigateur.</p>
 
@@ -74,7 +74,7 @@
 
       <h2>7. Vos droits (RGPD / EEE et Royaume-Uni)</h2>
       <p>Si vous êtes dans l'EEE ou au Royaume-Uni, vous avez le droit d'accéder, de rectifier, d'effacer et de limiter le traitement de vos données personnelles, et de déposer une plainte auprès de votre autorité de protection des données.</p>
-      <p>En pratique : nous ne détenons aucune donnée personnelle issue du chat, il n'y a donc rien à consulter ni à effacer de ce côté. Pour l'analyse, la base légale est votre <strong>consentement</strong>, que vous pouvez retirer à tout moment en cliquant sur Refuser ou en effaçant les données du site — l'analyse s'arrête immédiatement. Pour exercer un droit ou poser une question, <a href="mailto:artivicolab@gmail.com">contactez-nous</a>.</p>
+      <p>En pratique : nous ne détenons aucune donnée personnelle issue du chat, il n'y a donc rien à consulter ni à effacer de ce côté. Pour l'analyse, la base légale est votre <strong>consentement</strong>, que vous pouvez retirer à tout moment en cliquant sur Refuser ou en effaçant les données du site, l'analyse s'arrête immédiatement. Pour exercer un droit ou poser une question, <a href="mailto:artivicolab@gmail.com">contactez-nous</a>.</p>
 
       <h2>8. Enfants</h2>
       <p>Btwinus ne s'adresse pas aux enfants de moins de 13 ans (ou l'âge applicable dans votre pays) et nous ne collectons sciemment aucune donnée les concernant.</p>

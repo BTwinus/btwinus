@@ -59,17 +59,17 @@ const I18N = {
     hs_loading_text:  'Setting up connection…',
 
     hs_step1_label:   'Send this encrypted link to the other person',
-    hs_step1_tip:     'Safe to share publicly — it\'s encrypted. They still need the passphrase to use it.',
+    hs_step1_tip:     'Safe to share publicly, it\'s encrypted. They still need the passphrase to use it.',
     hs_copy:          'Copy',
     hs_qr:            'QR',
-    hs_qr_hint:       'Scan with your phone\'s camera — no copy/paste needed',
+    hs_qr_hint:       'Scan with your phone\'s camera, no copy/paste needed',
     hs_expiry_label:  'Link expires:',
     expiry_1h:        'in 1 hour',
     expiry_6h:        'in 6 hours',
     expiry_24h:       'in 24 hours',
     expiry_never:     'never',
 
-    hs_step2_label:   'Send this passphrase via a <strong>different channel</strong> — SMS, voice, in person',
+    hs_step2_label:   'Send this passphrase via a <strong>different channel</strong>: SMS, voice, in person',
     hs_step2_tip:     'If someone intercepts the link, they still can\'t connect without this passphrase. Two channels = two locks.',
 
     hs_step3_label:   'Paste the link they send back',
@@ -81,7 +81,7 @@ const I18N = {
     hs_pass_label:    'The person who invited you should have sent it via a separate channel',
     hs_pass_ph:       'e.g. storm-fox-river-oak-4821',
     hs_unlock:        'Unlock',
-    hs_pass_error:    'Wrong passphrase — try again',
+    hs_pass_error:    'Wrong passphrase, try again',
 
     hs_answer_label:  'Send this encrypted link back to the person who invited you',
     hs_waiting:       'Waiting for them to connect…',
@@ -184,17 +184,17 @@ const I18N = {
     hs_loading_text:  'Configuration de la connexion…',
 
     hs_step1_label:   'Envoyez ce lien chiffré à l\'autre personne',
-    hs_step1_tip:     'Peut être partagé publiquement — il est chiffré. L\'autre personne a encore besoin de la phrase de passe.',
+    hs_step1_tip:     'Peut être partagé publiquement, il est chiffré. L\'autre personne a encore besoin de la phrase de passe.',
     hs_copy:          'Copier',
     hs_qr:            'QR',
-    hs_qr_hint:       'Scannez avec l\'appareil photo de votre téléphone — pas besoin de copier/coller',
+    hs_qr_hint:       'Scannez avec l\'appareil photo de votre téléphone, pas besoin de copier/coller',
     hs_expiry_label:  'Le lien expire :',
     expiry_1h:        'dans 1 heure',
     expiry_6h:        'dans 6 heures',
     expiry_24h:       'dans 24 heures',
     expiry_never:     'jamais',
 
-    hs_step2_label:   'Envoyez cette phrase de passe via un <strong>canal différent</strong> — SMS, appel, en personne',
+    hs_step2_label:   'Envoyez cette phrase de passe via un <strong>canal différent</strong>: SMS, appel, en personne',
     hs_step2_tip:     'Si quelqu\'un intercepte le lien, il ne peut toujours pas se connecter sans la phrase de passe. Deux canaux = deux verrous.',
 
     hs_step3_label:   'Collez le lien qu\'ils vous renvoient',
@@ -206,7 +206,7 @@ const I18N = {
     hs_pass_label:    'La personne qui vous a invité devrait vous l\'avoir envoyée via un canal séparé',
     hs_pass_ph:       'ex. tempête-renard-rivière-chêne-4821',
     hs_unlock:        'Déverrouiller',
-    hs_pass_error:    'Phrase de passe incorrecte — réessayez',
+    hs_pass_error:    'Phrase de passe incorrecte, réessayez',
 
     hs_answer_label:  'Renvoyez ce lien chiffré à la personne qui vous a invité',
     hs_waiting:       'En attente de leur connexion…',
@@ -309,17 +309,17 @@ const I18N = {
     hs_loading_text:  'Kobongisa kokangana…',
 
     hs_step1_label:   'Tinda lien oyo ekangami epai ya moto mosusu',
-    hs_step1_tip:     'Okoki kokabola yango polele — ekangami. Bango basengeli kaka liloba ya bokɔti mpo na kosalela yango.',
+    hs_step1_tip:     'Okoki kokabola yango polele, ekangami. Bango basengeli kaka liloba ya bokɔti mpo na kosalela yango.',
     hs_copy:          'Kopia',
     hs_qr:            'QR',
-    hs_qr_hint:       'Scan na kamera ya telefoni na yo — kopia te kotia te',
+    hs_qr_hint:       'Scan na kamera ya telefoni na yo, kopia te kotia te',
     hs_expiry_label:  'Lien ekosila:',
     expiry_1h:        'na ngonga 1',
     expiry_6h:        'na bangonga 6',
     expiry_24h:       'na bangonga 24',
     expiry_never:     'esili te',
 
-    hs_step2_label:   'Tinda liloba ya bokɔti na <strong>nzela mosusu</strong> — SMS, mbila, miso na miso',
+    hs_step2_label:   'Tinda liloba ya bokɔti na <strong>nzela mosusu</strong>: SMS, mbila, miso na miso',
     hs_step2_tip:     'Soki moto azwi lien, akoki kokangana te kozanga liloba ya bokɔti. Banzela mibale = bizipeli mibale.',
 
     hs_step3_label:   'Tia lien oyo bazongiseli yo',
@@ -331,7 +331,7 @@ const I18N = {
     hs_pass_label:    'Moto oyo abyangi yo asengelaki kotinda yango na nzela mosusu',
     hs_pass_ph:       'ndakisa: mopepe-mbwa-ebale-nzete-4821',
     hs_unlock:        'Fungola',
-    hs_pass_error:    'Liloba ya bokɔti ezali mabe — meka lisusu',
+    hs_pass_error:    'Liloba ya bokɔti ezali mabe, meka lisusu',
 
     hs_answer_label:  'Zongisela moto oyo abyangi yo lien oyo ekangami',
     hs_waiting:       'Kozela bakangana…',
@@ -400,7 +400,7 @@ function setLang(lang) {
   document.documentElement.lang = lang;
 }
 
-// Kept for backwards compat — cycles through languages
+// Kept for backwards compat, cycles through languages
 function toggleLang() {
   const i = LANG_LIST.indexOf(getLang());
   setLang(LANG_LIST[(i + 1) % LANG_LIST.length]);

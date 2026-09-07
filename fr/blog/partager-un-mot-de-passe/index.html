@@ -66,10 +66,10 @@
   <article class="blog-wrap">
     <p class="blog-meta">10 mai 2026 · 6 min de lecture</p>
     <h1 class="blog-title">Comment partager un mot de passe sans en laisser une copie derrière soi</h1>
-    <p class="blog-lede">La plupart des moyens que les gens utilisent chaque jour pour envoyer des mots de passe — e-mail, Slack, WhatsApp, même les SMS — en gardent discrètement une copie quelque part, pour toujours. Si votre objectif est réellement la confidentialité, il vous faut un canal qui s'autodétruit.</p>
+    <p class="blog-lede">La plupart des moyens que les gens utilisent chaque jour pour envoyer des mots de passe, e-mail, Slack, WhatsApp, même les SMS, en gardent discrètement une copie quelque part, pour toujours. Si votre objectif est réellement la confidentialité, il vous faut un canal qui s'autodétruit.</p>
 
     <div class="blog-body">
-      <p>Un collègue vous demande le mot de passe de la base de données de préproduction : que faites-vous ? La plupart des gens l'envoient par l'application de chat qui est ouverte à ce moment-là : Slack, WhatsApp, iMessage, e-mail. Ça paraît anodin. Ça crée aussi un enregistrement permanent de l'identifiant à au moins trois endroits — et probablement davantage, selon la façon dont chacun a configuré ses appareils.</p>
+      <p>Un collègue vous demande le mot de passe de la base de données de préproduction : que faites-vous ? La plupart des gens l'envoient par l'application de chat qui est ouverte à ce moment-là : Slack, WhatsApp, iMessage, e-mail. Ça paraît anodin. Ça crée aussi un enregistrement permanent de l'identifiant à au moins trois endroits, et probablement davantage, selon la façon dont chacun a configuré ses appareils.</p>
 
       <p>Cet article explique pourquoi c'est un problème, et ce qu'il faut faire à la place.</p>
 
@@ -79,9 +79,9 @@
 
       <ul>
         <li><strong>Les serveurs du fournisseur.</strong> Slack, Google Workspace, Microsoft, Apple et Meta stockent tous les messages sur leur infrastructure. Même quand le transport est chiffré, l'entreprise peut lire le contenu (à quelques exceptions près, comme iMessage ou WhatsApp qui sont chiffrés de bout en bout).</li>
-        <li><strong>L'historique des messages sur les deux appareils.</strong> Indéfiniment, sauf si quelqu'un supprime manuellement — et même dans ce cas, souvent uniquement en local.</li>
+        <li><strong>L'historique des messages sur les deux appareils.</strong> Indéfiniment, sauf si quelqu'un supprime manuellement, et même dans ce cas, souvent uniquement en local.</li>
         <li><strong>La synchronisation cloud de ces appareils.</strong> Messages iCloud, sauvegardes Google Drive, archives Slack Enterprise. Le mot de passe se trouve maintenant aussi dans le stockage d'une autre entreprise.</li>
-        <li><strong>Les systèmes de notification.</strong> Les notifications push affichent souvent le corps du message sur l'écran de verrouillage. Elles transitent — et sont journalisées — par le service de notifications push d'Apple ou par Firebase Cloud Messaging.</li>
+        <li><strong>Les systèmes de notification.</strong> Les notifications push affichent souvent le corps du message sur l'écran de verrouillage. Elles transitent, et sont journalisées, par le service de notifications push d'Apple ou par Firebase Cloud Messaging.</li>
         <li><strong>Les outils de sécurité des postes de travail.</strong> Si l'un de vous utilise un ordinateur professionnel géré par l'entreprise, les outils de DLP et de journalisation ont peut-être capturé le corps du message.</li>
         <li><strong>Les captures d'écran et le copier-coller.</strong> Si votre collègue copie le mot de passe, il reste dans son presse-papiers, éventuellement synchronisé via le presse-papiers universel d'Apple ou l'historique du presse-papiers de Windows. S'il fait une capture d'écran, cette image se trouve maintenant dans sa photothèque, peut-être synchronisée dans le cloud.</li>
       </ul>
@@ -98,7 +98,7 @@
         <li><strong>Vérification hors bande.</strong> Ce qui permet de déchiffrer le secret voyage par un canal différent de celui du blob chiffré, si bien qu'un seul canal compromis ne peut pas tout révéler.</li>
       </ol>
 
-      <p>La plupart des outils de « partage sécurisé de mot de passe » couvrent (1) et (2). Peu font (3) par défaut — alors que c'est le point le plus important pour les identifiants de grande valeur.</p>
+      <p>La plupart des outils de « partage sécurisé de mot de passe » couvrent (1) et (2). Peu font (3) par défaut, alors que c'est le point le plus important pour les identifiants de grande valeur.</p>
 
       <h2>Les options, classées</h2>
 
@@ -108,17 +108,17 @@
 
       <h3>2. La fonction de partage d'un gestionnaire de mots de passe</h3>
 
-      <p>1Password, Bitwarden et Dashlane proposent tous un partage par lien à usage unique. Ça fonctionne bien — le lien expire après un clic ou après un délai défini, et dans certains cas le destinataire n'a pas besoin de compte. Le hic : l'expéditeur, au minimum, doit avoir un compte, l'entreprise voit les métadonnées (qui a envoyé quoi à qui et quand), et les destinataires butent parfois sur le parcours de réception.</p>
+      <p>1Password, Bitwarden et Dashlane proposent tous un partage par lien à usage unique. Ça fonctionne bien, le lien expire après un clic ou après un délai défini, et dans certains cas le destinataire n'a pas besoin de compte. Le hic : l'expéditeur, au minimum, doit avoir un compte, l'entreprise voit les métadonnées (qui a envoyé quoi à qui et quand), et les destinataires butent parfois sur le parcours de réception.</p>
 
       <h3>3. Un lien chiffré éphémère</h3>
 
-      <p>Des outils comme <a href="https://btwinus.com/fr/">Btwinus</a>, OneTimeSecret et PrivateBin permettent de créer un lien qui contient le secret chiffré et s'autodétruit après une lecture. Btwinus va plus loin en exigeant une phrase secrète que le lien ne contient pas — ce qui signifie que même si quelqu'un intercepte le lien, il ne peut pas le déchiffrer sans la seconde pièce, que vous envoyez par un autre canal (un appel téléphonique, une autre application de chat, en personne).</p>
+      <p>Des outils comme <a href="https://btwinus.com/fr/">Btwinus</a>, OneTimeSecret et PrivateBin permettent de créer un lien qui contient le secret chiffré et s'autodétruit après une lecture. Btwinus va plus loin en exigeant une phrase secrète que le lien ne contient pas, ce qui signifie que même si quelqu'un intercepte le lien, il ne peut pas le déchiffrer sans la seconde pièce, que vous envoyez par un autre canal (un appel téléphonique, une autre application de chat, en personne).</p>
 
       <p>Cette séparation en deux canaux compte plus qu'on ne le pense. Si votre Slack est compromis et que vous avez envoyé à la fois le mot de passe <em>et</em> le lien par Slack, l'attaquant possède les deux moitiés. Si le lien passe par Slack et la phrase secrète par un appel téléphonique, l'attaquant doit compromettre deux choses différentes pour obtenir l'identifiant. (C'est le même <a href="/fr/blog/chat-chiffre-sans-compte/">modèle de chiffrement dans un lien que Btwinus utilise pour le chat</a>.)</p>
 
       <h3>4. Les messages éphémères de Signal</h3>
 
-      <p>Signal prend en charge les messages qui se suppriment automatiquement après un délai défini. Chiffré de bout en bout, aucune rétention sur serveur. Vraiment solide. La friction, c'est que les deux parties doivent avoir un compte Signal et s'être déjà ajoutées mutuellement — parfait pour une relation durable, pénible pour un transfert ponctuel avec quelqu'un que vous n'avez pas déjà sur Signal. (Pour une analyse plus complète, voir <a href="/fr/blog/signal-vs-telegram-vs-btwinus/">comment Signal, Telegram et Btwinus se comparent en matière d'anonymat</a>.)</p>
+      <p>Signal prend en charge les messages qui se suppriment automatiquement après un délai défini. Chiffré de bout en bout, aucune rétention sur serveur. Vraiment solide. La friction, c'est que les deux parties doivent avoir un compte Signal et s'être déjà ajoutées mutuellement, parfait pour une relation durable, pénible pour un transfert ponctuel avec quelqu'un que vous n'avez pas déjà sur Signal. (Pour une analyse plus complète, voir <a href="/fr/blog/signal-vs-telegram-vs-btwinus/">comment Signal, Telegram et Btwinus se comparent en matière d'anonymat</a>.)</p>
 
       <h3>5. L'e-mail chiffré avec PGP</h3>
 
@@ -136,13 +136,13 @@
 
       <h2>Le principe, en résumé</h2>
 
-      <p>La question n'est pas « cette application est-elle chiffrée ? » — la plupart des applications modernes le sont. La question, c'est : <em>une fois ce mot de passe envoyé, où en existe-t-il encore une copie, et qui contrôle ces endroits ?</em> Si la réponse est « cinq serveurs, indéfiniment, détenus par des gens que je ne connais pas », vous avez utilisé le mauvais outil.</p>
+      <p>La question n'est pas « cette application est-elle chiffrée ? », la plupart des applications modernes le sont. La question, c'est : <em>une fois ce mot de passe envoyé, où en existe-t-il encore une copie, et qui contrôle ces endroits ?</em> Si la réponse est « cinq serveurs, indéfiniment, détenus par des gens que je ne connais pas », vous avez utilisé le mauvais outil.</p>
 
       <p>Utilisez un outil qui s'autodétruit. Répartissez le secret sur deux canaux quand ça compte. Et pour ce qui est vraiment sensible, ne l'envoyez pas du tout par voie numérique.</p>
     </div>
 
     <div class="blog-cta">
-      <p>Besoin de partager un mot de passe tout de suite, sans laisser de trace ? Btwinus est conçu exactement pour ça — lien chiffré, phrase secrète par un canal séparé, rien de stocké.</p>
+      <p>Besoin de partager un mot de passe tout de suite, sans laisser de trace ? Btwinus est conçu exactement pour ça, lien chiffré, phrase secrète par un canal séparé, rien de stocké.</p>
       <a href="/fr/">Démarrer un chat privé →</a>
     </div>
 

@@ -63,26 +63,26 @@
   <article class="blog-wrap">
     <p class="blog-meta">September 6, 2026 · 6 min read</p>
     <h1 class="blog-title">Btwinus vs otr.to: which one should you use for a private chat?</h1>
-    <p class="blog-lede">Of all the tools we've compared, otr.to is the closest cousin to Btwinus: a browser-only, no-account, peer-to-peer chat that keeps nothing. Both say "no servers". Only one of them means it literally — and the reason is a small, important detail about how two browsers find each other.</p>
+    <p class="blog-lede">Of all the tools we've compared, otr.to is the closest cousin to Btwinus: a browser-only, no-account, peer-to-peer chat that keeps nothing. Both say "no servers". Only one of them means it literally, and the reason is a small, important detail about how two browsers find each other.</p>
 
     <div class="blog-body">
-      <p>otr.to launched in 2015 and got a burst of attention for bringing the Off-the-Record protocol into a web page. Btwinus arrived much later with the same instinct — WebRTC, browser only, nothing stored — but a different answer to the hard question of signalling. This post is mostly about that question, because it's where the two actually differ.</p>
+      <p>otr.to launched in 2015 and got a burst of attention for bringing the Off-the-Record protocol into a web page. Btwinus arrived much later with the same instinct, WebRTC, browser only, nothing stored, but a different answer to the hard question of signalling. This post is mostly about that question, because it's where the two actually differ.</p>
 
       <h2>What otr.to is</h2>
 
       <p>otr.to is a peer-to-peer chat in the browser, tagline "Anonymous, no logs, no servers". There's no account. Historically you got a short temporary code, shared it, and the other person used it to connect; messages then flowed over a WebRTC data channel between the two browsers, so nothing passed through a chat server. The original 2015 code, published under the Apache 2.0 licence, built on three open libraries: PeerJS for the WebRTC plumbing, a JavaScript implementation of the OTR protocol for message encryption, and CryptoJS for a separate "self-destructing message" feature that stored an AES-encrypted note on a server with the key kept client-side.</p>
 
-      <p>Here's what we could and couldn't verify in 2026. The site is up and still built on PeerJS — the current bundle points at PeerJS's public signalling and TURN servers plus Google's STUN. That matters: PeerJS needs a broker server so that two browsers can exchange connection details before they talk directly. The broker doesn't see your messages, but it does see that two peers connected, from which addresses, and when. "No servers" is true of the chat itself, not of the introduction. The public GitHub repository hasn't had a commit since 2015 and its README is two lines; the live site appears to have been rebuilt since, and we couldn't confirm from the shipped code whether the OTR protocol is still applied on top of WebRTC's own transport encryption. The self-destructing-note page returned a 404 when we checked. We also couldn't find documentation of group chat or file transfer, so we're treating both as unsupported. If you know otherwise, the site's own code is the source of truth.</p>
+      <p>Here's what we could and couldn't verify in 2026. The site is up and still built on PeerJS, the current bundle points at PeerJS's public signalling and TURN servers plus Google's STUN. That matters: PeerJS needs a broker server so that two browsers can exchange connection details before they talk directly. The broker doesn't see your messages, but it does see that two peers connected, from which addresses, and when. "No servers" is true of the chat itself, not of the introduction. The public GitHub repository hasn't had a commit since 2015 and its README is two lines; the live site appears to have been rebuilt since, and we couldn't confirm from the shipped code whether the OTR protocol is still applied on top of WebRTC's own transport encryption. The self-destructing-note page returned a 404 when we checked. We also couldn't find documentation of group chat or file transfer, so we're treating both as unsupported. If you know otherwise, the site's own code is the source of truth.</p>
 
       <p>None of that is an accusation. It's a one-person open source project from a decade ago that still runs, which is more than most. But if you're choosing it for a sensitive conversation, you should know that some of its 2015 description may not describe what's deployed today.</p>
 
       <h2>What Btwinus is</h2>
 
-      <p><a href="/">Btwinus</a> is also a one-to-one WebRTC chat with no account, but it removes the broker. When you click "Start a new chat", your browser creates a WebRTC offer, compresses it, encrypts it with AES-256-GCM using a key derived from a generated passphrase (PBKDF2, 100,000 iterations), and puts the result in the URL fragment of an invite link. You send that link one way and the passphrase another. The other person opens the link, enters the passphrase, and their browser produces a reply link the same way; you paste it in and the connection is up. The introduction travels inside the links themselves — no signalling server, no room code, nothing for a third party to log.</p>
+      <p><a href="/">Btwinus</a> is also a one-to-one WebRTC chat with no account, but it removes the broker. When you click "Start a new chat", your browser creates a WebRTC offer, compresses it, encrypts it with AES-256-GCM using a key derived from a generated passphrase (PBKDF2, 100,000 iterations), and puts the result in the URL fragment of an invite link. You send that link one way and the passphrase another. The other person opens the link, enters the passphrase, and their browser produces a reply link the same way; you paste it in and the connection is up. The introduction travels inside the links themselves, no signalling server, no room code, nothing for a third party to log.</p>
 
       <p>Once connected, messages go directly between the two browsers over WebRTC's built-in DTLS encryption. Both sides see a short authentication string to compare out loud, which catches a man-in-the-middle on the handshake. Close either tab and the session is gone. It's free, has no ads, and is <a href="https://github.com/BTwinus/btwinus">open source</a> with recent commits; the whole app is a static page. (Details in <a href="/blog/encrypted-chat-no-account/">how Btwinus puts AES-256 in a link</a>.)</p>
 
-      <p>The costs are the same shape as otr.to's: two people, both online, text only, no history. Plus one that's specific to Btwinus: the handshake asks more of the recipient — open a link, type a passphrase, send a link back.</p>
+      <p>The costs are the same shape as otr.to's: two people, both online, text only, no history. Plus one that's specific to Btwinus: the handshake asks more of the recipient, open a link, type a passphrase, send a link back.</p>
 
       <h2>The honest comparison table</h2>
 
@@ -150,7 +150,7 @@
         <tr>
           <td>Self-hostable</td>
           <td>In theory, with your own PeerJS server</td>
-          <td>Yes — static files</td>
+          <td>Yes, static files</td>
         </tr>
         <tr>
           <td>Cost / ads</td>
@@ -165,7 +165,7 @@
 
       <p><strong>Shorter links.</strong> Btwinus links carry a whole compressed, encrypted WebRTC offer, so they're long. otr.to's are short, which is nicer for reading out loud or typing.</p>
 
-      <p><strong>TURN relay for hostile networks.</strong> The current otr.to bundle lists TURN servers. If a direct connection can't be made — some corporate firewalls, some mobile carriers — TURN relays the encrypted stream and the chat still works. Btwinus uses STUN only and has no relay fallback, so on those networks it may not connect at all.</p>
+      <p><strong>TURN relay for hostile networks.</strong> The current otr.to bundle lists TURN servers. If a direct connection can't be made, some corporate firewalls, some mobile carriers, TURN relays the encrypted stream and the chat still works. Btwinus uses STUN only and has no relay fallback, so on those networks it may not connect at all.</p>
 
       <p><strong>You specifically want the OTR protocol.</strong> If OTR's deniability properties are what you're after and the current build does still use it, otr.to is the only one of the two offering it. Just verify that yourself first.</p>
 
@@ -179,7 +179,7 @@
 
       <p><strong>You can see what you're running.</strong> Btwinus's deployed code matches its public repository and is maintained. otr.to's repository is a decade old and the live bundle has clearly moved on, so what you're auditing isn't what you're using.</p>
 
-      <p><strong>Wrong passphrase fails loudly.</strong> AES-GCM's authentication tag means a mistyped or wrong passphrase simply refuses to decrypt — you get a clear error, not a silent bad connection.</p>
+      <p><strong>Wrong passphrase fails loudly.</strong> AES-GCM's authentication tag means a mistyped or wrong passphrase simply refuses to decrypt, you get a clear error, not a silent bad connection.</p>
 
       <h2>How to decide</h2>
 

@@ -33,7 +33,7 @@
   function rc()          { return CHARS[randInt(0, CHARS.length - 1)]; }
 
   // ── Multi-language word definitions ───────────────────────────────────────
-  // sizes are vw fractions — capped at 560px in draw() so they never exceed ~2× the site logo on wide screens
+  // sizes are vw fractions, capped at 560px in draw() so they never exceed ~2× the site logo on wide screens
   const WORD_DEFS = [
     { t: ['Btwinus'],  color: BLUE,   size: 0.11,  bold: true, special: true },
     {
@@ -170,7 +170,7 @@
     }
   }
 
-  // ── Floating word — encrypts, decrypts, then translates ──────────────────
+  // ── Floating word, encrypts, decrypts, then translates ──────────────────
   class FloatingWord {
     constructor(def, W, H) {
       this.def      = def;

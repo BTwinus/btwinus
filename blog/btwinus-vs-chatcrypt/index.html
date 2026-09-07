@@ -70,17 +70,17 @@
 
       <h2>What ChatCrypt is</h2>
 
-      <p>ChatCrypt is a long-running hobby project by a single developer. You fill in three fields — a nickname, a room name, and a room password — and connect. Anyone who knows the same room name and password lands in the same room and can read the conversation. That makes it a group tool by default, which is unusual among no-account chat sites.</p>
+      <p>ChatCrypt is a long-running hobby project by a single developer. You fill in three fields, a nickname, a room name, and a room password, and connect. Anyone who knows the same room name and password lands in the same room and can read the conversation. That makes it a group tool by default, which is unusual among no-account chat sites.</p>
 
       <p>Architecturally it's a relay. Your browser opens a WebSocket (over TLS) to ChatCrypt's server, and messages pass through that server to the other members. On top of TLS, ChatCrypt describes two more layers: an ECDH key exchange with AES-256 between each client and the server, and an end-to-end layer between members using ChaCha20-Poly1305, with the keys mixed with the room password so that, in their words, the server can't reconstruct them. The site says nothing is stored: no database, no logs, no history.</p>
 
-      <p>A few things worth knowing. The source code isn't public — the site says it may share it "if given a well-founded request", such as a security audit, which is not the same as being open source. The service is ad-funded, loading Google AdSense and other ad networks with personalised-ads consent prompts. We didn't find file sharing or voice; reviews going back years describe it as text only, and the copyright notice we saw was dated 2023. A 2014 public disclosure criticised the site for serving its crypto JavaScript over plain HTTP; it now uses TLS. And because the whole model rests on a room password, anyone who guesses or is given that password is simply in.</p>
+      <p>A few things worth knowing. The source code isn't public, the site says it may share it "if given a well-founded request", such as a security audit, which is not the same as being open source. The service is ad-funded, loading Google AdSense and other ad networks with personalised-ads consent prompts. We didn't find file sharing or voice; reviews going back years describe it as text only, and the copyright notice we saw was dated 2023. A 2014 public disclosure criticised the site for serving its crypto JavaScript over plain HTTP; it now uses TLS. And because the whole model rests on a room password, anyone who guesses or is given that password is simply in.</p>
 
       <h2>What Btwinus is</h2>
 
       <p><a href="/">Btwinus</a> is a one-to-one chat with no server between the two browsers. You click "Start a new chat" and get an invite link and a passphrase. The link's URL fragment holds a WebRTC offer encrypted with AES-256-GCM, the key derived from the passphrase by PBKDF2 (100,000 iterations). You send the link through one channel and the passphrase through another. The other person opens the link, types the passphrase, gets a reply link, and sends it back; you paste it, and the two browsers connect directly over WebRTC. From there, messages travel peer to peer. Close either tab and the conversation is gone.</p>
 
-      <p>Both sides see a short authentication string to compare out loud, which catches anyone who tried to sit in the middle of the handshake. Btwinus is free, has no ads, and is <a href="https://github.com/BTwinus/btwinus">open source</a> — a static page you can read in an afternoon or host yourself. (Here's <a href="/blog/encrypted-chat-no-account/">how the link carries the encryption</a>.)</p>
+      <p>Both sides see a short authentication string to compare out loud, which catches anyone who tried to sit in the middle of the handshake. Btwinus is free, has no ads, and is <a href="https://github.com/BTwinus/btwinus">open source</a>, a static page you can read in an afternoon or host yourself. (Here's <a href="/blog/encrypted-chat-no-account/">how the link carries the encryption</a>.)</p>
 
       <p>What it doesn't do: groups, files, or asynchronous messages. Exactly two people, both online at once, text only.</p>
 
@@ -104,7 +104,7 @@
         </tr>
         <tr>
           <td>Server sees metadata</td>
-          <td>Yes — who connected, when, which room</td>
+          <td>Yes, who connected, when, which room</td>
           <td>No server in the chat path</td>
         </tr>
         <tr>
@@ -125,7 +125,7 @@
         <tr>
           <td>Group chat</td>
           <td>Yes</td>
-          <td>No — one to one</td>
+          <td>No, one to one</td>
         </tr>
         <tr>
           <td>Both online at once</td>
@@ -150,7 +150,7 @@
         <tr>
           <td>Self-hostable</td>
           <td>No</td>
-          <td>Yes — static files</td>
+          <td>Yes, static files</td>
         </tr>
         <tr>
           <td>Ads</td>
@@ -166,7 +166,7 @@
 
       <h2>Where ChatCrypt is the better choice</h2>
 
-      <p><strong>More than two people.</strong> This is the decisive one. A team huddle, three friends coordinating, a small community that wants a throwaway room — ChatCrypt does it, Btwinus flatly does not. If you need a group, stop reading and go there (or to Signal).</p>
+      <p><strong>More than two people.</strong> This is the decisive one. A team huddle, three friends coordinating, a small community that wants a throwaway room, ChatCrypt does it, Btwinus flatly does not. If you need a group, stop reading and go there (or to Signal).</p>
 
       <p><strong>Joining is dead simple.</strong> Tell people a room name and a password, and they type it in. No links flying back and forth, no reply link to paste. For a non-technical crowd that's real friction saved.</p>
 
@@ -176,7 +176,7 @@
 
       <h2>Where Btwinus is the better choice</h2>
 
-      <p><strong>No middleman at all.</strong> Every ChatCrypt message passes through one server, and that server sees connection metadata — IPs, timing, room names — even if it truly can't read content. Btwinus has no server in the conversation; the only thing a static host ever sees is a request for an HTML page.</p>
+      <p><strong>No middleman at all.</strong> Every ChatCrypt message passes through one server, and that server sees connection metadata, IPs, timing, room names, even if it truly can't read content. Btwinus has no server in the conversation; the only thing a static host ever sees is a request for an HTML page.</p>
 
       <p><strong>Room passwords are a single secret; Btwinus uses two.</strong> In ChatCrypt, whoever has the room name and password is in, and both usually travel together in the same message. Btwinus separates the link from the passphrase across two channels, so one compromised channel isn't enough. (That split is the point of <a href="/blog/share-password-securely/">how to share a password without leaving a copy behind</a>.)</p>
 

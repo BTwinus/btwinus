@@ -12,21 +12,21 @@
 
   var L = {
     en: {
-      text: 'We use Google Analytics to measure traffic. Your chats are never tracked — they stay end-to-end encrypted. Analytics cookies are only set if you accept.',
+      text: 'We use Google Analytics to measure traffic. Your chats are never tracked, they stay end-to-end encrypted. Analytics cookies are only set if you accept.',
       accept: 'Accept',
       decline: 'Decline',
       more: 'Privacy policy',
       href: '/privacy/'
     },
     fr: {
-      text: 'Nous utilisons Google Analytics pour mesurer l’audience. Vos conversations ne sont jamais suivies — elles restent chiffrées de bout en bout. Les cookies d’analyse ne sont posés que si vous acceptez.',
+      text: 'Nous utilisons Google Analytics pour mesurer l’audience. Vos conversations ne sont jamais suivies, elles restent chiffrées de bout en bout. Les cookies d’analyse ne sont posés que si vous acceptez.',
       accept: 'Accepter',
       decline: 'Refuser',
       more: 'Confidentialité',
       href: '/fr/privacy/'
     },
     ln: {
-      text: 'Tosalelaka Google Analytics mpo na kotanga bato baye bayaka. Masolo na yo elandamaka te — ezali ekangami ndɛlɛ-na-ndɛlɛ. Ba-cookies ya analytics etiamaka kaka soki ondimi.',
+      text: 'Tosalelaka Google Analytics mpo na kotanga bato baye bayaka. Masolo na yo elandamaka te, ezali ekangami ndɛlɛ-na-ndɛlɛ. Ba-cookies ya analytics etiamaka kaka soki ondimi.',
       accept: 'Ndima',
       decline: 'Boya',
       more: 'Mibeko ya bonkundi',
