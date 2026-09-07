@@ -47,6 +47,8 @@ There is **no build step**. No bundler, no transpiler, no package.json. You edit
 /og.png              → 1200×630 social share image. Rendered from og.svg with headless Chrome; keep og.svg as the source.
 /<32 hex>.txt        → IndexNow key file. See \"After deploying\" below.
 /404.html            → Real not-found page (noindex). GitHub Pages serves it with a 404 status.
+/.well-known/security.txt → Security contact (points at GitHub private vulnerability reporting, which is enabled). Mirrored at /security.txt. Expires yearly; bump the date.
+/.nojekyll           → Tells GitHub Pages to skip Jekyll so the .well-known directory is served. Do not delete.
 /privacy/            → Privacy policy (en). Also /fr/privacy/ and /ln/privacy/. Linked from the consent banner.
 /server/             → Empty placeholder. There is no backend. Don't fill it without discussing first.
 ```
@@ -124,6 +126,10 @@ These are scattered. When you change a file, find the existing `?v=N` references
 - `app.js?v=18` (chat.html only)
 
 This is fragile. Don't be afraid to bump even if you're not 100% sure, over-bumping costs one extra fetch, under-bumping serves stale content.
+
+## Security headers
+
+Every HTML page carries a `Content-Security-Policy` meta tag (same string everywhere, self + Google Analytics hosts, `'unsafe-inline'` because of the inline consent/gtag scripts and onclick handlers). If you add a new external host, add it to the CSP on every page or it will be blocked silently. `frame-ancestors` and HSTS cannot be set from a meta tag; they live in Cloudflare (Transform Rules → Modify Response Header, and SSL/TLS → Edge Certificates → HSTS).
 
 ## After deploying
 

@@ -229,6 +229,28 @@ because those communities will find them within an hour. Fixing them first makes
 - [x] **I5. Add a LICENSE file.** README says "see LICENSE (not yet added)". Lissy93/awesome-privacy
       and AlternativeTo both require one. MIT or AGPL are the usual choices for this kind of tool.
 
+## J. Website security headers (flagged by the awesome-privacy bot on PR #802)
+
+Done in the repo: CSP meta tag on every page, `/.well-known/security.txt` (+ `/security.txt`),
+`.nojekyll`, GitHub private vulnerability reporting enabled. The rest are HTTP headers, which only
+Cloudflare can set for a GitHub Pages site:
+
+- [ ] **J1. HSTS to one year.** Cloudflare → SSL/TLS → Edge Certificates → HTTP Strict Transport
+      Security → Enable: Max Age 12 months, Include subdomains on, Preload on. Currently 30 days.
+- [ ] **J2. Response headers.** Cloudflare → Rules → Transform Rules → Modify Response Header →
+      Create rule "Security headers", expression `true` (all requests), Set static:
+      - `X-Frame-Options` = `DENY`
+      - `X-Content-Type-Options` = `nosniff`
+      - `Referrer-Policy` = `strict-origin-when-cross-origin`
+      - `Permissions-Policy` = `camera=(self), microphone=(), geolocation=()`
+        (camera stays on for the QR scanner)
+      - `Content-Security-Policy` = the exact string in the meta tag on index.html, plus
+        `; frame-ancestors 'none'`
+      Verify with `curl -sI https://btwinus.com/ | grep -iE 'strict|frame|content-security'`.
+- [ ] **J3. Repo maturity** (age, stars, contributors) is only fixed by time and by the Show HN /
+      AlternativeTo links. If the awesome-privacy maintainer asks to resubmit later, do it after
+      the next release.
+
 ## H. Measurement (so this list can be re-checked)
 
 - [ ] **H1. Monthly check.** GSC Coverage: number of indexed pages (target: all sitemap URLs).
